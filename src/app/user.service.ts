@@ -20,7 +20,8 @@ export class UserService {
       console.log("Username or password incorrect.")
     }
     else {
-      localStorage.setItem(JSON.stringify(loginattempt[0]), JSON.stringify(loginattempt[2]))
+      localStorage.setItem("username", `${loginattempt[0]["username"]}`);
+      localStorage.setItem("favteam", `${loginattempt[0]["favteam"]}`)
       console.log(localStorage)
       console.log("Successful login things like localStorage & redirect should happen now.")
     }
