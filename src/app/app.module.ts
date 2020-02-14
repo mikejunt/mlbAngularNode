@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserheaderComponent } from './userheader/userheader.component';
 import { SortTeamPipe } from './pipes/sort-team.pipe';
+import { SearchInterfaceComponent } from './search-interface/search-interface.component';
+import { SearchDisplayComponent } from './search-display/search-display.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { SortTeamPipe } from './pipes/sort-team.pipe';
     LoginComponent,
     UserheaderComponent,
     SortTeamPipe,
+    SearchInterfaceComponent,
+    SearchDisplayComponent,
     
   ],
   imports: [
