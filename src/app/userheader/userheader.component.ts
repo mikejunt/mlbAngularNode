@@ -8,15 +8,15 @@ import { ApidataService } from '../apidata.service';
   styleUrls: ['./userheader.component.scss']
 })
 export class UserheaderComponent implements OnInit {
-  curteam:string = this.user.currentUser["favteam"];
+  curteam:string = this.user.currentUser.favteam;
   teamlist = [...this.api.teamlist];
-  favteam = this.user.currentUser.favteam;
+  favteam:string = this.user.currentUser.favteam;
   username = this.user.currentUser.username;
   
   constructor(private user: UserService, private api: ApidataService) { }
 
   ngOnInit(): void { }
 
-  logout() {this.user.logout()}  
+  logout() {console.log(this.curteam);this.user.logout()}  
 
 }
