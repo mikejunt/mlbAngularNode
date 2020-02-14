@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserheaderComponent } from './userheader/userheader.component';
+import { SortTeamPipe } from './pipes/sort-team.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserheaderComponent,
+    SortTeamPipe,
     
   ],
   imports: [
