@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service' 
 import { User } from '../interfaces/user.interface';
+import { ApidataService } from '../apidata.service';
 
 
 @Component({
@@ -12,10 +13,10 @@ export class LoginComponent implements OnInit {
 username: string;
 password: string;
 
-  constructor(private user: UserService) { }
+  constructor(private user: UserService, private api: ApidataService) { }
 
 
-  ngOnInit(): void {
-  }
-logincheck() {console.log("Log from component function"); this.user.authenticate(this.username,this.password)}
+  ngOnInit(): void {this.user.getUserlist(), this.api.listTeams()}
+
+logincheck() {this.user.authenticate(this.username,this.password)}
 }
