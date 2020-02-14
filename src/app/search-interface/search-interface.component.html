@@ -1,5 +1,7 @@
 <app-userheader></app-userheader>
-<label for="teamlist">Select Team</label><select>
+<div [ngClass]="'bg'+ this.curteam"><label for="teamlist">Select Team</label><select [(ngModel)]="nextteam">
     <option *ngFor="let team of teamlist | sortTeam:curteam; index as i" value="{{team['mlb_org_id']}}">
         {{team["name_display_full"]}}</option>
-</select>
+</select></div>
+
+<button (click)="search()">CLICK ME</button>

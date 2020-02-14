@@ -17,6 +17,6 @@ export class UserheaderComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  logout() {console.log(this.curteam);this.user.logout()}  
+  logout() {this.user.logout()}  
 
 }

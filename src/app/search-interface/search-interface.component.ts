@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { ApidataService } from '../apidata.service';
+import { Team } from '../interfaces/team.interface'
 
 @Component({
   selector: 'app-search-interface',
@@ -9,12 +10,15 @@ import { ApidataService } from '../apidata.service';
 })
 export class SearchInterfaceComponent implements OnInit {
   curteam = ""
-  teamlist = []
+  teamlist: Team[] = []
+  nextteam: string = ""
   
 
-  constructor(private user: UserService, private api: ApidataService) {this.curteam = this.user.currentUser.favteam }
+  constructor(private user: UserService, private api: ApidataService) {this.curteam = this.user.currentUser.favteam;this.nextteam = this.curteam }
 
   ngOnInit(): void {this.teamlist = [...this.api.teamlist];
   }
+
+search() {this.curteam=this.nextteam}
 
 }
