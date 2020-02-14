@@ -8,13 +8,13 @@ import { ApidataService } from '../apidata.service';
   styleUrls: ['./search-interface.component.scss']
 })
 export class SearchInterfaceComponent implements OnInit {
-  curteam:string = this.user.currentUser.favteam;
-  teamlist = [...this.api.teamlist];
+  curteam = ""
+  teamlist = []
   
 
-  constructor(private user: UserService, private api: ApidataService) { }
+  constructor(private user: UserService, private api: ApidataService) {this.curteam = this.user.currentUser.favteam }
 
-  ngOnInit(): void {
+  ngOnInit(): void {this.teamlist = [...this.api.teamlist];
   }
 
 }

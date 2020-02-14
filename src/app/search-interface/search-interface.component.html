@@ -1,2 +1,5 @@
 <app-userheader></app-userheader>
-<label for="teamlist">Select Team</label><select><ng-container *ngFor="let team of teamlist; index as i"><option value="{{team['mlb_org_id']}}">{{team["name_display_full"]}}</option></ng-container></select>
+<label for="teamlist">Select Team</label><select>
+    <option *ngFor="let team of teamlist | sortTeam:curteam; index as i" value="{{team['mlb_org_id']}}">
+        {{team["name_display_full"]}}</option>
+</select>
