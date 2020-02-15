@@ -15,6 +15,7 @@ import { SearchDisplayComponent } from './search-display/search-display.componen
 import { SortRosterPipe } from './pipes/sort-roster.pipe';
 import { RosterPositionPipe } from './pipes/roster-position.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './materialModule'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false}
     ),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
 
   ],
   providers: [],
