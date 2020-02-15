@@ -5,9 +5,9 @@
         <th>Number</th>
     </tr>
     <tr *ngFor="let player of roster | sortRoster | rosterPosition:'pitcher'; index as i">
-        <th>{{player["position_txt"]}}</th>
-        <th>{{player["name_display_first_last"]}}</th>
-        <th>{{player["jersey_number"]}}</th>
+        <td>{{player["position_txt"]}}</td>
+        <td>{{player["name_display_first_last"]}}</td>
+        <td>{{player["jersey_number"]}}</td>
     </tr>
     <tr>
         <th>Position</th>
@@ -15,9 +15,9 @@
         <th>Number</th>
     </tr>
     <tr *ngFor="let player of roster | sortRoster | rosterPosition:'catcher'; index as i">
-        <th>{{player["position_txt"]}}</th>
-        <th>{{player["name_display_first_last"]}}</th>
-        <th>{{player["jersey_number"]}}</th>
+        <td>{{player["position_txt"]}}</td>
+        <td>{{player["name_display_first_last"]}}</td>
+        <td>{{player["jersey_number"]}}</td>
     </tr>
     <tr>
         <th>Position</th>
@@ -25,9 +25,9 @@
         <th>Number</th>
     </tr>
     <tr *ngFor="let player of roster | sortRoster | rosterPosition:'infield'; index as i">
-        <th>{{player["position_txt"]}}</th>
-        <th>{{player["name_display_first_last"]}}</th>
-        <th>{{player["jersey_number"]}}</th>
+        <td>{{player["position_txt"]}}</td>
+        <td>{{player["name_display_first_last"]}}</td>
+        <td>{{player["jersey_number"]}}</td>
     </tr>
     <tr>
         <th>Position</th>
@@ -35,8 +35,8 @@
         <th>Number</th>
     </tr>
     <tr *ngFor="let player of roster | sortRoster | rosterPosition:'outfield'; index as i">
-        <th>{{player["position_txt"]}}</th>
-        <th>{{player["name_display_first_last"]}}</th>
-        <th>{{player["jersey_number"]}}</th>
+        <td>{{player["position_txt"]}}</td>
+        <td>{{player["name_display_first_last"]}}</td>
+        <td>{{player["jersey_number"]}}</td>
     </tr>
 </table>
