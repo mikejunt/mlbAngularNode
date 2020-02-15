@@ -9,16 +9,20 @@ export class RosterPositionPipe implements PipeTransform {
   transform(roster: Array<Player>, category: string): Array<Player> {
     let roster40 = [...roster]
     if (category === "pitcher") {
-      roster40.filter((obj) => obj["primary_position"] === "1")
-      return roster40
+      let pitchers = roster40.filter((obj) => obj["primary_position"] === "1")
+      return pitchers
+    }
+    else if (category === "catcher") {
+      let catchers = roster40.filter((obj) => obj["primary_position"] === "2")
+      return catchers
     }
     else if (category === "infield")  {
-      roster40.filter((obj) => obj["primary_position"] > "1" && obj["primary_position"] < "7")
-      return roster40
+      let infielders = roster40.filter((obj) => obj["primary_position"] > "2" && obj["primary_position"] < "7")
+      return infielders
     }
     else if (category === "outfield") {
-      roster40.filter((obj) => obj["primary_position"] > "6")
-      return roster40
+      let outfielders = roster40.filter((obj) => obj["primary_position"] > "6")
+      return outfielders
     }
     return roster40
   }

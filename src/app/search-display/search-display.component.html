@@ -1,1 +1,42 @@
-<p>search-display works!</p>
+<table *ngIf="searchmode==='roster'">
+    <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Number</th>
+    </tr>
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'pitcher'; index as i">
+        <th>{{player["position_txt"]}}</th>
+        <th>{{player["name_display_first_last"]}}</th>
+        <th>{{player["jersey_number"]}}</th>
+    </tr>
+    <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Number</th>
+    </tr>
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'catcher'; index as i">
+        <th>{{player["position_txt"]}}</th>
+        <th>{{player["name_display_first_last"]}}</th>
+        <th>{{player["jersey_number"]}}</th>
+    </tr>
+    <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Number</th>
+    </tr>
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'infield'; index as i">
+        <th>{{player["position_txt"]}}</th>
+        <th>{{player["name_display_first_last"]}}</th>
+        <th>{{player["jersey_number"]}}</th>
+    </tr>
+    <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Number</th>
+    </tr>
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'outfield'; index as i">
+        <th>{{player["position_txt"]}}</th>
+        <th>{{player["name_display_first_last"]}}</th>
+        <th>{{player["jersey_number"]}}</th>
+    </tr>
+</table>

@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Player } from '../interfaces/player.interface'
 
 @Pipe({
-  name: 'rosterSort'
+  name: 'sortRoster'
 })
 export class SortRosterPipe implements PipeTransform {
 

@@ -14,6 +14,7 @@ export class SearchInterfaceComponent implements OnInit {
   teamlist: Array<Team> = []
   nextteam: string = ""
   searchmode: string = "roster"
+  searchpick: string
   roster: Array<Player>
 
 
@@ -27,7 +28,8 @@ export class SearchInterfaceComponent implements OnInit {
   }
 
   search() { 
-    this.curteam = this.nextteam; 
+    this.curteam = this.nextteam;
+    this.searchpick = this.searchmode 
     this.api.initSearch(this.searchmode, this.curteam);
     this.roster = [...this.api.roster] }
 
