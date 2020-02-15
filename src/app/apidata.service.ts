@@ -32,5 +32,8 @@ export class ApidataService {
   showRoster() {
     this.fetchRoster().subscribe(roster => this.roster = roster)
   }
-
+  initSearch(type:string, team: string) {
+    console.log(`service says search is ${type} and team is ${team}`)
+    if (type === "roster") {this.showRoster()}
+  }
 }
