@@ -13,6 +13,7 @@ import { SortTeamPipe } from './pipes/sort-team.pipe';
 import { SearchInterfaceComponent } from './search-interface/search-interface.component';
 import { SearchDisplayComponent } from './search-display/search-display.component';
 import { SortRosterPipe } from './pipes/sort-roster.pipe';
+import { RosterPositionPipe } from './pipes/roster-position.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SortRosterPipe } from './pipes/sort-roster.pipe';
     SearchInterfaceComponent,
     SearchDisplayComponent,
     SortRosterPipe,
+    RosterPositionPipe,
     
   ],
   imports: [
