@@ -13,13 +13,17 @@ export class SearchInterfaceComponent implements OnInit {
   teamlist: Team[] = []
   nextteam: string = ""
   searchmode: string = "roster"
-  
 
-  constructor(private user: UserService, private api: ApidataService) {this.curteam = this.user.currentUser.favteam;this.nextteam = this.curteam }
 
-  ngOnInit(): void {this.teamlist = [...this.api.teamlist];
+  constructor(private user: UserService, private api: ApidataService) { 
+    this.curteam = this.user.currentUser.favteam; 
+    this.nextteam = this.curteam 
   }
 
-search() {this.curteam=this.nextteam}
+  ngOnInit(): void {
+  this.teamlist = [...this.api.teamlist];
+  }
+
+  search() { this.curteam = this.nextteam }
 
 }
