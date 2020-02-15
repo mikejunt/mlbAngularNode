@@ -6,7 +6,7 @@ import { Player } from '../interfaces/player.interface'
 })
 export class SortRosterPipe implements PipeTransform {
 
-  transform(roster: Array<Player>, ...args: unknown[]): unknown {
+  transform(roster: Array<Player>): Array<Player> {
     let roster40 = [...roster];
     roster40.sort(function (a, b) {
       if (a["primary_position"] > b["primary_position"]) {
