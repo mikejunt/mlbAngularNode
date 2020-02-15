@@ -1,7 +1,11 @@
 <app-userheader></app-userheader>
-<div [ngClass]="'bg'+ this.curteam"><label for="teamlist">Select Team</label><select [(ngModel)]="nextteam">
-    <option *ngFor="let team of teamlist | sortTeam:curteam; index as i" value="{{team['mlb_org_id']}}">
-        {{team["name_display_full"]}}</option>
-</select></div>
+<div [ngClass]="'bg'+ this.curteam">
+    <div><label for="teamlist">Select Team</label><select [(ngModel)]="nextteam">
+            <option *ngFor="let team of teamlist | sortTeam:curteam; index as i" value="{{team['mlb_org_id']}}">
+                {{team["name_display_full"]}}</option>
+        </select></div>
+    <div><label for="reportlist">Select Report</label><select [(ngModel)]="searchmode">
+            <option value="roster">Current 40 Man Roster</option>
+        </select></div>
 
-<button (click)="search()">CLICK ME</button>
+    <button (click)="search()">CLICK ME</button>

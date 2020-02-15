@@ -12,6 +12,7 @@ export class SearchInterfaceComponent implements OnInit {
   curteam = ""
   teamlist: Team[] = []
   nextteam: string = ""
+  searchmode: string = "roster"
   
 
   constructor(private user: UserService, private api: ApidataService) {this.curteam = this.user.currentUser.favteam;this.nextteam = this.curteam }
