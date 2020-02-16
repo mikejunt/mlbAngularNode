@@ -1,1 +1,9 @@
-<header class="" [ngClass]="'bg'+ this.favteam">Welcome, {{username}}<button (click)="logout()">LOGOUT</button></header>
+<div [ngClass]="'bg'+ this.favteam">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <header class=""><span>Welcome, {{username}}</span><button mat-raised-button
+                    (click)="logout()">LOGOUT</button>
+            </header>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>

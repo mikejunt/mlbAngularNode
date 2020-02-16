@@ -1,149 +1,151 @@
 /* You can add global styles to this file, and also import other style files */
 
-.bg119 {
-    background-color: rgb(0,47,108);
-    color: white;
+// @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.bg119, .bg119>.mat-toolbar   {
+    background-color: rgb(0,47,108) !important;
+    color: white !important;
 }
 
-.bg109 {
-    background-color: rgb(167,25,48);
-    color: rgb(227,212,173);
+.bg109, .bg109>.mat-toolbar   { 
+    background-color: rgb(167,25,48) !important;
+    color: rgb(227,212,173) !important;
 }
     
-.bg144 {
-    background-color: rgb(19, 39, 79);
-    color: white;
+.bg144, .bg144>.mat-toolbar   { 
+    background-color: rgb(19, 39, 79) !important;
+    color: white !important;
 }    
 
-.bg110 {
-    background-color: rgb(223,70,1);
-    color: white;
+.bg110, .bg110>.mat-toolbar   { 
+    background-color: rgb(223,70,1) !important;
+    color: white !important;
 }
 
-.bg111 {
-    background-color: rgb(189, 48, 57);
-    color: white;
+.bg111, .bg111>.mat-toolbar {
+    background-color: rgb(189, 48, 57) !important;
+    color: white !important;
 }
 
-.bg112 {
-    background-color: rgb(14,51,134);
-    color: white;
+.bg112, .bg112>.mat-toolbar {
+    background-color: rgb(14,51,134) !important;
+    color: white !important;
 }
-.bg145 {
-    background-color: black;
-    color: rgb(196,206,212);
+.bg145, .bg145>.mat-toolbar {
+    background-color: black !important;
+    color: rgb(196,206,212) !important;
 }
-.bg113 {
-    background-color: rgb(198,1,31);
-    color: white;
-}
-
-.bg114 {
-    background-color: rgb(227,25,55);
-    color: white;
+.bg113, .bg113>.mat-toolbar {
+    background-color: rgb(198,1,31) !important;
+    color: white !important;
 }
 
-.bg115 {
-    background-color: rgb(51,0,111);
-    color: rgb(196,206,212)
+.bg114, .bg114>.mat-toolbar {
+    background-color: rgb(227,25,55) !important;
+    color: white !important;
 }
 
-.bg116 {
-    background-color: rgb(12,35,64);
-    color: white;
+.bg115, .bg115>.mat-toolbar {
+    background-color: rgb(51,0,111) !important;
+    color: rgb(196,206,212) !important;
 }
 
-.bg117 {
-    background-color: rgb(235,110,31);
-    color: rgb(0,45,98);
+.bg116, .bg116>.mat-toolbar {
+    background-color: rgb(12,35,64) !important;
+    color: white !important;
 }
 
-.bg118 {
-    background-color: rgb(0,70,135);
-    color: rgb(189,155,96);
+.bg117, .bg117>.mat-toolbar {
+    background-color: rgb(235,110,31) !important;
+    color: rgb(0,45,98) !important;
 }
 
-.bg108 {
-    background-color: rgb(186,0,33);
-    color:white;
-}
-.bg146 {
-    background-color: rgb(0,163,224);
-    color: rgb(239,51,64)
+.bg118, .bg118>.mat-toolbar {
+    background-color: rgb(0,70,135) !important;
+    color: rgb(189,155,96) !important;
 }
 
-.bg158 {
-    color: rgb(182,146,46);
-    background-color: rgb(19,41,75);
+.bg108, .bg108>.mat-toolbar {
+    background-color: rgb(186,0,33) !important;
+    color:white !important;
+}
+.bg146, .bg146>.mat-toolbar {
+    background-color: rgb(11, 58, 75) !important;
+    color: rgb(239,51,64) !important;
 }
 
-.bg142 {
-    background-color: rgb(19,41,75);
+.bg158, .bg158>.mat-toolbar {
+    color: rgb(182,146,46) !important;
+    background-color: rgb(19,41,75) !important;
+}
+
+.bg142, .bg142>.mat-toolbar {
+    background-color: rgb(19,41,75) !important;
     color: rgb(185,151,91)
 }
 
-.bg121 {
-    background-color: rgb(0,45, 114);
-    color: rgb(252,89,16);
+.bg121, .bg121>.mat-toolbar {
+    background-color: rgb(0,45, 114) !important;
+    color: rgb(252,89,16) !important;
 }
 
-.bg147 {
-    background-color: rgb(12,35,64);
-    color: white;
+.bg147, .bg147>.mat-toolbar {
+    background-color: rgb(12,35,64) !important;
+    color: white !important;
 }
 
-.bg133 {
-    background-color: rgb(0,56,49);
-    color: rgb(239,178,30);
+.bg133, .bg133>.mat-toolbar {
+    background-color: rgb(0,56,49) !important;
+    color: rgb(239,178,30) !important;
 }
 
-.bg143 {
-    background-color: rgb(232,24,40);
-    color: white;
+.bg143, .bg143>.mat-toolbar {
+    background-color: rgb(232,24,40) !important;
+    color: white !important;
 }
 
-.bg134 {
-    background-color: rgb(255,199,44);
-    color: black;
+.bg134, .bg134>.mat-toolbar {
+    background-color: rgb(255,199,44) !important;
+    color: black !important;
 }
-.bg138 {
-    background-color: rgb(196,30,58);
-    color: white;
-}
-
-.bg135 {
-    background-color: rgb(47,36,29);
-    color: rgb(255,196,37);
+.bg138, .bg138>.mat-toolbar {
+    background-color: rgb(196,30,58) !important;
+    color: white !important;
 }
 
-.bg137 {
-    background-color: rgb(253,90,30);
-    color: black;
+.bg135, .bg135>.mat-toolbar {
+    background-color: rgb(47,36,29) !important;
+    color: rgb(255,196,37) !important;
 }
 
-.bg136 {
-    background-color: rgb(0,92,92);
+.bg137, .bg137>.mat-toolbar {
+    background-color: rgb(253,90,30) !important;
+    color: black !important;
+}
+
+.bg136, .bg136>.mat-toolbar {
+    background-color: rgb(0,92,92) !important;
     color:  rgb(12,44,86)
 }
 
-.bg139  {
-    background-color: rgb(9,44,92);
+.bg139, .bg139>.mat-toolbar {
+    background-color: rgb(9,44,92) !important;
     color: rgb(143,188,230)
 }
 
-.bg140  {
-    background-color: rgb(0,50,120);
+.bg140, .bg140>.mat-toolbar {
+    background-color: rgb(0,50,120) !important;
     color: rgb(192,17,31)
 }
 
-.bg141  {
-    background-color: rgb(19,74,142);
-    color: white;
+.bg141, .bg141>.mat-toolbar {
+    background-color: rgb(19,74,142) !important;
+    color: white !important;
 }
 
-.bg120  {
-    background-color: rgb(171,0,3);
-    color: white;
+.bg120, .bg120>.mat-toolbar {
+    background-color: rgb(171,0,3) !important;
+    color: white !important;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,11 +1,18 @@
-<div><p><mat-form-field appearance="fill">
-    <mat-label>Username:</mat-label><input matInput type="text" [(ngModel)]="username" placeholder="Username">
-    <mat-hint>Mike, Sarah or Justin</mat-hint>
-</mat-form-field></p>
-<p><mat-form-field appearance="fill">
-    <mat-label>Password:</mat-label><input matInput type="password" [(ngModel)]="password" placeholder="Password">
-    <mat-hint>Currently password</mat-hint>
-</mat-form-field></p>
+<div class="login-holder">
+    <header class=""><h1>Welcome to Baseball App</h1></header>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Username:</mat-label><input matInput type="text" [(ngModel)]="username" placeholder="Username">
+            <mat-hint>Mike, Sarah or Justin</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Password:</mat-label><input matInput type="password" [(ngModel)]="password"
+                placeholder="Password">
+            <mat-hint>Currently password</mat-hint>
+        </mat-form-field>
+    </p>
 
-<button mat-raised-button color="primary" (click)="logincheck()">CLICK ME</button>
+    <button mat-raised-button color="primary" (click)="logincheck()">Log In</button>
 </div>
