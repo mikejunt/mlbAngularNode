@@ -25,12 +25,21 @@ export class SearchInterfaceComponent implements OnInit {
 
   ngOnInit(): void {
     this.teamlist = [...this.api.teamlist];
+    this.showRoster(this.curteam);
   }
 
-  search() { 
-    this.curteam = this.nextteam;
-    this.searchpick = this.searchmode 
-    this.api.initSearch(this.searchmode, this.curteam);
-    this.roster = [...this.api.roster] }
+  showRoster(team: string) {
+    this.api.fetchRoster(team).subscribe(roster => {
+      this.roster = roster["roster_40"]["queryResults"]["row"];
+      console.log(this.roster)
+    })
+  }
 
+  searchInit() {
+    this.curteam = this.nextteam;
+    this.searchpick = this.searchmode;
+    if (this.searchpick === "roster") {
+      this.showRoster(this.curteam)
+    }
+  }
 }

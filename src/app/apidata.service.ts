@@ -36,14 +36,4 @@ export class ApidataService {
   fetchRoster(team: string): Observable<Array<Player>> {
     return this.http.get<Array<Player>>(`${this.rosterUrl}'${team}'`)
   }
-  showRoster(team: string) {
-    this.fetchRoster(team).subscribe(roster => { 
-      this.roster = roster["roster_40"]["queryResults"]["row"];
-       console.log(this.roster) 
-      })
-  }
-  initSearch(type: string, team: string) {
-    console.log(`service says search is ${type} and team is ${team}`)
-    if (type === "roster") { this.showRoster(team) }
-  }
 }
