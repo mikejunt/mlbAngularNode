@@ -1,39 +1,49 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { Team } from './interfaces/team.interface'
-import { Player } from './interfaces/player.interface'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Team } from './interfaces/team.interface';
+import { Player } from './interfaces/player.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApidataService {
-  teamlist: Array<Team> = []
-  roster: Array<Player> = []
-  private teamsUrl = 'api/teams';
-  private rosterUrl = 'api/roster';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
+  teamlist: Array<Team> = [];
+  roster: Array<Player> = [];
+  private teamsUrl = `https://lookup-service-prod.mlb.com/json/named.team_all_season.bam?sport_code='mlb'&all_star_sw='N'&season='2020'`;
+  private rosterUrl = `http://lookup-service-prod.mlb.com/json/named.roster_40.bam?team_id=`;
+  copynotice: string = ""
+
+
 
   constructor(private http: HttpClient) { }
 
-  fetchTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.teamsUrl)
+  fetchTeams(): Observable<Array<Team>> {
+    console.log(this.teamsUrl)
+    return this.http.get<Array<Team>>(this.teamsUrl);
   }
 
   listTeams() {
-    this.fetchTeams().subscribe(teamlist => this.teamlist = teamlist)
+    this.fetchTeams().subscribe(teamlist => {
+      this.copynotice = teamlist["team_all_season"]["copyRight"];
+      this.teamlist = teamlist["team_all_season"]["queryResults"]["row"]
+      console.log(this.teamlist)
+      console.log(this.copynotice)
+    })
   }
 
-  fetchRoster(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.rosterUrl)
+  fetchRoster(team: string): Observable<Array<Player>> {
+    return this.http.get<Array<Player>>(`${this.rosterUrl}'${team}'`)
   }
-  showRoster() {
-    this.fetchRoster().subscribe(roster => this.roster = roster)
+  showRoster(team: string) {
+    this.fetchRoster(team).subscribe(roster => { 
+      this.roster = roster["roster_40"]["queryResults"]["row"];
+       console.log(this.roster) 
+      })
   }
-  initSearch(type:string, team: string) {
+  initSearch(type: string, team: string) {
     console.log(`service says search is ${type} and team is ${team}`)
-    if (type === "roster") {this.showRoster()}
+    if (type === "roster") { this.showRoster(team) }
   }
 }

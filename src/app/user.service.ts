@@ -3,29 +3,28 @@ import { User } from './interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { FakeUsers } from './fakeuserdb'
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private usersUrl = 'api/users';
-  userlist: Array<User>
+
+  userlist: Array<User> = FakeUsers
   isLoggedIn: boolean = false;
   currentUser: User
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl)
-  };
+  // getUsers(): Observable<User[]> {
+  //   return this.http.get<User[]>(this.usersUrl)
+  // };
 
-  getUserlist() {
-    this.getUsers().subscribe(userlist => this.userlist = userlist)
-  }
+  // getUserlist() {
+  //   this.getUsers().subscribe(userlist => this.userlist = userlist)
+  // }
 
   // getSpecificUser(id: number) {
   //   const url = `${this.usersUrl}/${id}`;

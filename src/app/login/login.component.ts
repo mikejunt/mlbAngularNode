@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private user: UserService, private api: ApidataService) { }
 
 
-  ngOnInit(): void { this.user.getUserlist(), this.api.listTeams() }
+  ngOnInit(): void {this.api.listTeams() }
 
   logincheck() { this.user.authenticate(this.username, this.password) }
 }
