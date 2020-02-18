@@ -23,17 +23,15 @@ export class ApidataService {
   fetchTeams() {
     this.http.get(this.teamsUrl)
     .pipe(
-      retry(3)
-    )
+      retry(3),
+      catchError(err => this.logError(err)))
     .subscribe(teamlist => {
       this.copynotice = teamlist["team_all_season"]["copyRight"];
       this.teamlist = teamlist["team_all_season"]["queryResults"]["row"]
-      console.log(this.teamlist)
-      console.log(this.copynotice)
     })
   }
 
-
+  logError(err) {console.log(err);return err}
 
   fetchRoster(team: string): Observable<Array<Player>> {
     return this.http.get<Array<Player>>(`${this.rosterUrl}'${team}'`)
