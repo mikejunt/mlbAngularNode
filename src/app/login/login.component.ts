@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private user: UserService, private staticquery: StaticqueryService) { }
 
 
-  ngOnInit(): void {this.staticquery.fetchTeams() }
+  ngOnInit(): void {this.staticquery.fetchTeams();this.staticquery.fetchSeasonStats() }
 
   logincheck() { this.user.authenticate(this.username, this.password) }
 }

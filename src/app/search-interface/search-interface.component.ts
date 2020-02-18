@@ -32,7 +32,6 @@ export class SearchInterfaceComponent implements OnInit {
   showRoster(team: string) {
     this.rosterquery.fetchRoster(team).subscribe(roster => {
       this.roster = [...roster["roster_40"]["queryResults"]["row"]];
-      console.log(this.roster)
     })
   }
 
