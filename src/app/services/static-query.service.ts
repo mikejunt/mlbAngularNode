@@ -11,9 +11,11 @@ import { map, debounceTime, retry, catchError } from 'rxjs/operators'
 })
 export class StaticqueryService {
   teamlist: Array<Team>
-  allplayerstats: Array<Object>
+  allplayerhitting: Array<Object>
+  allplayerpitching: Array<Object>
   // teamlist$: Observable<Array<Team>>
-  private seasonUrl = `http://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?season='2019'&sport_code='mlb'&game_type='R'`
+  private seasonpitchingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?season='2019'&sport_code='mlb'&game_type='R'`
+  private seasonhittingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?season='2019'&sport_code='mlb'&game_type='R'`
   private teamsUrl = `https://lookup-service-prod.mlb.com/json/named.team_all_season.bam?sport_code='mlb'&all_star_sw='N'&season='2020'`;
   copynotice: string = ""
 
@@ -30,16 +32,28 @@ export class StaticqueryService {
     })
   }
 
-  fetchSeasonStats() {
-    this.http.get(this.seasonUrl)
+  fetchSeasonHitting() {
+    this.http.get(this.seasonhittingUrl)
     .pipe(
       retry(3),
       catchError(err => this.logError(err)))
     .subscribe(response => {
-      this.allplayerstats = response["cur_hitting"]["queryResults"]["row"]
-      console.log(this.allplayerstats)
+      this.allplayerhitting = response["cur_hitting"]["queryResults"]["row"]
+      console.log(this.allplayerhitting)
     })
   }
+
+  fetchSeasonPitching() {
+    this.http.get(this.seasonpitchingUrl)
+    .pipe(
+      retry(3),
+      catchError(err => this.logError(err)))
+    .subscribe(response => {
+      this.allplayerpitching = response["cur_pitching"]["queryResults"]["row"]
+      console.log(this.allplayerpitching)
+    })
+  }
+
 
   logError(err) {console.log(err);return err}
 
