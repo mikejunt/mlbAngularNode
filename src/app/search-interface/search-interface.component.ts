@@ -17,15 +17,18 @@ export class SearchInterfaceComponent implements OnInit {
   nextteam: string = ""
   searchmode: string = "roster"
   searchpick: string = "roster"
+  teamstats: Array<Object> = []
   roster: Array<Player> = []
 
 
-  constructor(private user: UserService, private staticquery: StaticqueryService, private rosterquery: RosterqueryService) {
+  constructor(private user: UserService, private staticquery: StaticqueryService, 
+    private rosterquery: RosterqueryService) {
     this.curteam = this.user.currentUser.favteam;
     this.nextteam = this.curteam
   }
 
-  ngOnInit(): void {;
+  ngOnInit(): void {
+    this.teamlist = this.staticquery.teamlist
     this.searchInit();
   }
 
@@ -40,6 +43,10 @@ export class SearchInterfaceComponent implements OnInit {
     this.searchpick = this.searchmode;
     if (this.searchpick === "roster") {
       this.showRoster(this.curteam)
+    }
+    if (this.searchpick === "curstats") {
+      this.teamstats = this.staticquery.allplayerstats.filter(obj => obj["team_id"] === this.curteam);
+      console.log(this.teamstats)
     }
   }
 }
