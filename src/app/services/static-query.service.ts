@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Team } from './interfaces/team.interface';
-import { Player } from './interfaces/player.interface';
+import { Team } from '../interfaces/team.interface';
+import { Player } from '../interfaces/player.interface';
 import { map, debounceTime, retry, catchError } from 'rxjs/operators'
 
 

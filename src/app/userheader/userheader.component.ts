@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
 import { Team } from '../interfaces/team.interface';
-import { StaticqueryService } from '../static-query.service';
+import { UserService } from '../services/user.service';
+import { StaticqueryService } from '../services/static-query.service';
 
 @Component({
   selector: 'app-userheader',

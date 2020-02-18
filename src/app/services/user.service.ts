@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { User } from './interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { FakeUsers } from './fakeuserdb'
+import { FakeUsers } from '../fakeuserdb'
 
 
 @Injectable({
