@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Player } from '../interfaces/player.interface';
+import { Player } from '../../interfaces/player.interface';
 
 @Component({
   selector: 'app-roster-display',

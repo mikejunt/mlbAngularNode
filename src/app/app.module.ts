@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { UserheaderComponent } from './userheader/userheader.component';
 import { SortTeamPipe } from './pipes/sort-team.pipe';
 import { SearchInterfaceComponent } from './search-interface/search-interface.component';
-import { RosterDisplayComponent } from './roster-display/roster-display.component';
+import { RosterDisplayComponent } from './search-interface/roster-display/roster-display.component';
 import { SortRosterPipe } from './pipes/sort-roster.pipe';
 import { RosterPositionPipe } from './pipes/roster-position.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
