@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../interfaces/player.interface';
 
 @Component({
-  selector: 'app-search-display',
-  templateUrl: './search-display.component.html',
-  styleUrls: ['./search-display.component.scss']
+  selector: 'app-roster-display',
+  templateUrl: './roster-display.component.html',
+  styleUrls: ['./roster-display.component.scss']
 })
-export class SearchDisplayComponent implements OnInit {
+export class RosterDisplayComponent implements OnInit {
 @Input('roster') roster: Array<Player>;
 @Input('searchmode') searchmode: string;
 
