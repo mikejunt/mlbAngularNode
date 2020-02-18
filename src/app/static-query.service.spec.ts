@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApidataService } from './apidata.service';
+import { StaticqueryService } from './static-query.service';
 
-describe('ApidataService', () => {
-  let service: ApidataService;
+describe('StaticqueryService', () => {
+  let service: StaticqueryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ApidataService);
+    service = TestBed.inject(StaticqueryService);
   });
 
   it('should be created', () => {

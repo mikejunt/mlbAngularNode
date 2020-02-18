@@ -9,7 +9,7 @@ import { map, debounceTime, retry, catchError } from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
 })
-export class ApidataService {
+export class StaticqueryService {
   teamlist: Array<Team>
   // teamlist$: Observable<Array<Team>>
   roster: Array<Player> = [];

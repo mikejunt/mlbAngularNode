@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service'
-import { ApidataService } from '../apidata.service';
+import { StaticqueryService } from '../static-query.service';
 
 
 
@@ -14,10 +14,10 @@ export class LoginComponent implements OnInit {
   password: string;
   
 
-  constructor(private user: UserService, private api: ApidataService) { }
+  constructor(private user: UserService, private staticquery: StaticqueryService) { }
 
 
-  ngOnInit(): void {this.api.fetchTeams() }
+  ngOnInit(): void {this.staticquery.fetchTeams() }
 
   logincheck() { this.user.authenticate(this.username, this.password) }
 }

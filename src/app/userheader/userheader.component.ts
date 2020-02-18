@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { ApidataService } from '../apidata.service';
 import { Team } from '../interfaces/team.interface';
+import { StaticqueryService } from '../static-query.service';
 
 @Component({
   selector: 'app-userheader',
@@ -10,11 +10,11 @@ import { Team } from '../interfaces/team.interface';
 })
 export class UserheaderComponent implements OnInit {
   curteam:string = this.user.currentUser.favteam;
-  teamlist: Array<Team> = [...this.api.teamlist];
+  teamlist: Array<Team> = [...this.staticquery.teamlist];
   favteam:string = this.user.currentUser.favteam;
   username = this.user.currentUser.username;
   
-  constructor(private user: UserService, private api: ApidataService) { }
+  constructor(private user: UserService, private staticquery: StaticqueryService) { }
 
   ngOnInit(): void { }
 
