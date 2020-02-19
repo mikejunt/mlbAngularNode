@@ -37,13 +37,13 @@ export class UserService {
     else {
       this.isLoggedIn = true;
       this.currentUser = loginattempt[0]
-      this.router.navigate(['./search/'])
+      this.router.navigate(['search'])
     }
   }
 
   logout() {
     this.isLoggedIn = false;
-    this.router.navigate(['./login'])
+    this.router.navigate(['login'])
   }
 
 }

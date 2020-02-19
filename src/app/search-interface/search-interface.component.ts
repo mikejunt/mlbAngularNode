@@ -4,6 +4,7 @@ import { Player } from '../interfaces/player.interface'
 import { UserService } from '../services/user.service';
 import { StaticqueryService } from '../services/static-query.service';
 import { RosterqueryService } from '../services/rosterquery.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class SearchInterfaceComponent implements OnInit {
 
 
   constructor(private user: UserService, private staticquery: StaticqueryService, 
-    private rosterquery: RosterqueryService) {
+    private rosterquery: RosterqueryService, private router: Router, private actr: ActivatedRoute) {
     this.curteam = this.user.currentUser.favteam;
     this.nextteam = this.curteam
   }
@@ -43,15 +44,18 @@ export class SearchInterfaceComponent implements OnInit {
     this.searchpick = this.searchmode;
     console.log(this.searchpick)
     if (this.searchpick === "roster") {
-      this.showRoster(this.curteam)
+      this.showRoster(this.curteam);
+      this.router.navigate(['roster'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curhitting") {
       this.teamstats = this.staticquery.allplayerhitting.filter(obj => obj["team_id"] === this.curteam);
-      console.log(this.teamstats)
+      console.log(this.teamstats);
+      this.router.navigate(['hitting'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curpitching") {
       this.teamstats = this.staticquery.allplayerpitching.filter(obj => obj["team_id"] === this.curteam);
-      console.log(this.teamstats)
+      console.log(this.teamstats);
+      this.router.navigate(['pitching'], {relativeTo: this.actr})
     }
   }
 }
