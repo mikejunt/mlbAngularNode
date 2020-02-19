@@ -45,17 +45,17 @@ export class SearchInterfaceComponent implements OnInit {
     console.log(this.searchpick)
     if (this.searchpick === "roster") {
       this.showRoster(this.curteam);
-      this.router.navigate(['roster'], {relativeTo: this.actr})
+      // this.router.navigate(['roster'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curhitting") {
       this.teamstats = this.staticquery.allplayerhitting.filter(obj => obj["team_id"] === this.curteam);
       console.log(this.teamstats);
-      this.router.navigate(['hitting'], {relativeTo: this.actr})
+      // this.router.navigate(['hitting'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curpitching") {
       this.teamstats = this.staticquery.allplayerpitching.filter(obj => obj["team_id"] === this.curteam);
       console.log(this.teamstats);
-      this.router.navigate(['pitching'], {relativeTo: this.actr})
+      // this.router.navigate(['pitching'], {relativeTo: this.actr})
     }
   }
 }
