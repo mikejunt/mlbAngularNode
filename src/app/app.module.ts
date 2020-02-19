@@ -12,7 +12,9 @@ import { RosterDisplayComponent } from './search-interface/roster-display/roster
 import { SortRosterPipe } from './pipes/sort-roster.pipe';
 import { RosterPositionPipe } from './pipes/roster-position.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './materialModule'
+import { MaterialModule } from './materialModule';
+import { HittingDisplayComponent } from './search-interface/hitting-display/hitting-display.component';
+import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component'
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MaterialModule } from './materialModule'
     RosterDisplayComponent,
     SortRosterPipe,
     RosterPositionPipe,
+    HittingDisplayComponent,
+    PitchingDisplayComponent,
     
   ],
   imports: [
