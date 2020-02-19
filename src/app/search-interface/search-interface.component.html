@@ -11,7 +11,9 @@
         </select></div>
 
     <button class='btn btn-primary' (click)="searchInit()">CLICK ME</button>
-<app-roster-display [roster]="roster" [searchmode]="searchpick"></app-roster-display>
+<app-roster-display *ngIf="searchmode==='roster'" [roster]="roster" [searchmode]="searchpick"></app-roster-display>
+<app-roster-display *ngIf="searchmode==='curhitting'" [roster]="roster" [searchmode]="searchpick"></app-roster-display>
+<app-roster-display *ngIf="searchmode==='curpitching'" [roster]="roster" [searchmode]="searchpick"></app-roster-display>
 
 </div>
 <!-- <router-outlet [roster]="roster" [searchmode]="searchpick"></router-outlet> -->
