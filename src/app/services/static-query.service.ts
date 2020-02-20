@@ -50,6 +50,10 @@ export class StaticqueryService {
       })
   }
 
+  collect(players, stat:string): number{
+    return players.reduce((acc: number, player: Object) => acc + parseFloat(player[stat]), 0)
+  }
+
   fetchSeasonPitching() {
     const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type',`'R'`).set('season', `'2019'`)
     this.http.get(this.seasonpitchingUrl,{ params })
@@ -59,14 +63,17 @@ export class StaticqueryService {
         distinctUntilChanged(),
         catchError(err => this.logError(err)),
         map(res => res = res["cur_pitching"]["queryResults"]["row"]),
-        map(res => res.map(res => { let finalIP: number = parseFloat(res["ip"]); finalIP = (Math.trunc(finalIP) + (((finalIP * 10) % 10) / 3)); res["ipn"] = finalIP; return res })),
+        map(res => res.map(res => { 
+          let finalIP: number = parseFloat(res["ip"]); 
+          finalIP = (Math.trunc(finalIP) + (((finalIP * 10) % 10) / 3)); 
+          res["ipn"] = finalIP; return res })),
         tap(pitchers => {
-          let leaguehr: number = pitchers.reduce((hr: number, pitcher: Pitcher) => hr + parseFloat(pitcher["hr"]), 0);
-          let leaguebb: number = pitchers.reduce((bb: number, pitcher: Pitcher) => bb + parseFloat(pitcher["bb"]), 0);
-          let leaguehb: number = pitchers.reduce((hb: number, pitcher: Pitcher) => hb + parseFloat(pitcher["hb"]), 0);
-          let leagueso: number = pitchers.reduce((so: number, pitcher: Pitcher) => so + parseFloat(pitcher["so"]), 0);
-          let leagueer: number = pitchers.reduce((er: number, pitcher: Pitcher) => er + parseFloat(pitcher["er"]), 0);
-          let leagueip: number = pitchers.reduce((ip: number, pitcher: Pitcher) => ip + pitcher["ipn"], 0);
+          let leaguehr: number = this.collect(pitchers, "hr");
+          let leaguebb: number = this.collect(pitchers, "bb");
+          let leaguehb: number = this.collect(pitchers, "hb");
+          let leagueso: number = this.collect(pitchers, "so");
+          let leagueer: number = this.collect(pitchers, "er");
+          let leagueip: number = this.collect(pitchers, "ipn");
           let leagueERA: number = ((leagueer / leagueip) * 9);
           this.lgFIPconstant = leagueERA - (((13 * leaguehr) + (3 * (leaguebb + leaguehb)) - (2 * leagueso)) / leagueip)
         }),
