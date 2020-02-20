@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Team } from '../interfaces/team.interface';
 import { Hitter } from '../interfaces/hitter.interface';
@@ -15,16 +15,17 @@ export class StaticqueryService {
   allplayerhitting: Array<Object>
   allplayerpitching: Array<Object>
   // teamlist$: Observable<Array<Team>>
-  private seasonpitchingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?season='2019'&sport_code='mlb'&game_type='R'`
-  private seasonhittingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?season='2019'&sport_code='mlb'&game_type='R'`
-  private teamsUrl = `https://lookup-service-prod.mlb.com/json/named.team_all_season.bam?sport_code='mlb'&all_star_sw='N'&season='2020'`;
+  private seasonpitchingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?`
+  private seasonhittingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?`
+  private teamsUrl = `https://lookup-service-prod.mlb.com/json/named.team_all_season.bam?`;
   copynotice: string = ""
-  lgFIPconstant: number = 0
+  lgFIPconstant: number = 3.10
 
   constructor(private http: HttpClient) { }
 
   fetchTeams() {
-    this.http.get(this.teamsUrl)
+    const params = new HttpParams().set('sport_code', `'mlb'`).set('all_star_sw',`'N'`).set('season', `'2020'`)
+    this.http.get(this.teamsUrl,{ params })
       .pipe(
         retry(3),
         catchError(err => this.logError(err)))
@@ -35,9 +36,11 @@ export class StaticqueryService {
   }
 
   fetchSeasonHitting() {
-    this.http.get(this.seasonhittingUrl)
+    const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type',`'R'`).set('season', `'2019'`)
+    this.http.get(this.seasonhittingUrl,{ params })
       .pipe(
         retry(3),
+        debounceTime(5000),
         catchError(err => this.logError(err)))
       .subscribe(response => {
         this.allplayerhitting = response["cur_hitting"]["queryResults"]["row"]
@@ -46,29 +49,32 @@ export class StaticqueryService {
   }
 
   fetchSeasonPitching() {
-    this.http.get(this.seasonpitchingUrl)
+    const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type',`'R'`).set('season', `'2019'`)
+    this.http.get(this.seasonpitchingUrl,{ params })
       .pipe(
         retry(3),
+        debounceTime(5000),
         catchError(err => this.logError(err)),
         map(res => res = res["cur_pitching"]["queryResults"]["row"]),
         map(res => res.map(res => { let finalIP: number = parseFloat(res["ip"]); finalIP = (Math.trunc(finalIP) + (((finalIP * 10) % 10) / 3)); res["ipn"] = finalIP; return res })),
         tap(pitchers => {
-          let leaguehr = pitchers.reduce((hr: number, pitcher) => hr + parseFloat(pitcher["hr"]), 0);
-          let leaguebb = pitchers.reduce((bb: number, pitcher) => bb + parseFloat(pitcher["bb"]), 0);
-          let leaguehb = pitchers.reduce((hb: number, pitcher) => hb + parseFloat(pitcher["hb"]), 0);
-          let leagueso = pitchers.reduce((so: number, pitcher) => so + parseFloat(pitcher["so"]), 0);
-          let leagueer = pitchers.reduce((er: number, pitcher) => er + parseFloat(pitcher["er"]), 0);
-          let leagueip = pitchers.reduce((ip: number, pitcher) => ip + pitcher["ipn"], 0);
-          let leagueERA = ((leagueer / leagueip) * 9);
+          let leaguehr: number = pitchers.reduce((hr: number, pitcher: Pitcher) => hr + parseFloat(pitcher["hr"]), 0);
+          let leaguebb: number = pitchers.reduce((bb: number, pitcher: Pitcher) => bb + parseFloat(pitcher["bb"]), 0);
+          let leaguehb: number = pitchers.reduce((hb: number, pitcher: Pitcher) => hb + parseFloat(pitcher["hb"]), 0);
+          let leagueso: number = pitchers.reduce((so: number, pitcher: Pitcher) => so + parseFloat(pitcher["so"]), 0);
+          let leagueer: number = pitchers.reduce((er: number, pitcher: Pitcher) => er + parseFloat(pitcher["er"]), 0);
+          let leagueip: number = pitchers.reduce((ip: number, pitcher: Pitcher) => ip + pitcher["ipn"], 0);
+          let leagueERA: number = ((leagueer / leagueip) * 9);
           this.lgFIPconstant = leagueERA - (((13 * leaguehr) + (3 * (leaguebb + leaguehb)) - (2 * leagueso)) / leagueip)
         }),
         map(res => res.map(res => {
           let pitcherFIP = ((((13 * parseInt(res["hr"])) + (3 * (parseInt(res["bb"]) + parseInt(res["hb"]))) - (2 * parseInt(res["so"]))) / res["ipn"]) + this.lgFIPconstant);
-        res["fip"] = pitcherFIP.toFixed(2);return res})))
-          .subscribe(response => {
-            this.allplayerpitching = response
-            console.log(this.allplayerpitching)
-          })
+          res["fip"] = pitcherFIP.toFixed(2); return res
+        })))
+      .subscribe(response => {
+        this.allplayerpitching = response
+        console.log(this.allplayerpitching)
+      })
   }
 
 
