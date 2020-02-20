@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Team } from '../interfaces/team.interface';
 import { Player } from '../interfaces/player.interface';
-import { map, debounceTime, retry, catchError } from 'rxjs/operators'
+import { map, tap, debounceTime, retry, catchError } from 'rxjs/operators'
 
 
 @Injectable({
@@ -47,9 +47,11 @@ export class StaticqueryService {
     this.http.get(this.seasonpitchingUrl)
     .pipe(
       retry(3),
-      catchError(err => this.logError(err)))
+      catchError(err => this.logError(err)),
+      map(res => res = res["cur_pitching"]["queryResults"]["row"]),
+      map(res => res.map(res => {let finalIP: number = parseFloat(res["ip"]);finalIP = (Math.trunc(finalIP) + (((finalIP * 10) % 10) / 3));res["ipn"] = finalIP;return res})))
     .subscribe(response => {
-      this.allplayerpitching = response["cur_pitching"]["queryResults"]["row"]
+      this.allplayerpitching = response
       console.log(this.allplayerpitching)
     })
   }
