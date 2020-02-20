@@ -55,5 +55,7 @@ export interface Pitcher {
     "two_hitter"?: string,
     "ab"?: string,
     "one_hitter"?: string,
-    "er"?: "28"
+    "er"?: string,
+    "ipn"?: number,
+    "fip"?: string
 }

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Team } from '../interfaces/team.interface';
 import { Hitter } from '../interfaces/hitter.interface';
 import { Pitcher } from '../interfaces/pitcher.interface';
-import { map, tap, debounceTime, retry, catchError } from 'rxjs/operators'
+import { map, tap, debounceTime, retry, catchError, distinctUntilChanged } from 'rxjs/operators'
 
 
 @Injectable({
@@ -41,9 +41,14 @@ export class StaticqueryService {
       .pipe(
         retry(3),
         debounceTime(5000),
-        catchError(err => this.logError(err)))
+        distinctUntilChanged(),
+        catchError(err => this.logError(err)),
+        map(res => res = res["cur_hitting"]["queryResults"]["row"]),
+        // map(calculate uIBB & add to each player),
+        // map(calculate WOBA & add to each player)
+        )
       .subscribe(response => {
-        this.allplayerhitting = response["cur_hitting"]["queryResults"]["row"]
+        this.allplayerhitting = response;
         console.log(this.allplayerhitting)
       })
   }
@@ -54,6 +59,7 @@ export class StaticqueryService {
       .pipe(
         retry(3),
         debounceTime(5000),
+        distinctUntilChanged(),
         catchError(err => this.logError(err)),
         map(res => res = res["cur_pitching"]["queryResults"]["row"]),
         map(res => res.map(res => { let finalIP: number = parseFloat(res["ip"]); finalIP = (Math.trunc(finalIP) + (((finalIP * 10) % 10) / 3)); res["ipn"] = finalIP; return res })),
