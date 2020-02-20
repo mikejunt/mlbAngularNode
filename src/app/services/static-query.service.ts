@@ -12,8 +12,8 @@ import { map, tap, debounceTime, retry, catchError } from 'rxjs/operators'
 })
 export class StaticqueryService {
   teamlist: Array<Team>
-  allplayerhitting: Array<Object>
-  allplayerpitching: Array<Object>
+  allplayerhitting: Array<Hitter>
+  allplayerpitching: Array<Pitcher>
   // teamlist$: Observable<Array<Team>>
   private seasonpitchingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?`
   private seasonhittingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?`
