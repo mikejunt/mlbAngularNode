@@ -43,10 +43,7 @@ export class StaticqueryService {
         debounceTime(5000),
         distinctUntilChanged(),
         catchError(err => this.logError(err)),
-        map(res => res = res["cur_hitting"]["queryResults"]["row"]),
-        // map(calculate uIBB & add to each player),
-        // map(calculate WOBA & add to each player)
-        )
+        map(res => res = res["cur_hitting"]["queryResults"]["row"]))
       .subscribe(response => {
         this.allplayerhitting = response;
         console.log(this.allplayerhitting)
