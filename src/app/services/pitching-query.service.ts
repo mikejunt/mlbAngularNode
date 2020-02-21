@@ -19,8 +19,7 @@ export class PitchingQueryService {
     return players.reduce((acc: number, player: Object) => acc + parseFloat(player[stat]), 0)
   }
 
-  fetchSeasonPitching() {
-    const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`)
+  fetchSeasonPitching(params: HttpParams) {
     this.http.get(this.seasonpitchingUrl, { params })
       .pipe(
         retry(3),

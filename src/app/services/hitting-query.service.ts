@@ -15,8 +15,7 @@ export class HittingQueryService {
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }
 
-  fetchSeasonHitting() {
-    const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`)
+  fetchSeasonHitting(params: HttpParams) {
     this.http.get(this.seasonhittingUrl, { params })
       .pipe(
         retry(3),
