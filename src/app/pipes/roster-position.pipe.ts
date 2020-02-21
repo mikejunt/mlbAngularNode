@@ -6,7 +6,7 @@ import { Player } from '../interfaces/player.interface'
 })
 export class RosterPositionPipe implements PipeTransform {
 
-  transform(roster: Array<Player>, category: string): Array<Player> {
+  transform(roster, category: string): Array<Player> {
     let roster40 = [...roster]
     if (category === "pitcher") {
       let pitchers = roster40.filter((obj) => obj["primary_position"] === "1")

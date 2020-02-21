@@ -8,7 +8,6 @@ import {
 import { environment } from '../../environments/environment';
 import * as Reducers from './reducers';
 
-
 export interface AppState {
   roster: Reducers.RosterState
   hitting: Reducers.HittingState

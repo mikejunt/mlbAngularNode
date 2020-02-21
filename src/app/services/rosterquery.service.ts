@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Player } from '../interfaces/player.interface';
-import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store';
+import * as Actions from '../store/actions'
 
 @Injectable({
   providedIn: 'root'
 })
 export class RosterqueryService {
-  
   private rosterUrl = `http://lookup-service-prod.mlb.com/json/named.roster_40.bam?`;
-  roster: Array<Player> = [];
-  // roster$: Observable<Array<Player>>
-
-  constructor(private http: HttpClient) { }
-  fetchRoster(team: string): Observable<Array<Player>> {
-    const params = new HttpParams().set('team_id', `'${team}'`)
-    return this.http.get<Array<Player>>(`${this.rosterUrl}`, { params })
+  constructor(private http: HttpClient, private store: Store<AppState>) { }
+  fetchRoster(params: HttpParams) {
+    this.http.get(`${this.rosterUrl}`, { params }).pipe(
+      map(res => res["roster_40"]["queryResults"]["row"]))
+    .subscribe(res => {this.store.dispatch(Actions.saveRoster({roster: res}))})
   }
 }

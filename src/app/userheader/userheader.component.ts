@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Team } from '../interfaces/team.interface';
 import { UserService } from '../services/user.service';
 import { StaticqueryService } from '../services/static-query.service';
+import { Observable } from 'rxjs';
+import { TeamState } from '../store/reducers';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../store';
 
 @Component({
   selector: 'app-userheader',
@@ -10,11 +13,11 @@ import { StaticqueryService } from '../services/static-query.service';
 })
 export class UserheaderComponent implements OnInit {
   curteam:string = this.user.currentUser.favteam;
-  teamlist: Array<Team> = [...this.staticquery.teamlist];
+  teamlist$: Observable<TeamState>
   favteam:string = this.user.currentUser.favteam;
   username = this.user.currentUser.username;
   
-  constructor(private user: UserService, private staticquery: StaticqueryService) { }
+  constructor(private user: UserService, private staticquery: StaticqueryService, private store: Store<AppState>) {this.teamlist$ = this.store.pipe(select("teamlist")) }
 
   ngOnInit(): void { }
 

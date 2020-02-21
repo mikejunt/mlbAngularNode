@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Team } from '../interfaces/team.interface';
-import { Player } from '../interfaces/player.interface'
 import { UserService } from '../services/user.service';
 import { StaticqueryService } from '../services/static-query.service';
 import { RosterqueryService } from '../services/rosterquery.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Hitter } from '../interfaces/hitter.interface';
-import { Pitcher } from '../interfaces/pitcher.interface';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '../store';
+import { Observable } from 'rxjs';
+import { TeamState } from '../store/reducers';
+import { HttpParams } from '@angular/common/http';
+import * as Selectors from '../store/selectors';
 
 
 @Component({
@@ -16,30 +18,27 @@ import { Pitcher } from '../interfaces/pitcher.interface';
 })
 export class SearchInterfaceComponent implements OnInit {
   curteam = ""
-  teamlist: Array<Team> = []
+  teamlist$: Observable<TeamState> 
   nextteam: string = ""
   searchmode: string = "roster"
   searchpick: string = "roster"
-  pitchstats: Array<Pitcher> = []
-  hitstats: Array<Hitter> = []
-  roster: Array<Player> = []
+  teamlist
 
 
   constructor(private user: UserService, private staticquery: StaticqueryService, 
-    private rosterquery: RosterqueryService, private router: Router, private actr: ActivatedRoute) {
+    private rosterquery: RosterqueryService, private router: Router, private actr: ActivatedRoute, private store: Store<AppState>) {
     this.curteam = this.user.currentUser.favteam;
-    this.nextteam = this.curteam
+    this.nextteam = this.curteam;
+    this.teamlist$ = store.pipe(select(Selectors.viewTeams));
   }
 
   ngOnInit(): void {
-    this.teamlist = this.staticquery.teamlist
     this.searchInit();
   }
 
   showRoster(team: string) {
-    this.rosterquery.fetchRoster(team).subscribe(roster => {
-      this.roster = [...roster["roster_40"]["queryResults"]["row"]];
-    })
+    const params = new HttpParams().set('team_id', `'${team}'`)
+    this.rosterquery.fetchRoster(params)
   }
 
   searchInit() {
@@ -51,13 +50,11 @@ export class SearchInterfaceComponent implements OnInit {
       // this.router.navigate(['roster'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curhitting") {
-      this.hitstats = this.staticquery.allplayerhitting.filter(obj => obj["team_id"] === this.curteam);
-      console.log(this.hitstats);
+      // this.hitstats = this.staticquery.allplayerhitting.filter(obj => obj["team_id"] === this.curteam);
       // this.router.navigate(['hitting'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curpitching") {
-      this.pitchstats = this.staticquery.allplayerpitching.filter(obj => obj["team_id"] === this.curteam);
-      console.log(this.pitchstats);
+      // this.pitchstats = this.staticquery.allplayerpitching.filter(obj => obj["team_id"] === this.curteam);
       // this.router.navigate(['pitching'], {relativeTo: this.actr})
     }
   }
