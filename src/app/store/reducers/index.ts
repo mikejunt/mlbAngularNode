@@ -15,10 +15,10 @@ import * as TeamReducer from '../reducers/team.response.reducer';
 
 
 export interface AppState {
-  roster: Object[],
-  hitting: Object[],
-  pitching: Object[],
-  teamlist: Team[],
+  roster: Object,
+  hitting: Object,
+  pitching: Object,
+  teamlist: Object,
   // lastteam: string,
   // username: string,
   // favteam: string

@@ -2,12 +2,13 @@ import { createReducer } from "@ngrx/store";
 import { saveTeams } from '../actions'
 
 import { Action, on } from '@ngrx/store'
+import { Team } from 'src/app/interfaces/team.interface';
 
+export interface TeamState {
+    teamlist: Team[]
+}
 
-export const initialState = {
-        roster: [],
-        hitting: [],
-        pitching: [],
+export const initialState:TeamState = {
         teamlist: [],
 }
 
