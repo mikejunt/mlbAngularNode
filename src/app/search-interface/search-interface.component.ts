@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { StaticqueryService } from '../services/static-query.service';
-import { RosterqueryService } from '../services/rosterquery.service';
+import { RosterqueryService } from '../services/roster-query.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../store';
