@@ -2,7 +2,7 @@ import { createReducer } from "@ngrx/store";
 import { saveHitters } from '../actions';
 import { Hitter } from '../../interfaces/hitter.interface'
 
-import { Action, on } from '@ngrx/store'
+import { on } from '@ngrx/store'
 
 export interface HittingState {
     hitting: Hitter[]
