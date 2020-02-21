@@ -14,7 +14,9 @@ import { RosterPositionPipe } from './pipes/roster-position.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './materialModule';
 import { HittingDisplayComponent } from './search-interface/hitting-display/hitting-display.component';
-import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component'
+import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers'
 
 @NgModule({
   declarations: [
@@ -37,6 +39,13 @@ import { PitchingDisplayComponent } from './search-interface/pitching-display/pi
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
 
   ],
   providers: [],
