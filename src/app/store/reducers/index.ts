@@ -14,11 +14,11 @@ import * as TeamViewReducer from '../reducers/team.select.reducer'
 
 
 export interface AppState {
-  roster: Object,
-  hitting: Object,
-  pitching: Object,
-  teamlist: Object,
-  displayteam: Object,
+  roster: RosterReducer.RosterState
+  hitting: HittingReducer.HittingState
+  pitching: PitchingReducer.PitchingState
+  teamlist: TeamReducer.TeamState
+  displayteam: TeamViewReducer.TeamViewState
   // username: string,
   // favteam: string
 }
