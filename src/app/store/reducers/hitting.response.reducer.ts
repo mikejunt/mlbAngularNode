@@ -9,13 +9,13 @@ export interface HittingState {
 }
 
 
-export const initialState: HittingState = {
+export const initialHittingState: HittingState = {
         hitting: []
 }
 
 
 
-const hittingReducer = createReducer(initialState,
+const hittingReducer = createReducer(initialHittingState,
     on(saveHitters, (state, { hitting }) => ({...state, hitting: hitting}))
 );
 

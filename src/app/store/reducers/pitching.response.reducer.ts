@@ -7,12 +7,12 @@ export interface PitchingState {
     pitching: Pitcher[]
 }
 
-export const initialState: PitchingState = {
+export const initialPitchingState: PitchingState = {
         pitching: [],
 
 }
 
-const pitchingReducer = createReducer(initialState,
+const pitchingReducer = createReducer(initialPitchingState,
     on(savePitchers, (state, { pitching }) => ({...state, pitching: pitching})),
 );
 

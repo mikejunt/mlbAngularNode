@@ -16,7 +16,7 @@ import { MaterialModule } from './materialModule';
 import { HittingDisplayComponent } from './search-interface/hitting-display/hitting-display.component';
 import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducers'
+import { reducers, metaReducers } from './store'
 
 @NgModule({
   declarations: [

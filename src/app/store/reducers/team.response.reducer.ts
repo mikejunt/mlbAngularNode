@@ -8,13 +8,13 @@ export interface TeamState {
     teamlist: Team[]
 }
 
-export const initialState:TeamState = {
+export const initialTeamState:TeamState = {
         teamlist: [],
 }
 
 
 
-const teamReducer = createReducer(initialState,
+const teamReducer = createReducer(initialTeamState,
     on(saveTeams, (state, { teamlist }) => ({...state, teamlist: teamlist})),
 );
 

@@ -6,13 +6,13 @@ export interface TeamViewState {
     displayteam: string
 }
 
-export const initialState:TeamViewState = {
+export const initialViewTeamState:TeamViewState = {
         displayteam: "119"
 }
 
 
 
-const teamViewReducer = createReducer(initialState,
+const teamViewReducer = createReducer(initialViewTeamState,
     on(setViewTeam, (state, { displayteam }) => ({...state, displayteam: displayteam})),
 );
 

@@ -8,13 +8,13 @@ export interface RosterState {
     roster: Player[]
 }
 
-export const initialState: RosterState = {
+export const initialRosterState: RosterState = {
         roster: [],
 }
 
 
 
-const rosterReducer = createReducer(initialState,
+const rosterReducer = createReducer(initialRosterState,
     on(saveRoster, (state, { roster }) => ({...state, roster: roster})),
 );
 
