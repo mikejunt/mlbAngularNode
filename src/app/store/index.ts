@@ -14,8 +14,7 @@ export interface AppState {
   pitching: Reducers.PitchingState
   teamlist: Reducers.TeamState
   displayteam: Reducers.TeamViewState
-  // username: string,
-  // favteam: string
+  user: Reducers.UserState
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -23,11 +22,8 @@ export const reducers: ActionReducerMap<AppState> = {
   roster: Reducers.saveRoster40,
   pitching: Reducers.savePitching,
   teamlist: Reducers.saveTeamList,
-  displayteam: Reducers.changeViewTeam
-  // user: {
-  //   name: string,
-  //   favteam: string
-  // }
+  displayteam: Reducers.changeViewTeam,
+  user: Reducers.updateLoginStatus
 }
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

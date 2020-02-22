@@ -19,3 +19,5 @@
 
     <button mat-raised-button color="primary" (click)="logincheck()">Log In</button>
 </div>
+
+<div>{{(user$ | async | json)}}</div>

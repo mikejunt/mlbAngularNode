@@ -4,6 +4,9 @@ import { StaticqueryService } from '../services/static-query.service';
 import { HittingQueryService } from '../services/hitting-query.service';
 import { PitchingQueryService } from '../services/pitching-query.service';
 import { HttpParams } from '@angular/common/http';
+import { AppState } from '../store';
+import { Store } from '@ngrx/store';
+import * as Selectors from '../store/selectors'
 
 
 
@@ -16,9 +19,12 @@ import { HttpParams } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
+  user$
   
 
-  constructor(private user: UserService, private staticquery: StaticqueryService, private hitting: HittingQueryService, private pitching: PitchingQueryService) { }
+  constructor(private user: UserService, private staticquery: StaticqueryService, 
+    private hitting: HittingQueryService, private pitching: PitchingQueryService, 
+    private store: Store<AppState>) {this.user$ = this.store.select(Selectors.viewUserFav) }
 
 
   ngOnInit(): void {
