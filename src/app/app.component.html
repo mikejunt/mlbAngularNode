@@ -1,2 +1,3 @@
 <app-userheader *ngIf="(this.username$ | async) != ''"></app-userheader>
 <router-outlet></router-outlet>
+<app-userfooter *ngIf="(this.username$ | async) != ''"></app-userfooter>

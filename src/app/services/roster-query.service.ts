@@ -8,7 +8,7 @@ import * as Actions from '../store/actions'
 @Injectable({
   providedIn: 'root'
 })
-export class RosterqueryService {
+export class RosterService {
   private rosterUrl = `http://lookup-service-prod.mlb.com/json/named.roster_40.bam?`;
   constructor(private http: HttpClient, private store: Store<AppState>) { }
   fetchRoster(params: HttpParams) {

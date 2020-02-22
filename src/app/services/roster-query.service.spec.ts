@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RosterqueryService } from './roster-query.service';
+import { RosterService } from './roster-query.service';
 
-describe('RosterqueryService', () => {
-  let service: RosterqueryService;
+describe('RosterService', () => {
+  let service: RosterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RosterqueryService);
+    service = TestBed.inject(RosterService);
   });
 
   it('should be created', () => {

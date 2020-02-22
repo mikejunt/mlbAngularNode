@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PitchingQueryService } from './pitching-query.service';
+import { PitchingService } from './pitching-query.service';
 
-describe('PitchingQueryService', () => {
-  let service: PitchingQueryService;
+describe('PitchingService', () => {
+  let service: PitchingService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PitchingQueryService);
+    service = TestBed.inject(PitchingService);
   });
 
   it('should be created', () => {

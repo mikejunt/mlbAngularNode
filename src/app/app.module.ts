@@ -21,7 +21,11 @@ import { NameFirstLastPipe } from './pipes/name-first-last.pipe';
 import { MinplatePipe } from './pipes/minplate.pipe';
 import { MinipPipe } from './pipes/minip.pipe';
 import { PlayerbyteamPipe } from './pipes/playerbyteam.pipe';
-import { PlayerbyposPipe } from './pipes/playerbypos.pipe'
+import { PlayerbyposPipe } from './pipes/playerbypos.pipe';
+import { TeamtrxPipe } from './pipes/teamtrx.pipe';
+import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
+import { UserfooterComponent } from './userfooter/userfooter.component';
+import { CopyrightPipe } from './pipes/copyright.pipe'
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { PlayerbyposPipe } from './pipes/playerbypos.pipe'
     MinipPipe,
     PlayerbyteamPipe,
     PlayerbyposPipe,
+    TeamtrxPipe,
+    TrxDisplayComponent,
+    UserfooterComponent,
+    CopyrightPipe,
     
   ],
   imports: [

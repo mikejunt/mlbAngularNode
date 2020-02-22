@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StaticqueryService } from '../services/static-query.service';
-import { RosterqueryService } from '../services/roster-query.service';
+import { RosterService } from '../services/roster-query.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../store';
@@ -9,8 +9,8 @@ import * as Actions from '../store/actions'
 import { HttpParams } from '@angular/common/http';
 import * as Selectors from '../store/selectors';
 import { Team } from '../interfaces/team.interface';
-import { HittingQueryService } from '../services/hitting-query.service';
-import { PitchingQueryService } from '../services/pitching-query.service';
+import { HittingService } from '../services/hitting-query.service';
+import { PitchingService } from '../services/pitching-query.service';
 
 
 @Component({
@@ -27,8 +27,8 @@ export class SearchInterfaceComponent implements OnInit {
 
 
   constructor(private staticquery: StaticqueryService, 
-    private rosterquery: RosterqueryService, private router: Router, private actr: ActivatedRoute,
-    private store: Store<AppState>, private hitting: HittingQueryService, private pitching: PitchingQueryService) {
+    private rosterquery: RosterService, private router: Router, private actr: ActivatedRoute,
+    private store: Store<AppState>, private hitting: HittingService, private pitching: PitchingService) {
     this.curteam$ = store.pipe(select(Selectors.viewSelectedTeam));
     this.curteam$.subscribe(res => this.nextteam = res);
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));

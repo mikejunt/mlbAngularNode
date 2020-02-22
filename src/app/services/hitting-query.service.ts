@@ -10,7 +10,7 @@ import { AppState } from '../store';
 @Injectable({
   providedIn: 'root'
 })
-export class HittingQueryService {
+export class HittingService {
   private seasonhittingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?`
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }

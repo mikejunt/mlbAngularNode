@@ -9,7 +9,7 @@ import { AppState } from '../store';
 @Injectable({
   providedIn: 'root'
 })
-export class PitchingQueryService {
+export class PitchingService {
   private seasonpitchingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?`
   lgFIPconstant: number = 3.10
 

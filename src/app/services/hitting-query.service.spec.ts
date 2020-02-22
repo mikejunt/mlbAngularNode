@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HittingQueryService } from './hitting-query.service';
+import { HittingService } from './hitting-query.service';
 
-describe('HittingQueryService', () => {
-  let service: HittingQueryService;
+describe('HittingService', () => {
+  let service: HittingService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HittingQueryService);
+    service = TestBed.inject(HittingService);
   });
 
   it('should be created', () => {

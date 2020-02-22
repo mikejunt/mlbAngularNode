@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { StaticqueryService } from '../services/static-query.service';
 import { Observable } from 'rxjs';
-import { TeamState } from '../store/reducers';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../store';
 
