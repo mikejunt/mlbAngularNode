@@ -1,13 +1,14 @@
 To Do List:
 
 Recent Transaction Display:
-* Configure API call and save to store
-* configure basic query for trailing 7 days information on login
+// * Configure API call and save to store //
+// * configure basic query for trailing 7 days information on login //
 * Create sort-by-team pipe (starting OR finishing team is selected team
 * Create transaction summary component for landing page (w/ secondary routing)
 
 Create Footer
-* Pass Copyright info over to footer for display
+// * Pass Copyright info into store //
+* create footer & import copyright (may need display pipe)
 
 Create "Leaders" display components
 * Angular Material Tabs, 3 stats per type
