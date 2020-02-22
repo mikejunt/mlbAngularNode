@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { StaticqueryService } from '../services/static-query.service';
 import { RosterqueryService } from '../services/roster-query.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,6 +9,8 @@ import * as Actions from '../store/actions'
 import { HttpParams } from '@angular/common/http';
 import * as Selectors from '../store/selectors';
 import { Team } from '../interfaces/team.interface';
+import { HittingQueryService } from '../services/hitting-query.service';
+import { PitchingQueryService } from '../services/pitching-query.service';
 
 
 @Component({
@@ -25,9 +26,9 @@ export class SearchInterfaceComponent implements OnInit {
   searchpick: string = "roster"
 
 
-  constructor(private user: UserService, private staticquery: StaticqueryService, 
+  constructor(private staticquery: StaticqueryService, 
     private rosterquery: RosterqueryService, private router: Router, private actr: ActivatedRoute,
-    private store: Store<AppState>) {
+    private store: Store<AppState>, private hitting: HittingQueryService, private pitching: PitchingQueryService) {
     this.curteam$ = store.pipe(select(Selectors.viewSelectedTeam));
     this.curteam$.subscribe(res => this.nextteam = res);
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
@@ -51,11 +52,13 @@ export class SearchInterfaceComponent implements OnInit {
       this.router.navigate(['roster'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curhitting") {
-      // this.hitstats = this.staticquery.allplayerhitting.filter(obj => obj["team_id"] === this.curteam);
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);
+      this.hitting.fetchSeasonHitting(params)
       this.router.navigate(['hitting'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curpitching") {
-      // this.pitchstats = this.staticquery.allplayerpitching.filter(obj => obj["team_id"] === this.curteam);
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);
+      this.pitching.fetchSeasonPitching(params) 
       this.router.navigate(['pitching'], {relativeTo: this.actr})
     }
   }
