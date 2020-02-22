@@ -1,14 +1,14 @@
 To Do List:
 
 Recent Transaction Display:
-// * Configure API call and save to store //
-// * configure basic query for trailing 7 days information on login //
-* Create sort-by-team pipe (starting OR finishing team is selected team
+~* Configure API call and save to store~
+~* configure basic query for trailing 7 days information on login~
+~* Create sort-by-team pipe (starting OR finishing team is selected team~
 * Create transaction summary component for landing page (w/ secondary routing)
 
 Create Footer
-// * Pass Copyright info into store //
-* create footer & import copyright (may need display pipe)
+~* Pass Copyright info into store~
+~* create footer & import copyright (may need display pipe)~
 
 Create "Leaders" display components
 * Angular Material Tabs, 3 stats per type
@@ -17,7 +17,7 @@ Create "Leaders" display components
 
 Configure Final Landing Page: Team Profile
 * Displays Roster40, Recent Transactions, Hitting & Pitching Leaders, Team information
-* Is the landing page of Secondary Routing
+* Is the landing page of child Routing
 * Search component remains above header; selecting and activating navigates child routing away to appropriate search display component (pitcher, hitter, potentially expanded trx w/ datepicker)
 * Utilize team information from Teamlist
 * Standings? --- may not be in API
