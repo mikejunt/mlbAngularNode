@@ -43,21 +43,20 @@ export class SearchInterfaceComponent implements OnInit {
   }
 
   searchInit() {
-    // this.curteam = this.nextteam;
     this.searchpick = this.searchmode;
     console.log(this.searchpick)
     if (this.searchpick === "roster") {
       this.showRoster(this.nextteam);
       this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
-      // this.router.navigate(['roster'], {relativeTo: this.actr})
+      this.router.navigate(['roster'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curhitting") {
       // this.hitstats = this.staticquery.allplayerhitting.filter(obj => obj["team_id"] === this.curteam);
-      // this.router.navigate(['hitting'], {relativeTo: this.actr})
+      this.router.navigate(['hitting'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curpitching") {
       // this.pitchstats = this.staticquery.allplayerpitching.filter(obj => obj["team_id"] === this.curteam);
-      // this.router.navigate(['pitching'], {relativeTo: this.actr})
+      this.router.navigate(['pitching'], {relativeTo: this.actr})
     }
   }
 }
