@@ -11,10 +11,10 @@ import * as Selectors from '../../store/selectors'
   styleUrls: ['./hitting-display.component.scss']
 })
 export class HittingDisplayComponent implements OnInit {
-hitters$: Observable<Hitter[]>;
-displayedColumns: string[] = ['Name', 'HR', 'AVG', 'SLG']
+  hitters$: Observable<Hitter[]>;
+  displayedColumns: string[] = ['Name', 'HR', 'OPS', 'SLG']
 
-  constructor(private store: Store<AppState>) {this.hitters$ = this.store.select(Selectors.viewHitting) }
+  constructor(private store: Store<AppState>) { this.hitters$ = this.store.select(Selectors.viewHitting) }
 
   ngOnInit(): void {
   }

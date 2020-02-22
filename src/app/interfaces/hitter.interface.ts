@@ -33,5 +33,5 @@ export interface Hitter {
     "ibb"?: string,
     "team_id"?: string,
     "go"?: string,
-    "woba"?: string
+    "ops"?: string
 }

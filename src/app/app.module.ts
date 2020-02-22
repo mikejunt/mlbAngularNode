@@ -25,7 +25,8 @@ import { PlayerbyposPipe } from './pipes/playerbypos.pipe';
 import { TeamtrxPipe } from './pipes/teamtrx.pipe';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
 import { UserfooterComponent } from './userfooter/userfooter.component';
-import { CopyrightPipe } from './pipes/copyright.pipe'
+import { CopyrightPipe } from './pipes/copyright.pipe';
+import { LeadersPipe } from './pipes/leaders.pipe'
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CopyrightPipe } from './pipes/copyright.pipe'
     TrxDisplayComponent,
     UserfooterComponent,
     CopyrightPipe,
+    LeadersPipe,
     
   ],
   imports: [

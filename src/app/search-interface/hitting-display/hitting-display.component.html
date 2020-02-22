@@ -1,4 +1,4 @@
-<mat-table [dataSource]="(hitters$ | async) | minplate:50">
+<mat-table [dataSource]="(hitters$ | async) | minplate:100">
     <!-- Player Name Col -->
     <ng-container matColumnDef="Name">
       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
@@ -11,10 +11,10 @@
       <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
     </ng-container>
   
-    <!-- AVG COL -->
-    <ng-container matColumnDef="AVG">
-      <mat-header-cell *matHeaderCellDef> AVG </mat-header-cell>
-      <mat-cell *matCellDef="let hitter"> {{hitter["avg"]}} </mat-cell>
+    <!-- OPS COL -->
+    <ng-container matColumnDef="OPS">
+      <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
     </ng-container>
   
     <!-- SLG Column -->

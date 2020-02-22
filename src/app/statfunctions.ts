@@ -11,11 +11,7 @@ export class Equations {
     }
 
 
-    leaguehr
-    leaguebb
-    leaguehb
-    leagueso
-    leagueip
+
     leagueFIPconstant
 
     allpitchers: Object[]
@@ -29,8 +25,10 @@ export class Equations {
         this.leagueFIPconstant = (((13 * leaguehr + (3 * leaguebb + leaguehb)) - (2 * leagueso)) / leagueip);
     }   
 
-
-
+makeOPS(hitters: Object[]) {
+    let OPS = (parseFloat(hitters["obp"]) + (parseFloat(hitters["slg"])));
+    hitters["ops"] = OPS.toFixed(3)
+}
 
     
 
