@@ -16,7 +16,12 @@ import { MaterialModule } from './materialModule';
 import { HittingDisplayComponent } from './search-interface/hitting-display/hitting-display.component';
 import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store'
+import { reducers, metaReducers } from './store';
+import { NameFirstLastPipe } from './pipes/name-first-last.pipe';
+import { MinplatePipe } from './pipes/minplate.pipe';
+import { MinipPipe } from './pipes/minip.pipe';
+import { PlayerbyteamPipe } from './pipes/playerbyteam.pipe';
+import { PlayerbyposPipe } from './pipes/playerbypos.pipe'
 
 @NgModule({
   declarations: [
@@ -30,6 +35,11 @@ import { reducers, metaReducers } from './store'
     RosterPositionPipe,
     HittingDisplayComponent,
     PitchingDisplayComponent,
+    NameFirstLastPipe,
+    MinplatePipe,
+    MinipPipe,
+    PlayerbyteamPipe,
+    PlayerbyposPipe,
     
   ],
   imports: [

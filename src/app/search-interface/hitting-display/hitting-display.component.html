@@ -1,1 +1,28 @@
-<p>hitting-display works!</p>
+<mat-table [dataSource]="(hitters$ | async) | minplate:50">
+    <!-- Player Name Col -->
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
+    </ng-container>
+  
+    <!-- HR COL -->
+    <ng-container matColumnDef="HR">
+      <mat-header-cell *matHeaderCellDef> HR </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
+    </ng-container>
+  
+    <!-- AVG COL -->
+    <ng-container matColumnDef="AVG">
+      <mat-header-cell *matHeaderCellDef> AVG </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["avg"]}} </mat-cell>
+    </ng-container>
+  
+    <!-- SLG Column -->
+    <ng-container matColumnDef="SLG">
+      <mat-header-cell *matHeaderCellDef> SLG </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["slg"]}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>

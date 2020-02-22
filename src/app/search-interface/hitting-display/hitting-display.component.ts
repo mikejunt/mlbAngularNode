@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AppState } from 'src/app/store';
+import { Store } from '@ngrx/store';
+import { Hitter } from 'src/app/interfaces/hitter.interface';
+import { Observable } from 'rxjs';
+import * as Selectors from '../../store/selectors'
 
 @Component({
   selector: 'app-hitting-display',
@@ -6,8 +11,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hitting-display.component.scss']
 })
 export class HittingDisplayComponent implements OnInit {
+hitters$: Observable<Hitter[]>;
+displayedColumns: string[] = ['Name', 'HR', 'AVG', 'SLG']
 
-  constructor() { }
+  constructor(private store: Store<AppState>) {this.hitters$ = this.store.select(Selectors.viewHitting) }
 
   ngOnInit(): void {
   }
