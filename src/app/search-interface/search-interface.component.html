@@ -1,7 +1,7 @@
-<app-userheader></app-userheader>
-<div [ngClass]="'bg'+ this.curteam">
+
+<div [ngClass]="'bg'+ (this.curteam$ | async)">
     <div><label for="teamlist">Select Team</label><select [(ngModel)]="nextteam">
-            <option *ngFor="let team of (teamlist$ | async)['teamlist'] | sortTeam:curteam; index as i" value="{{team['mlb_org_id']}}">
+            <option *ngFor="let team of (teamlist$ | async) | sortTeam:(curteam$ | async); index as i" value="{{team['mlb_org_id']}}">
                 {{team["name_display_full"]}}</option>
         </select></div>
     <div><label for="reportlist">Select Report</label><select [(ngModel)]="searchmode">
@@ -11,7 +11,7 @@
         </select></div>
 
     <button class='btn btn-primary' (click)="searchInit()">CLICK ME</button>
-<app-roster-display [searchmode]="searchpick"></app-roster-display>
+<app-roster-display></app-roster-display>
 
 </div>
-<!-- <router-outlet [roster]="roster" [searchmode]="searchpick"></router-outlet> -->
+<!-- <router-outlet></router-outlet> -->

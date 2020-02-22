@@ -6,9 +6,6 @@ import { PitchingQueryService } from '../services/pitching-query.service';
 import { HttpParams } from '@angular/common/http';
 import { AppState } from '../store';
 import { Store } from '@ngrx/store';
-import * as Selectors from '../store/selectors'
-
-
 
 
 @Component({
@@ -19,13 +16,10 @@ import * as Selectors from '../store/selectors'
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
-  user$
-  
 
   constructor(private user: UserService, private staticquery: StaticqueryService, 
     private hitting: HittingQueryService, private pitching: PitchingQueryService, 
-    private store: Store<AppState>) {this.user$ = this.store.select(Selectors.viewUserFav) }
-
+    private store: Store<AppState>) { }
 
   ngOnInit(): void {
     const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);

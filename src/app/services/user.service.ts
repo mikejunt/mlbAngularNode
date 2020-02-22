@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { FakeUsers } from '../fakeuserdb'
+import { Store } from '@ngrx/store';
+import { AppState } from '../store';
+import * as Actions from '../store/actions';
 
 
 @Injectable({
@@ -16,7 +19,7 @@ export class UserService {
   currentUser: User
   
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private store: Store<AppState>) { }
 
   // getUsers(): Observable<User[]> {
   //   return this.http.get<User[]>(this.usersUrl)
@@ -35,14 +38,15 @@ export class UserService {
     let loginattempt = this.userlist.filter(obj => obj.username === username && obj.password === password);
     if (loginattempt.length !== 1) { }
     else {
-      this.isLoggedIn = true;
-      this.currentUser = loginattempt[0]
+      let username = loginattempt[0]["username"];let favteam = loginattempt[0]["favteam"];
+      this.store.dispatch(Actions.login({user: {username: username, favteam: favteam}}))
+      this.store.dispatch(Actions.setViewTeam({displayteam: favteam}))
       this.router.navigate(['search'])
     }
   }
 
   logout() {
-    this.isLoggedIn = false;
+    this.store.dispatch(Actions.logout());
     this.router.navigate(['login'])
   }
 

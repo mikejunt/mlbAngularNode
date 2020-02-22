@@ -1,7 +1,7 @@
-<div [ngClass]="'bg'+ this.favteam">
+<div [ngClass]="'bg'+ (this.favteam$ | async)">
     <mat-toolbar>
         <mat-toolbar-row>
-            <header class=""><span>Welcome, {{username}}</span><button mat-raised-button
+            <header class=""><span>Welcome, {{(username$ | async)}}</span><button mat-raised-button
                     (click)="logout()">LOGOUT</button>
             </header>
         </mat-toolbar-row>

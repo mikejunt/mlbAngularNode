@@ -6,9 +6,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../store';
 import { Observable } from 'rxjs';
-import { TeamState } from '../store/reducers';
+import * as Actions from '../store/actions'
 import { HttpParams } from '@angular/common/http';
 import * as Selectors from '../store/selectors';
+import { Team } from '../interfaces/team.interface';
 
 
 @Component({
@@ -17,18 +18,18 @@ import * as Selectors from '../store/selectors';
   styleUrls: ['./search-interface.component.scss']
 })
 export class SearchInterfaceComponent implements OnInit {
-  curteam = ""
-  teamlist$: Observable<TeamState> 
+  curteam$:Observable<string>
+  teamlist$: Observable<Team[]> 
   nextteam: string = ""
   searchmode: string = "roster"
   searchpick: string = "roster"
-  teamlist
 
 
   constructor(private user: UserService, private staticquery: StaticqueryService, 
-    private rosterquery: RosterqueryService, private router: Router, private actr: ActivatedRoute, private store: Store<AppState>) {
-    this.curteam = this.user.currentUser.favteam;
-    this.nextteam = this.curteam;
+    private rosterquery: RosterqueryService, private router: Router, private actr: ActivatedRoute,
+    private store: Store<AppState>) {
+    this.curteam$ = store.pipe(select(Selectors.viewSelectedTeam));
+    this.curteam$.subscribe(res => this.nextteam = res);
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
   }
 
@@ -42,11 +43,12 @@ export class SearchInterfaceComponent implements OnInit {
   }
 
   searchInit() {
-    this.curteam = this.nextteam;
+    // this.curteam = this.nextteam;
     this.searchpick = this.searchmode;
     console.log(this.searchpick)
     if (this.searchpick === "roster") {
-      this.showRoster(this.curteam);
+      this.showRoster(this.nextteam);
+      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
       // this.router.navigate(['roster'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curhitting") {

@@ -6,8 +6,7 @@ import { Team } from '../interfaces/team.interface'
 })
 export class SortTeamPipe implements PipeTransform {
 
-  transform(teams, current?: string): Team[] {
-    console.log(teams)
+  transform(teams:Team[], current?: string): Team[] {
     if (teams.length === 0) return teams
     let teamsort = [...teams]
     teamsort.sort((a, b) => a["name_display_full"].localeCompare(b["name_display_full"]))  
