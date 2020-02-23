@@ -53,13 +53,21 @@ export class SearchInterfaceComponent implements OnInit {
     }
     if (this.searchpick === "curhitting") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);
+      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
       this.hitting.fetchSeasonHitting(params)
       this.router.navigate(['hitting'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curpitching") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);
+      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
       this.pitching.fetchSeasonPitching(params) 
       this.router.navigate(['pitching'], {relativeTo: this.actr})
+    }
+    if (this.searchpick === "trans") {
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('start_date', `20200210`).set('end_date', `'20200217'`);
+      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
+      this.staticquery.fetchTrx(params) 
+      this.router.navigate(['trans'], {relativeTo: this.actr})
     }
   }
 }

@@ -12,14 +12,13 @@ import { AppState } from '../store';
 })
 export class StaticqueryService {
   private teamsUrl = `https://lookup-service-prod.mlb.com/json/named.team_all_season.bam?`;
-  private trxUrl = 'http://lookup-service-prod.mlb.com/json/named.transaction_all.bam?;'
+  private trxUrl = 'http://lookup-service-prod.mlb.com/json/named.transaction_all.bam?';
 
   copynotice: string = ""
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }
 
-  fetchTrx() {
-    const params = new HttpParams().set('sport_code', `'mlb'`).set('start_date', `20200210`).set('end_date', `'20200217'`)
+  fetchTrx(params) {
     this.http.get(this.trxUrl, { params })
     .pipe(
       retry(3),

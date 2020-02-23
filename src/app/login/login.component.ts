@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.staticquery.fetchTeams();
-    this.staticquery.fetchTrx();
+    // this.staticquery.fetchTrx();
   }
 
   logincheck() { this.user.authenticate(this.username, this.password) }

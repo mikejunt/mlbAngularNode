@@ -26,7 +26,8 @@ import { TeamtrxPipe } from './pipes/teamtrx.pipe';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
 import { UserfooterComponent } from './userfooter/userfooter.component';
 import { CopyrightPipe } from './pipes/copyright.pipe';
-import { LeadersPipe } from './pipes/leaders.pipe'
+import { LeadersPipe } from './pipes/leaders.pipe';
+import { NodupetrxPipe } from './pipes/nodupetrx.pipe'
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { LeadersPipe } from './pipes/leaders.pipe'
     UserfooterComponent,
     CopyrightPipe,
     LeadersPipe,
+    NodupetrxPipe,
     
   ],
   imports: [
