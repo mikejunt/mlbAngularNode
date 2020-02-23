@@ -6,11 +6,13 @@ import { HittingDisplayComponent } from './search-interface/hitting-display/hitt
 import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component';
 import { RosterDisplayComponent } from './search-interface/roster-display/roster-display.component';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
+import { LoginGuard } from './guards/login.guard';
+
 
 
 const routes: Routes = [
   {
-    path: 'search', component: SearchInterfaceComponent, children: [
+    path: 'search', component: SearchInterfaceComponent, canActivate: [LoginGuard], children: [
       { path: 'hitting', component: HittingDisplayComponent },
       { path: 'pitching', component: PitchingDisplayComponent },
       { path: 'roster', component: RosterDisplayComponent },
