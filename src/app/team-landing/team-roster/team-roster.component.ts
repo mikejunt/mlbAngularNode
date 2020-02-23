@@ -6,11 +6,11 @@ import { Player } from 'src/app/interfaces/player.interface';
 import * as Selectors from '../../store/selectors'
 
 @Component({
-  selector: 'app-roster-display',
-  templateUrl: './roster-display.component.html',
-  styleUrls: ['./roster-display.component.scss']
+  selector: 'app-team-roster',
+  templateUrl: './team-roster.component.html',
+  styleUrls: ['./team-roster.component.scss']
 })
-export class RosterDisplayComponent implements OnInit {
+export class TeamRosterComponent implements OnInit {
   roster$: Observable<Player[]>
 
   constructor(private store: Store<AppState>) {

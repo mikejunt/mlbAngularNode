@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { UserheaderComponent } from './userheader/userheader.component';
 import { SortTeamPipe } from './pipes/sort-team.pipe';
 import { SearchInterfaceComponent } from './search-interface/search-interface.component';
-import { RosterDisplayComponent } from './search-interface/roster-display/roster-display.component';
+import { TeamRosterComponent } from './team-landing/team-roster/team-roster.component';
 import { SortRosterPipe } from './pipes/sort-roster.pipe';
 import { RosterPositionPipe } from './pipes/roster-position.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,7 +27,12 @@ import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.
 import { UserfooterComponent } from './userfooter/userfooter.component';
 import { CopyrightPipe } from './pipes/copyright.pipe';
 import { LeadersPipe } from './pipes/leaders.pipe';
-import { NodupetrxPipe } from './pipes/nodupetrx.pipe'
+import { NodupetrxPipe } from './pipes/nodupetrx.pipe';
+import { TeamLandingComponent } from './team-landing/team-landing.component';
+import { TeamTrxComponent } from './team-landing/team-trx/team-trx.component';
+import { TeamHitLeadersComponent } from './team-landing/team-hit-leaders/team-hit-leaders.component';
+import { TeamScheduleComponent } from './team-landing/team-schedule/team-schedule.component';
+import { TeamPitchLeadersComponent } from './team-landing/team-pitch-leaders/team-pitch-leaders.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +41,7 @@ import { NodupetrxPipe } from './pipes/nodupetrx.pipe'
     UserheaderComponent,
     SortTeamPipe,
     SearchInterfaceComponent,
-    RosterDisplayComponent,
+    TeamRosterComponent,
     SortRosterPipe,
     RosterPositionPipe,
     HittingDisplayComponent,
@@ -52,6 +57,11 @@ import { NodupetrxPipe } from './pipes/nodupetrx.pipe'
     CopyrightPipe,
     LeadersPipe,
     NodupetrxPipe,
+    TeamLandingComponent,
+    TeamTrxComponent,
+    TeamHitLeadersComponent,
+    TeamScheduleComponent,
+    TeamPitchLeadersComponent,
     
   ],
   imports: [
