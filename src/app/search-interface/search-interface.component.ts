@@ -22,8 +22,8 @@ export class SearchInterfaceComponent implements OnInit {
   curteam$:Observable<string>
   teamlist$: Observable<Team[]> 
   nextteam: string = ""
-  searchmode: string = "roster"
-  searchpick: string = "roster"
+  searchmode: string = "landing"
+  searchpick: string = "landing"
 
 
   constructor(private staticquery: StaticqueryService, 
@@ -46,10 +46,10 @@ export class SearchInterfaceComponent implements OnInit {
   searchInit() {
     this.searchpick = this.searchmode;
     console.log(this.searchpick)
-    if (this.searchpick === "roster") {
+    if (this.searchpick === "landing") {
       this.showRoster(this.nextteam);
       this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
-      this.router.navigate(['roster'], {relativeTo: this.actr})
+      this.router.navigate(['landing'], {relativeTo: this.actr})
     }
     if (this.searchpick === "curhitting") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);
@@ -63,11 +63,11 @@ export class SearchInterfaceComponent implements OnInit {
       this.pitching.fetchSeasonPitching(params) 
       this.router.navigate(['pitching'], {relativeTo: this.actr})
     }
-    if (this.searchpick === "trans") {
+    if (this.searchpick === "alltrans") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('start_date', `20200210`).set('end_date', `'20200217'`);
       this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
       this.staticquery.fetchTrx(params) 
-      this.router.navigate(['trans'], {relativeTo: this.actr})
+      this.router.navigate(['alltrans'], {relativeTo: this.actr})
     }
   }
 }

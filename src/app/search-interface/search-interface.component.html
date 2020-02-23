@@ -1,14 +1,15 @@
 
 <div [ngClass]="'bg'+ (this.curteam$ | async)">
     <div><label for="teamlist">Select Team</label><select [(ngModel)]="nextteam">
+            <option *ngIf="searchmode != 'landing'" value="allteams">All MLB</option>
             <option *ngFor="let team of (teamlist$ | async) | sortTeam:(curteam$ | async); index as i" value="{{team['mlb_org_id']}}">
                 {{team["name_display_full"]}}</option>
         </select></div>
     <div><label for="reportlist">Select Report</label><select [(ngModel)]="searchmode">
-            <option value="curhitting">Current Batting Leaders</option>
-            <option value="curpitching">Current Pitching Leaders</option>
-            <option value="roster">Current 40 Man Roster</option>
-            <option value="trans">Current Recent Transactions</option>
+            <option value="curhitting">Search Batting Statistics</option>
+            <option value="curpitching">Search Pitching Statistics</option>
+            <option value="landing">View Team Summary</option>
+            <option value="alltrans">Search Leaguewide Transactions</option>
         </select></div>
 
     <button class='btn btn-primary' (click)="searchInit()">CLICK ME</button>

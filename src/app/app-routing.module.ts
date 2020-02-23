@@ -7,6 +7,7 @@ import { PitchingDisplayComponent } from './search-interface/pitching-display/pi
 import { TeamRosterComponent } from './team-landing/team-roster/team-roster.component';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
 import { LoginGuard } from './guards/login.guard';
+import { TeamLandingComponent } from './team-landing/team-landing.component';
 
 
 
@@ -15,9 +16,9 @@ const routes: Routes = [
     path: 'search', component: SearchInterfaceComponent, canActivate: [LoginGuard], children: [
       { path: 'hitting', component: HittingDisplayComponent },
       { path: 'pitching', component: PitchingDisplayComponent },
-      { path: 'roster', component: TeamRosterComponent },
-      { path: 'trans', component: TrxDisplayComponent },
-      { path: '', redirectTo: 'roster', pathMatch: 'prefix' }
+      { path: 'landing', component: TeamLandingComponent },
+      { path: 'alltrans', component: TrxDisplayComponent },
+      { path: '', redirectTo: 'landing', pathMatch: 'prefix' }
     ]
   },
   { path: 'login', component: LoginComponent },
