@@ -4,7 +4,7 @@ Recent Transaction Display:
 * ~Configure API call and save to store~
 * ~configure basic query for trailing 7 days information on login~
 * ~Create sort-by-team pipe (starting OR finishing team is selected team~
-* Create transaction summary component for landing page (w/ secondary routing)
+* ~Create transaction summary component for landing page (w/ secondary routing)~
 
 Create Footer
 * ~Pass Copyright info into store~
@@ -12,7 +12,7 @@ Create Footer
 
 Create "Leaders" display components
 * Angular Material Tabs, 3 stats per type
-* Create custom "Select top 5" pipe
+* ~Create custom "Select top 5" pipe~
 * Create secondary-named routing for both components
 
 Configure Final Landing Page: Team Profile
@@ -36,7 +36,7 @@ Implement a Signup Screen
 * Move fake DB back inline so new user information can be pushed into array after signup
 * accomplish form verification goals
 
-Re-implement AuthGuard
+~Re-implement AuthGuard~
 
 Stretch:
 
