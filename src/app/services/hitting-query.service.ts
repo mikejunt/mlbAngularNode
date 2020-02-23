@@ -26,8 +26,7 @@ export class HittingService {
           let OPS = (parseFloat(res["obp"]) + (parseFloat(res["slg"])));
           res["ops"] = OPS.toFixed(3);
           return res
-        })),
-        tap(res => console.log(res)))
+        })))
       .subscribe(response => this.store.dispatch(Actions.saveHitters({ hitting: response })))
   }
 

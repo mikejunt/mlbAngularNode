@@ -1,30 +1,49 @@
 <p>team-hit-leaders works!</p>
 
-<mat-table [dataSource]="(hitters$ | async) | minplate:100 | playerbyteam:(displayteam$ | async) | leaders:'ops'">
-    <!-- Player Name Col -->
-    <ng-container matColumnDef="Name">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
-    </ng-container>
-  
-    <!-- HR COL -->
-    <ng-container matColumnDef="HR">
-      <mat-header-cell *matHeaderCellDef> HR </mat-header-cell>
-      <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
-    </ng-container>
-  
-    <!-- OPS COL -->
-    <ng-container matColumnDef="OPS">
-      <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
-      <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
-    </ng-container>
-  
-    <!-- SLG Column -->
-    <ng-container matColumnDef="SLG">
-      <mat-header-cell *matHeaderCellDef> SLG </mat-header-cell>
-      <mat-cell *matCellDef="let hitter"> {{hitter["slg"]}} </mat-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+<mat-tab-group mat-stretch-tabs>
+    <mat-tab label="OPS">
+        <mat-table
+            [dataSource]="(hitters$ | async) | minplate:100 | playerbyteam:(displayteam$ | async) | leaders:'ops'">
+            <ng-container matColumnDef="Name">
+                <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
+                <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="OPS">
+                <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
+                <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="opsColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: opsColumns;"></mat-row>
+        </mat-table>
+    </mat-tab>
+    <mat-tab label="HR">
+        <mat-table
+            [dataSource]="(hitters$ | async) | minplate:100 | playerbyteam:(displayteam$ | async) | leaders:'hr'">
+            <ng-container matColumnDef="Name">
+                <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
+                <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="HR">
+                <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
+                <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="hrColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: hrColumns;"></mat-row>
+        </mat-table>
+    </mat-tab>
+    <mat-tab label="AVG">
+        <mat-table
+            [dataSource]="(hitters$ | async) | minplate:100 | playerbyteam:(displayteam$ | async) | leaders:'avg'">
+            <ng-container matColumnDef="Name">
+                <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
+                <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="AVG">
+                <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
+                <mat-cell *matCellDef="let hitter"> {{hitter["avg"]}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="avgColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: avgColumns;"></mat-row>
+        </mat-table>
+    </mat-tab>
+</mat-tab-group>
