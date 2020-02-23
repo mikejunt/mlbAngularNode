@@ -1,1 +1,30 @@
 <p>pitching-display works!</p>
+
+<mat-table [dataSource]="(pitchers$ | async) | minip:50">
+    <!-- Player Name Col -->
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
+    </ng-container>
+  
+    <!-- HR COL -->
+    <ng-container matColumnDef="FIP">
+      <mat-header-cell *matHeaderCellDef> FIP </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["fip"]}} </mat-cell>
+    </ng-container>
+  
+    <!-- OPS COL -->
+    <ng-container matColumnDef="K">
+      <mat-header-cell *matHeaderCellDef> K </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["so"]}} </mat-cell>
+    </ng-container>
+  
+    <!-- SLG Column -->
+    <ng-container matColumnDef="ERA">
+      <mat-header-cell *matHeaderCellDef> ERA </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["era"]}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>

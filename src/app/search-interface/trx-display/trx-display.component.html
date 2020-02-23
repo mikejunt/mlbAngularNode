@@ -1,6 +1,6 @@
 <p>trx-display works!</p>
 
-<mat-table [dataSource]="(trx$ | async) | teamtrx:(displayteam$ | async) | nodupetrx">
+<mat-table [dataSource]="(trx$ | async) | nodupetrx">
     <ng-container matColumnDef="trx">
       <mat-header-cell *matHeaderCellDef>Recent Transactions</mat-header-cell>
       <mat-cell *matCellDef="let trx">{{trx["effective_date"] | date}}   The {{trx["note"]}}</mat-cell>

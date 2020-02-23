@@ -11,8 +11,12 @@ import * as Selectors from '../../store/selectors'
   styleUrls: ['./pitching-display.component.scss']
 })
 export class PitchingDisplayComponent implements OnInit {
-pitchers$: Observable<Pitcher[]>
-  constructor(private store: Store<AppState>) {this.pitchers$ = this.store.select(Selectors.viewPitching) }
+  displayteam$: Observable<string>
+  pitchers$: Observable<Pitcher[]>;
+  displayedColumns: string[] = ['Name', 'FIP', 'K', 'ERA']
+
+  constructor(private store: Store<AppState>) { this.pitchers$ = this.store.select(Selectors.viewPitching)
+  this.displayteam$ = this.store.select(Selectors.viewSelectedTeam) }
 
   ngOnInit(): void {
   }
