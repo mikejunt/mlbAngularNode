@@ -26,13 +26,15 @@ import { TeamtrxPipe } from './pipes/teamtrx.pipe';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
 import { UserfooterComponent } from './userfooter/userfooter.component';
 import { CopyrightPipe } from './pipes/copyright.pipe';
-import { LeadersPipe } from './pipes/leaders.pipe';
+import { LeadersDescPipe } from './pipes/leaders-desc.pipe';
 import { NodupetrxPipe } from './pipes/nodupetrx.pipe';
 import { TeamLandingComponent } from './team-landing/team-landing.component';
 import { TeamTrxComponent } from './team-landing/team-trx/team-trx.component';
 import { TeamHitLeadersComponent } from './team-landing/team-hit-leaders/team-hit-leaders.component';
 import { TeamScheduleComponent } from './team-landing/team-schedule/team-schedule.component';
-import { TeamPitchLeadersComponent } from './team-landing/team-pitch-leaders/team-pitch-leaders.component'
+import { TeamPitchLeadersComponent } from './team-landing/team-pitch-leaders/team-pitch-leaders.component';
+import { TeamDescComponent } from './team-landing/team-desc/team-desc.component';
+import { LeadersAscPipe } from './pipes/leaders-asc.pipe';
 
 @NgModule({
   declarations: [
@@ -55,14 +57,15 @@ import { TeamPitchLeadersComponent } from './team-landing/team-pitch-leaders/tea
     TrxDisplayComponent,
     UserfooterComponent,
     CopyrightPipe,
-    LeadersPipe,
+    LeadersDescPipe,
     NodupetrxPipe,
     TeamLandingComponent,
     TeamTrxComponent,
     TeamHitLeadersComponent,
     TeamScheduleComponent,
     TeamPitchLeadersComponent,
-    
+    TeamDescComponent,
+    LeadersAscPipe
   ],
   imports: [
     BrowserModule,

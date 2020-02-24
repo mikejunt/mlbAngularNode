@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'leaders'
+  name: 'leadersDesc'
 })
-export class LeadersPipe implements PipeTransform {
+export class LeadersDescPipe implements PipeTransform {
 
   transform(players: Object[], stat: string): Object[] {
     let tosort = [...players];
