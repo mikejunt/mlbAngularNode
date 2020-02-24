@@ -1,9 +1,9 @@
-<p>team-pitch-leaders works!</p>
-
+<mat-progress-spinner *ngIf="pitchers.length == 0; else loaded" color="primary" mode="indeterminate"></mat-progress-spinner>
+<ng-template #loaded>
 <mat-tab-group mat-stretch-tabs>
     <mat-tab label="FIP">
         <mat-table
-            [dataSource]="(pitchers$ | async) | minip:50 | playerbyteam:(displayteam$ | async) | leadersAsc:'fip'">
+            [dataSource]="pitchers | minip:50 | playerbyteam:displayteam | leadersAsc:'fip'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
@@ -18,7 +18,7 @@
     </mat-tab>
     <mat-tab label="Strikeouts">
         <mat-table
-            [dataSource]="(pitchers$ | async) | minip:50 | playerbyteam:(displayteam$ | async) | leadersDesc:'so'">
+            [dataSource]="pitchers | minip:50 | playerbyteam:displayteam | leadersDesc:'so'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
@@ -33,7 +33,7 @@
     </mat-tab>
     <mat-tab label="ERA">
         <mat-table
-            [dataSource]="(pitchers$ | async) | minip:50 | playerbyteam:(displayteam$ | async) | leadersAsc:'era'">
+            [dataSource]="pitchers | minip:50 | playerbyteam:displayteam | leadersAsc:'era'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
@@ -47,3 +47,4 @@
         </mat-table>
     </mat-tab>
 </mat-tab-group>
+</ng-template>

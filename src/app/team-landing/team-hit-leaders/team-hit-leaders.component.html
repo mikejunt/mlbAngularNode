@@ -1,9 +1,9 @@
-<p>team-hit-leaders works!</p>
-
-<mat-tab-group mat-stretch-tabs>
+<mat-progress-spinner *ngIf="hitters.length == 0; else loaded" color="primary" mode="indeterminate"></mat-progress-spinner>
+<ng-template #loaded>
+<mat-tab-group  mat-stretch-tabs>
     <mat-tab label="OPS">
         <mat-table
-            [dataSource]="(hitters$ | async) | minplate:100 | playerbyteam:(displayteam$ | async) | leadersDesc:'ops'">
+            [dataSource]="hitters | minplate:100 | playerbyteam:displayteam | leadersDesc:'ops'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
@@ -18,7 +18,7 @@
     </mat-tab>
     <mat-tab label="HR">
         <mat-table
-            [dataSource]="(hitters$ | async) | minplate:100 | playerbyteam:(displayteam$ | async) | leadersDesc:'hr'">
+            [dataSource]="hitters | minplate:100 | playerbyteam:displayteam | leadersDesc:'hr'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
@@ -33,7 +33,7 @@
     </mat-tab>
     <mat-tab label="AVG">
         <mat-table
-            [dataSource]="(hitters$ | async) | minplate:100 | playerbyteam:(displayteam$ | async) | leadersDesc:'avg'">
+            [dataSource]="hitters | minplate:100 | playerbyteam:displayteam | leadersDesc:'avg'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
@@ -47,3 +47,4 @@
         </mat-table>
     </mat-tab>
 </mat-tab-group>
+</ng-template>

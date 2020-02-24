@@ -11,6 +11,8 @@ import * as Selectors from '../store/selectors';
 import { Team } from '../interfaces/team.interface';
 import { HittingService } from '../services/hitting-query.service';
 import { PitchingService } from '../services/pitching-query.service';
+import { Hitter } from '../interfaces/hitter.interface';
+import { Pitcher } from '../interfaces/pitcher.interface';
 
 
 @Component({
@@ -24,6 +26,10 @@ export class SearchInterfaceComponent implements OnInit {
   nextteam: string = ""
   searchmode: string = "landing"
   searchpick: string = "landing"
+  hitting$: Observable<Hitter[]>
+  pitching$: Observable<Pitcher[]>
+  pitchYr: string
+  hitYr: string
 
 
   constructor(private staticquery: StaticqueryService, 
@@ -32,6 +38,10 @@ export class SearchInterfaceComponent implements OnInit {
     this.curteam$ = store.pipe(select(Selectors.viewSelectedTeam));
     this.curteam$.subscribe(res => this.nextteam = res);
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
+    this.pitching$ = store.pipe(select(Selectors.viewPitching));
+    this.hitting$ = store.pipe(select(Selectors.viewHitting));
+    this.pitching$.subscribe(res => {if (res.length != 0) {this.pitchYr = res[0]['season']}});
+    this.hitting$.subscribe(res => {if (res.length != 0) {this.hitYr = res[0]['season']}} )
   }
 
   ngOnInit(): void {
