@@ -1,26 +1,26 @@
 <p>pitching-display works!</p>
 
-<mat-table matSort matSortDisableClear="true" [dataSource]="(pitchers$ | async) | minip:50">
+<mat-table matSort matSortDisableClear="true" [dataSource]="pitchers | minip:50">
     <!-- Player Name Col -->
-    <ng-container matColumnDef="Name">
+    <ng-container matColumnDef="player">
       <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
     </ng-container>
   
     <!-- HR COL -->
-    <ng-container matColumnDef="FIP">
+    <ng-container matColumnDef="fip">
       <mat-header-cell *matHeaderCellDef mat-sort-header> FIP </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
     </ng-container>
   
     <!-- OPS COL -->
-    <ng-container matColumnDef="K">
+    <ng-container matColumnDef="so">
       <mat-header-cell *matHeaderCellDef mat-sort-header> K </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["so"]}} </mat-cell>
     </ng-container>
   
     <!-- SLG Column -->
-    <ng-container matColumnDef="ERA">
+    <ng-container matColumnDef="era">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ERA </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["era"]}} </mat-cell>
     </ng-container>

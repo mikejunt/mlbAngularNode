@@ -12,9 +12,11 @@ import * as Selectors from '../../store/selectors'
 })
 export class TeamRosterComponent implements OnInit {
   roster$: Observable<Player[]>
+  roster: Player[];
 
   constructor(private store: Store<AppState>) {
     this.roster$ = this.store.pipe(select(Selectors.viewRoster));
+    this.roster$.subscribe(res => this.roster = res)
   }
 
   ngOnInit(): void {

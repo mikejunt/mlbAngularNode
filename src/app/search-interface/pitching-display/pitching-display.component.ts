@@ -13,10 +13,11 @@ import * as Selectors from '../../store/selectors'
 export class PitchingDisplayComponent implements OnInit {
   displayteam$: Observable<string>
   pitchers$: Observable<Pitcher[]>;
-  displayedColumns: string[] = ['Name', 'FIP', 'K', 'ERA']
+  displayedColumns: string[] = ['player', 'fip', 'so', 'era']
+  pitchers: Pitcher[]
 
   constructor(private store: Store<AppState>) { this.pitchers$ = this.store.select(Selectors.viewPitching)
-  this.displayteam$ = this.store.select(Selectors.viewSelectedTeam) }
+  this.displayteam$ = this.store.select(Selectors.viewSelectedTeam); this.pitchers$.subscribe(pitch => this.pitchers = pitch) }
 
   ngOnInit(): void {
   }

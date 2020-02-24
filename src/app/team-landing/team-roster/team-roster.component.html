@@ -1,12 +1,10 @@
-<p>team-roster works</p>
-
 <table>
     <tr>
         <th>Position</th>
         <th>Name</th>
         <th>Number</th>
     </tr>
-    <tr *ngFor="let player of (roster$ | async) | sortRoster | rosterPosition:'pitcher'; index as i">
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'pitcher'; index as i">
         <td>{{player["position_txt"]}}</td>
         <td>{{player["name_display_first_last"]}}</td>
         <td>{{player["jersey_number"]}}</td>
@@ -16,7 +14,7 @@
         <th>Name</th>
         <th>Number</th>
     </tr>
-    <tr *ngFor="let player of (roster$ | async) | sortRoster | rosterPosition:'catcher'; index as i">
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'catcher'; index as i">
         <td>{{player["position_txt"]}}</td>
         <td>{{player["name_display_first_last"]}}</td>
         <td>{{player["jersey_number"]}}</td>
@@ -26,7 +24,7 @@
         <th>Name</th>
         <th>Number</th>
     </tr>
-    <tr *ngFor="let player of (roster$ | async) | sortRoster | rosterPosition:'infield'; index as i">
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'infield'; index as i">
         <td>{{player["position_txt"]}}</td>
         <td>{{player["name_display_first_last"]}}</td>
         <td>{{player["jersey_number"]}}</td>
@@ -36,7 +34,7 @@
         <th>Name</th>
         <th>Number</th>
     </tr>
-    <tr *ngFor="let player of (roster$ | async) | sortRoster | rosterPosition:'outfield'; index as i">
+    <tr *ngFor="let player of roster | sortRoster | rosterPosition:'outfield'; index as i">
         <td>{{player["position_txt"]}}</td>
         <td>{{player["name_display_first_last"]}}</td>
         <td>{{player["jersey_number"]}}</td>

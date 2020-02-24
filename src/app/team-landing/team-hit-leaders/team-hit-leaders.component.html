@@ -24,7 +24,7 @@
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="HR">
-                <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> HR </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
             </ng-container>
             <mat-header-row *matHeaderRowDef="hrColumns"></mat-header-row>
@@ -39,7 +39,7 @@
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="AVG">
-                <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> AVG </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["avg"]}} </mat-cell>
             </ng-container>
             <mat-header-row *matHeaderRowDef="avgColumns"></mat-header-row>

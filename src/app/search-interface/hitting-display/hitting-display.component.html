@@ -1,4 +1,4 @@
-<mat-table matSort [dataSource]="(hitters$ | async) | minplate:100">
+<mat-table matSort [dataSource]="hitters | minplate:100">
     <!-- Player Name Col -->
     <ng-container matColumnDef="Name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
