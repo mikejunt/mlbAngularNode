@@ -18,6 +18,8 @@ export interface AppState {
   user: Reducers.UserState
   transactions: Reducers.TransactionListState
   copyright: Reducers.CopyNoticeState
+  curpitching: Reducers.CurrentYrPitchingState
+  curhitting: Reducers.CurrentYrHittingState
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -28,7 +30,9 @@ export const reducers: ActionReducerMap<AppState> = {
   displayteam: Reducers.changeViewTeam,
   user: Reducers.updateLoginStatus,
   transactions: Reducers.saveTransactionList,
-  copyright: Reducers.setCopyNotice
+  copyright: Reducers.setCopyNotice,
+  curpitching: Reducers.saveCurPitching,
+  curhitting: Reducers.saveCurHitting
 }
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

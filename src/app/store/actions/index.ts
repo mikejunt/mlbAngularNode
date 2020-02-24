@@ -5,5 +5,7 @@ export * from './teams.action';
 export * from './user.actions';
 export * from './team.select.action';
 export * from './transactions.action';
-export * from './copynotice.action'
+export * from './copynotice.action';
+export * from './current.hitters.action';
+export * from './current.pitchers.action';
 

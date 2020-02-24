@@ -11,3 +11,5 @@ export const viewUserFav = (state: AppState) => state.user.user.favteam
 export const viewSelectedTeam = (state: AppState) => state.displayteam.displayteam
 export const viewCopyNotice = (state: AppState) => state.copyright.copyright
 export const viewTrx = (state: AppState) => state.transactions.transactions
+export const viewCurPitching = (state: AppState) => state.curpitching.curpitching
+export const viewCurHitting = (state: AppState) => state.curhitting.curhitting

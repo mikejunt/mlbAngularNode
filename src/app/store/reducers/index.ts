@@ -6,3 +6,5 @@ export * from './team.select.reducer';
 export * from './user.reducers';
 export * from './transaction.response.reducer';
 export * from './copyright.notice.reducer';
+export * from './current.hitting.reducer';
+export * from './current.pitching.reducer';
