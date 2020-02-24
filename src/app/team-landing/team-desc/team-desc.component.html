@@ -1,5 +1,6 @@
 <div>
     <mat-toolbar>
-        <!-- <h3>{{(teamlist$ | async) | teamDetails:(displayteam$ | async)['name_display_full']}}</h3> -->
+        <h3>{{((teamlist$ | async) | teamDetails:(displayteam$ | async))['name_display_full']}}</h3>
     </mat-toolbar>
+    
 </div>
