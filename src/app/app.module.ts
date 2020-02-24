@@ -35,7 +35,6 @@ import { TeamScheduleComponent } from './team-landing/team-schedule/team-schedul
 import { TeamPitchLeadersComponent } from './team-landing/team-pitch-leaders/team-pitch-leaders.component';
 import { TeamDescComponent } from './team-landing/team-desc/team-desc.component';
 import { LeadersAscPipe } from './pipes/leaders-asc.pipe';
-import { TeamDetailsPipe } from './pipes/team-details.pipe';
 
 @NgModule({
   declarations: [
@@ -67,7 +66,6 @@ import { TeamDetailsPipe } from './pipes/team-details.pipe';
     TeamPitchLeadersComponent,
     TeamDescComponent,
     LeadersAscPipe,
-    TeamDetailsPipe
   ],
   imports: [
     BrowserModule,
