@@ -13,6 +13,7 @@ import { HittingService } from '../services/hitting-query.service';
 import { PitchingService } from '../services/pitching-query.service';
 import { Hitter } from '../interfaces/hitter.interface';
 import { Pitcher } from '../interfaces/pitcher.interface';
+import * as moment from 'moment'
 
 
 @Component({
