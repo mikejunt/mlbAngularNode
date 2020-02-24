@@ -23,7 +23,9 @@ import * as moment from 'moment'
 })
 export class SearchInterfaceComponent implements OnInit {
   curteam$:Observable<string>
-  teamlist$: Observable<Team[]> 
+  curteam: string
+  teamlist$: Observable<Team[]>
+  teamlist: Team[]
   nextteam: string = ""
   searchmode: string = "landing"
   searchpick: string = "landing"
@@ -42,7 +44,9 @@ export class SearchInterfaceComponent implements OnInit {
     this.pitching$ = store.pipe(select(Selectors.viewPitching));
     this.hitting$ = store.pipe(select(Selectors.viewHitting));
     this.pitching$.subscribe(res => {if (res.length != 0) {this.pitchYr = res[0]['season']}});
-    this.hitting$.subscribe(res => {if (res.length != 0) {this.hitYr = res[0]['season']}} )
+    this.hitting$.subscribe(res => {if (res.length != 0) {this.hitYr = res[0]['season']}} );
+    this.curteam$.subscribe(res => this.curteam = res);
+    this.teamlist$.subscribe(res => this.teamlist = res)
   }
 
   ngOnInit(): void {

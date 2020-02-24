@@ -1,17 +1,29 @@
-
 <div [ngClass]="'bg'+ (this.curteam$ | async)">
-    <div><label for="teamlist">Select Team</label><select [(ngModel)]="nextteam">
-            <option *ngIf="searchmode != 'landing'" value="allteams">All MLB</option>
-            <option *ngFor="let team of (teamlist$ | async) | sortTeam:(curteam$ | async); index as i" value="{{team['mlb_org_id']}}">
-                {{team["name_display_full"]}}</option>
-        </select></div>
-    <div><label for="reportlist">Select Report</label><select [(ngModel)]="searchmode">
-            <option value="curhitting">Search Batting Statistics</option>
-            <option value="curpitching">Search Pitching Statistics</option>
-            <option value="landing">View Team Summary</option>
-            <option value="alltrans">Search Leaguewide Transactions</option>
-        </select></div>
+    <div>
+        <mat-form-field>
+            <mat-label for="reportlist">Select Report</mat-label>
+            <mat-select [(ngModel)]="searchmode">
+                <mat-option value="curhitting">Search Batting Statistics</mat-option>
+                <mat-option value="curpitching">Search Pitching Statistics</mat-option>
+                <mat-option value="landing">View Team Summary</mat-option>
+                <mat-option value="alltrans">Search Leaguewide Transactions</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="teamlist">Select Team</mat-label>
+            <mat-select [(ngModel)]="nextteam">
+                <mat-option *ngIf="searchmode != 'landing'" value="allteams">All MLB</mat-option>
+                <mat-option *ngFor="let team of teamlist | sortTeam:curteam; index as i"
+                    value="{{team['mlb_org_id']}}">
+                    {{team["name_display_full"]}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="searchyear">Select Season</mat-label>
+        </mat-form-field>
+    </div>
 
     <button class='btn btn-primary' (click)="searchInit()">CLICK ME</button>
 
-<router-outlet></router-outlet></div>
+    <router-outlet></router-outlet>
+</div>

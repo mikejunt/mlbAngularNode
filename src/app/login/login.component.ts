@@ -15,8 +15,8 @@ import * as moment from 'moment';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
+  username: string
+  password: string
   startdate: string
   enddate: string
   curyear: string
