@@ -14,6 +14,10 @@ import { PitchingService } from '../services/pitching-query.service';
 import { Hitter } from '../interfaces/hitter.interface';
 import { Pitcher } from '../interfaces/pitcher.interface';
 import * as moment from 'moment'
+import { FormControl } from '@angular/forms';
+// import { MatDatepicker } from '@angular/material/datepicker';
+// import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+// import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 
 @Component({
@@ -33,6 +37,14 @@ export class SearchInterfaceComponent implements OnInit {
   pitching$: Observable<Pitcher[]>
   pitchYr: string
   hitYr: string
+  stdate = new FormControl(moment(0,"HH").subtract(10,'days'));
+  enddate = new FormControl(moment(0,"HH"))
+  minMoment = moment(0,"HH").subtract(10,'years').format()
+  maxMoment = moment(0,"HH").format()
+  minDate = new Date(this.minMoment)
+  maxDate = new Date(this.maxMoment)
+
+
 
 
   constructor(private staticquery: StaticqueryService, 
@@ -85,4 +97,16 @@ export class SearchInterfaceComponent implements OnInit {
       this.router.navigate(['alltrans'], {relativeTo: this.actr})
     }
   }
+
+  logit() {
+    let stinput = this.stdate.value
+    let einput = this.enddate.value
+    let stvalid = (moment(stinput).isBetween(this.minMoment, einput))
+    let evalid = (moment(einput).isBetween(stinput,moment()))
+    console.log (stinput, einput, stvalid, evalid, this.maxMoment)
+    if (stvalid && evalid) {console.log("Valid Yo")}
+  }
+
+
+
 }

@@ -19,8 +19,19 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-label for="searchyear">Select Season</mat-label>
+            <mat-label for="start">Select Start Date</mat-label>
+            <input matInput min="minDate" max="maxDate" [matDatepicker]='start'[formControl]="stdate">
+            <mat-datepicker-toggle matSuffix [for]='start'></mat-datepicker-toggle>
+            <mat-datepicker #start></mat-datepicker>
         </mat-form-field>
+        <mat-form-field>
+            <mat-label for="end">Select End Date</mat-label>
+            <input matInput min="minDate" max="maxDate" [matDatepicker]='end'[formControl]="enddate">
+            <mat-datepicker-toggle matSuffix [for]='end'></mat-datepicker-toggle>
+            <mat-datepicker #end></mat-datepicker>
+        </mat-form-field>
+        <button (click)="logit()">LOGIT</button>
+        
     </div>
 
     <button class='btn btn-primary' (click)="searchInit()">CLICK ME</button>
