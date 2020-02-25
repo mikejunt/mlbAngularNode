@@ -3,10 +3,10 @@ import { User } from '../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { FakeUsers } from '../fakeuserdb'
 import { Store } from '@ngrx/store';
 import { AppState } from '../store';
 import * as Actions from '../store/actions';
+import * as Selectors from '../store/selectors'
 
 
 @Injectable({
@@ -14,35 +14,34 @@ import * as Actions from '../store/actions';
 })
 export class UserService {
 
-  userlist: Array<User> = FakeUsers
-  isLoggedIn: boolean = false;
+  userlist$: Observable<User[]>
+  userlist: User[]
+  nextUserId: number = 4
   currentUser: User
-  
 
-  constructor(private http: HttpClient, private router: Router, private store: Store<AppState>) { }
 
-  // getUsers(): Observable<User[]> {
-  //   return this.http.get<User[]>(this.usersUrl)
-  // };
-
-  // getUserlist() {
-  //   this.getUsers().subscribe(userlist => this.userlist = userlist)
-  // }
-
-  // getSpecificUser(id: number) {
-  //   const url = `${this.usersUrl}/${id}`;
-  //   return this.http.get(url)
-  // }
+  constructor(private http: HttpClient, private router: Router, private store: Store<AppState>) {
+    this.userlist$ = this.store.select(Selectors.viewUserList);
+    this.userlist$.subscribe(res => this.userlist = res)
+  }
 
   authenticate(username: string, password: string) {
     let loginattempt = this.userlist.filter(obj => obj.username === username && obj.password === password);
-    if (loginattempt.length !== 1) { }
-    else {
-      let username = loginattempt[0]["username"];let favteam = loginattempt[0]["favteam"];
-      this.store.dispatch(Actions.login({user: {username: username, favteam: favteam}}))
-      this.store.dispatch(Actions.setViewTeam({displayteam: favteam}))
+    if (loginattempt.length === 1) {
+      let username = loginattempt[0]["username"]; let favteam = loginattempt[0]["favteam"];
+      this.store.dispatch(Actions.login({ user: { username: username, favteam: favteam } }))
+      this.store.dispatch(Actions.setViewTeam({ displayteam: favteam }))
       this.router.navigate(['search'])
     }
+    else return false
+  }
+
+  signup(inputname: string, inputpassword: string, inputfavteam: string) {
+    let newuser: User = {userid: this.nextUserId, username: inputname, password: inputpassword, favteam: inputfavteam}
+    let usernamecheck = this.userlist.filter(obj => obj.username === newuser.username)
+    if (usernamecheck.length === 1) return false
+    else {this.store.dispatch(Actions.createNewUser({newuser}));return true}
+
   }
 
   logout() {

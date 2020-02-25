@@ -8,6 +8,7 @@ import { TeamRosterComponent } from './team-landing/team-roster/team-roster.comp
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
 import { LoginGuard } from './guards/login.guard';
 import { TeamLandingComponent } from './team-landing/team-landing.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 

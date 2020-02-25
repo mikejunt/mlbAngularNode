@@ -35,7 +35,7 @@ export class SearchInterfaceComponent implements OnInit {
   hitYr: string
   searchyear: string = "2019"
   paselect: string = "350"
-  ipselect: string = "50"
+  ipselect: string = "50" 
   stdate = new FormControl(moment(0, "HH").subtract(3, 'days'));
   enddate = new FormControl(moment(0, "HH"))
   minMoment = moment(0, "HH").subtract(10, 'years').format()
