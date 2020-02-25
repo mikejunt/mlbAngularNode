@@ -20,14 +20,13 @@ Configure Final Landing Page: Team Profile
 * ~Is the landing page of child Routing~
 * ~Search component remains above header; selecting and activating navigates child routing away to appropriate search display component (pitcher, hitter, potentially expanded trx w/ datepicker)~
 * Utilize team information from Teamlist
-* Standings? --- may not be in API
-* Broadcast Information? -- is in API, but not clear if it works until regular season
-* ditto schedule
+
 
 Build out options menus for search:
-* Add minimum IP/PA
+* ~Add minimum IP/PA~
 * ~Datepicker for Trx search~
-* Add alternative all-players query (not team specific), with optional positional selector (eg 1b)
+* ~Add alternative all-players query (not team specific), with optional positional selector (eg 1b)~
+* selects and pipes created for pos/PA/IP filter, but must decide a home
 * Angular Material expansion panels & menus
 
 Build out improved display for search results:
