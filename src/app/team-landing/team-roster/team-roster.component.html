@@ -1,3 +1,6 @@
+<mat-progress-spinner *ngIf="roster.length == 0; else loaded" color="primary" mode="indeterminate">
+</mat-progress-spinner>
+<ng-template #loaded>
 <table>
     <tr>
         <th>Position</th>
@@ -40,3 +43,4 @@
         <td>{{player["jersey_number"]}}</td>
     </tr>
 </table>
+</ng-template>

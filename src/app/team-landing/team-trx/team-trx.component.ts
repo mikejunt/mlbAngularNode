@@ -12,11 +12,15 @@ import * as Selectors from '../../store/selectors'
 })
 export class TeamTrxComponent implements OnInit {
   trx$: Observable<Transaction[]>;
+  trx: Transaction[]
   displayedColumns: string[] = ['trx'];
-  displayteam$
+  displayteam$: Observable<string>
+  displayteam: string
 
   constructor(private store: Store<AppState>) { this.trx$ = this.store.select(Selectors.viewTrx);
-    this.displayteam$ = this.store.select(Selectors.viewSelectedTeam) }
+    this.displayteam$ = this.store.select(Selectors.viewSelectedTeam);
+  this.displayteam$.subscribe(res => this.displayteam = res)
+this.trx$.subscribe(res => this.trx = res) }
 
   ngOnInit(): void {
   }
