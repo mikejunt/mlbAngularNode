@@ -1,0 +1,27 @@
+#main {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    flex-basis: 60%;
+}
+
+#side {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    flex-basis: 480px;
+    align-items: flex-start;
+}
+
+#hitlead,#pitchlead,#trans {
+    flex-basis: 480px;
+    flex-grow: 1;
+}
+
+@media (min-width: 600px) {
+    #side {
+        min-width: 480px
+    }
+}

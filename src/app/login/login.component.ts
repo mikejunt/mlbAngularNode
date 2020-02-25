@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(private user: UserService, private staticquery: StaticqueryService, 
     private store: Store<AppState>, private hitting: HittingService, private pitching: PitchingService) { 
       this.enddate = moment().format('YYYYMMDD')
-      this.startdate = moment().subtract(10,'days').format('YYYYMMDD')
+      this.startdate = moment().subtract(3,'days').format('YYYYMMDD')
       this.curyear = moment().subtract(1, 'year').format('YYYY')
      }
 
