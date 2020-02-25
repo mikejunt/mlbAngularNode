@@ -16,8 +16,9 @@ export class TeamDescComponent implements OnInit {
   this.teamlist$ = this.store.select(Selectors.viewTeams);
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam);
     this.teamlist$.subscribe(res => this.teamlist = res)
-    this.displayteam$.subscribe(res => {let team = this.teamlist.filter(teamx => teamx["mlb_org_id"] === res);
-    this.displayteam = team[0];console.log(this.displayteam)})
+    this.displayteam$.subscribe(res => {
+      let team = this.teamlist.filter(teamx => teamx["mlb_org_id"] === res);
+      this.displayteam = team[0]})
   }
   teamlist$: Observable<Team[]>;
   displayteam$: Observable<string>;

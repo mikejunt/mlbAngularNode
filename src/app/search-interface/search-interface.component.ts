@@ -15,10 +15,6 @@ import { Hitter } from '../interfaces/hitter.interface';
 import { Pitcher } from '../interfaces/pitcher.interface';
 import * as moment from 'moment'
 import { FormControl } from '@angular/forms';
-// import { MatDatepicker } from '@angular/material/datepicker';
-// import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-// import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-
 
 @Component({
   selector: 'app-search-interface',
@@ -26,7 +22,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search-interface.component.scss']
 })
 export class SearchInterfaceComponent implements OnInit {
-  curteam$:Observable<string>
+  curteam$: Observable<string>
   curteam: string
   teamlist$: Observable<Team[]>
   teamlist: Team[]
@@ -37,17 +33,20 @@ export class SearchInterfaceComponent implements OnInit {
   pitching$: Observable<Pitcher[]>
   pitchYr: string
   hitYr: string
-  stdate = new FormControl(moment(0,"HH").subtract(10,'days'));
-  enddate = new FormControl(moment(0,"HH"))
-  minMoment = moment(0,"HH").subtract(10,'years').format()
-  maxMoment = moment(0,"HH").format()
+  searchyear: string = "2019"
+  paselect: string = "350"
+  ipselect: string = "50"
+  stdate = new FormControl(moment(0, "HH").subtract(3, 'days'));
+  enddate = new FormControl(moment(0, "HH"))
+  minMoment = moment(0, "HH").subtract(10, 'years').format()
+  maxMoment = moment(0, "HH").add(1, 'days').format()
   minDate = new Date(this.minMoment)
   maxDate = new Date(this.maxMoment)
 
 
 
 
-  constructor(private staticquery: StaticqueryService, 
+  constructor(private staticquery: StaticqueryService,
     private rosterquery: RosterService, private router: Router, private actr: ActivatedRoute,
     private store: Store<AppState>, private hitting: HittingService, private pitching: PitchingService) {
     this.curteam$ = store.pipe(select(Selectors.viewSelectedTeam));
@@ -55,8 +54,8 @@ export class SearchInterfaceComponent implements OnInit {
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
     this.pitching$ = store.pipe(select(Selectors.viewPitching));
     this.hitting$ = store.pipe(select(Selectors.viewHitting));
-    this.pitching$.subscribe(res => {if (res.length != 0) {this.pitchYr = res[0]['season']}});
-    this.hitting$.subscribe(res => {if (res.length != 0) {this.hitYr = res[0]['season']}} );
+    this.pitching$.subscribe(res => { if (res.length != 0) { this.pitchYr = res[0]['season'] } });
+    this.hitting$.subscribe(res => { if (res.length != 0) { this.hitYr = res[0]['season'] } });
     this.curteam$.subscribe(res => this.curteam = res);
     this.teamlist$.subscribe(res => this.teamlist = res)
   }
@@ -72,39 +71,41 @@ export class SearchInterfaceComponent implements OnInit {
 
   searchInit() {
     this.searchpick = this.searchmode;
-    console.log(this.searchpick)
     if (this.searchpick === "landing") {
       this.showRoster(this.nextteam);
-      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
-      this.router.navigate(['landing'], {relativeTo: this.actr})
+      this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
+      this.router.navigate(['landing'], { relativeTo: this.actr })
     }
     if (this.searchpick === "curhitting") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);
-      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
+      this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
       this.hitting.fetchSeasonHitting(params)
-      this.router.navigate(['hitting'], {relativeTo: this.actr})
+      this.router.navigate(['hitting'], { relativeTo: this.actr })
     }
     if (this.searchpick === "curpitching") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`);
-      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
-      this.pitching.fetchSeasonPitching(params) 
-      this.router.navigate(['pitching'], {relativeTo: this.actr})
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
+      this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
+      this.pitching.fetchSeasonPitching(params)
+      this.router.navigate(['pitching'], { relativeTo: this.actr })
     }
     if (this.searchpick === "alltrans") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('start_date', `20200210`).set('end_date', `'20200217'`);
-      this.store.dispatch(Actions.setViewTeam({displayteam: this.nextteam}))
-      this.staticquery.fetchTrx(params) 
-      this.router.navigate(['alltrans'], {relativeTo: this.actr})
+      let start = this.stdate.value
+      let end = this.enddate.value
+      if (this.valiDate(start, end)) {
+        let startstring = moment(start).format("YYYYMMDD");
+        let endstring = moment(end).format("YYYYMMDD");
+        const params = new HttpParams().set('sport_code', `'mlb'`).set('start_date', `'${startstring}'`).set('end_date', `'${endstring}'`);
+        this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
+        this.staticquery.fetchTrx(params)
+        this.router.navigate(['alltrans'], { relativeTo: this.actr })
+      }
     }
   }
 
-  logit() {
-    let stinput = this.stdate.value
-    let einput = this.enddate.value
-    let stvalid = (moment(stinput).isBetween(this.minMoment, einput))
-    let evalid = (moment(einput).isBetween(stinput,moment()))
-    console.log (stinput, einput, stvalid, evalid, this.maxMoment)
-    if (stvalid && evalid) {console.log("Valid Yo")}
+  valiDate(start: moment.Moment, end: moment.Moment) {
+    let stvalid = (moment(start).isBetween(this.minMoment, end))
+    let evalid = (moment(end).isBetween(start, moment()))
+    return (stvalid && evalid)
   }
 
 

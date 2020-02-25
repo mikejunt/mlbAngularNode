@@ -45,8 +45,7 @@ export class PitchingService {
         map(res => res.map(res => {
           let pitcherFIP = ((((13 * parseInt(res["hr"])) + (3 * (parseInt(res["bb"]) + parseInt(res["hb"]))) - (2 * parseInt(res["so"]))) / res["ipn"]) + this.lgFIPconstant);
           res["fip"] = pitcherFIP.toFixed(2); return res
-        })),
-        tap(res => console.log(res)))
+        })))
       .subscribe(response => { this.store.dispatch(Actions.savePitchers({ pitching: response })) })
   }
 
