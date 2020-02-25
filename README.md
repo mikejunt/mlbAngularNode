@@ -34,8 +34,8 @@ Build out improved display for search results:
 * Header sort
 
 Implement a Signup Screen
-* Move fake DB back inline so new user information can be pushed into array after signup
-* accomplish form verification goals
+* ~Move fake DB back inline so new user information can be pushed into array after signup~
+* ~accomplish form verification goals~
 
 ~Re-implement AuthGuard~
 
