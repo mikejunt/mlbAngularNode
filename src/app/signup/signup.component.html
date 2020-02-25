@@ -3,18 +3,18 @@
 <p><mat-form-field>
     <mat-label for="username">Enter Username:</mat-label>
     <input matInput formControlName="username" placeholder="e.g. Mike">
-    <!-- <mat-error *ngIf="(dupeuser && newSignup.valid)">Username in use, please choose another.</mat-error> -->
-    <!-- <mat-error *ngIf="!newSignup.valid && (username.dirty || username.touched)">Usernames must be between 4 and 12 characters.</mat-error> -->
+    <!-- <mat-error *ngIf="dupeuser">Username in use, please choose another.</mat-error> -->
+    <mat-error *ngIf="!newSignup.valid && (newSignup.controls.username.dirty || newSignup.controls.username.touched)">Usernames must be between 4 and 12 characters.</mat-error>
 </mat-form-field></p>
 <p><mat-form-field>
     <mat-label for="password">Enter Password</mat-label>
     <input matInput formControlName="password" type="password" placeholder="Everyone else is 'password'">
-    <!-- <mat-error *ngIf="!newSignup.valid && password.dirty || password.touched)">Passwords must be between 6 and 32 characters.</mat-error> -->
+    <mat-error *ngIf="!newSignup.valid && (newSignup.controls.password.dirty || newSignup.controls.password.touched)">Passwords must be between 6 and 32 characters.</mat-error>
 </mat-form-field></p>
 <p><mat-form-field>
     <mat-label for="confirm">Confirm Password</mat-label>
     <input matInput formControlName="confirm" type="password" placeholder="You just typed it." [errorStateMatcher]="matcher">
-    <!-- <mat-error *ngIf="newSignup.hasError('mismatch') && (confirm.dirty || confirm.touched || password.dirty || password.touched)">Passwords do not match.</mat-error> -->
+    <mat-error *ngIf="newSignup.hasError('mismatch') && (newSignup.controls.confirm.dirty || newSignup.controls.confirm.touched || newSignup.controls.password.dirty || newSignup.controls.password.touched)">Passwords do not match.</mat-error>
 </mat-form-field></p>
 <p><mat-form-field>
     <mat-label for="favteam">Select Favorite Team</mat-label>

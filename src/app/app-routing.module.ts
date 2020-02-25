@@ -9,6 +9,7 @@ import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.
 import { LoginGuard } from './guards/login.guard';
 import { TeamLandingComponent } from './team-landing/team-landing.component';
 import { SignupComponent } from './signup/signup.component';
+import { SignupGuard } from './guards/signup.guard';
 
 
 
@@ -23,7 +24,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent},
+  { path: 'signup', component: SignupComponent, canActivate: [SignupGuard]},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
