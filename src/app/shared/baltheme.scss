@@ -1,0 +1,176 @@
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+*/
+
+@import '~@angular/material/theming';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+     
+$fontConfig: (
+  display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
+  display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
+  display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
+  display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
+  headline: mat-typography-level(24px, 32px, 400, 'Roboto', 0.0000em),
+  title: mat-typography-level(20px, 32px, 500, 'Roboto', 0.0075em),
+  subheading-2: mat-typography-level(16px, 28px, 400, 'Roboto', 0.0094em),
+  subheading-1: mat-typography-level(15px, 24px, 500, 'Roboto', 0.0067em),
+  body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
+  body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
+  button: mat-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
+  caption: mat-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
+  input: mat-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px)
+);
+
+// Foreground Elements
+
+// Light Theme Text
+$dark-text: #000000;
+$dark-primary-text: rgba($dark-text, 0.87);
+$dark-accent-text: rgba($dark-primary-text, 0.54);
+$dark-disabled-text: rgba($dark-primary-text, 0.38);
+$dark-dividers: rgba($dark-primary-text, 0.12);
+$dark-focused: rgba($dark-primary-text, 0.12);
+
+$mat-light-theme-foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba($dark-text, 0.26),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  secondary-text:    $dark-accent-text,
+  hint-text:         $dark-disabled-text,
+  accent-text:       $dark-accent-text,
+  icon:              $dark-accent-text,
+  icons:             $dark-accent-text,
+  text:              $dark-primary-text,
+  slider-min:        $dark-primary-text,
+  slider-off:        rgba($dark-text, 0.26),
+  slider-off-active: $dark-disabled-text,
+);
+
+// Background config
+// Light bg
+$light-background:    #fafafa;
+$light-bg-darker-5:   darken($light-background, 5%);
+$light-bg-darker-10:  darken($light-background, 10%);
+$light-bg-darker-20:  darken($light-background, 20%);
+$light-bg-darker-30:  darken($light-background, 30%);
+$light-bg-lighter-5:  lighten($light-background, 5%);
+$dark-bg-alpha-4:     rgba(#2c2c2c, 0.04);
+$dark-bg-alpha-12:    rgba(#2c2c2c, 0.12);
+
+$mat-light-theme-background: (
+  background:               $light-background,
+  status-bar:               $light-bg-darker-20,
+  app-bar:                  $light-bg-darker-5,
+  hover:                    $dark-bg-alpha-4,
+  card:                     $light-bg-lighter-5,
+  dialog:                   $light-bg-lighter-5,
+  disabled-button:          $dark-bg-alpha-12,
+  raised-button:            $light-bg-lighter-5,
+  focused-button:           $dark-focused,
+  selected-button:          $light-bg-darker-20,
+  selected-disabled-button: $light-bg-darker-30,
+  disabled-button-toggle:   $light-bg-darker-10,
+  unselected-chip:          $light-bg-darker-10,
+  disabled-list-option:     $light-bg-darker-10,
+);
+
+
+// Compute font config
+
+
+// Theme Config
+
+body {
+  --primary-color: #df4601;
+  --primary-lighter-color: #f5c8b3;
+  --primary-darker-color: #d22f01;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+
+$mat-primary: (
+  main: #df4601,
+  lighter: #f5c8b3,
+  darker: #d22f01,
+  200: #df4601, // For slide toggle,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$team110theme-primary: mat-palette($mat-primary, main, lighter, darker);
+
+body {
+  --accent-color: #000000;
+  --accent-lighter-color: #b3b3b3;
+  --accent-darker-color: #000000;
+  --text-accent-color: #{$light-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$light-primary-text};
+}
+
+$mat-accent: (
+  main: #000000,
+  lighter: #b3b3b3,
+  darker: #000000,
+  200: #000000, // For slide toggle,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$team110theme-accent: mat-palette($mat-accent, main, lighter, darker);
+
+body {
+  --warn-color: #fbd872;
+  --warn-lighter-color: #fef3d5;
+  --warn-darker-color: #f9c855;
+  --text-warn-color: #{$dark-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$dark-primary-text};
+}
+
+$mat-warn: (
+  main: #fbd872,
+  lighter: #fef3d5,
+  darker: #f9c855,
+  200: #fbd872, // For slide toggle,
+  contrast : (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $dark-primary-text,
+  )
+);
+$team110theme-warn: mat-palette($mat-warn, main, lighter, darker);;
+
+$team110theme: mat-light-theme($team110theme-primary, $team110theme-accent, $team110theme-warn);
+
+// Theme Init
+@include angular-material-theme($team110theme);
+
+// Specific component overrides, pieces that are not in line with the general theming
+
+// Handle buttons appropriately, with respect to line-height
+.mat-raised-button, .mat-stroked-button, .mat-flat-button {
+  padding: 0 1.15em;
+  margin: 0 .65em;
+  min-width: 3em;
+  line-height: 36.4px
+}
+
+.mat-standard-chip {
+  padding: .5em .85em;
+  min-height: 2.5em;
+}
