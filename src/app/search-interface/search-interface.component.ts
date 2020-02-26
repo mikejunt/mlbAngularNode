@@ -35,7 +35,7 @@ export class SearchInterfaceComponent implements OnInit {
   hitYr: string
   searchyear: string = "2019"
   paselect: string = "350"
-  ipselect: string = "50" 
+  ipselect: string = "50"
   stdate = new FormControl(moment(0, "HH").subtract(3, 'days'));
   enddate = new FormControl(moment(0, "HH"))
   minMoment = moment(0, "HH").subtract(10, 'years').format()
@@ -72,13 +72,20 @@ export class SearchInterfaceComponent implements OnInit {
   searchInit() {
     this.searchpick = this.searchmode;
     if (this.searchpick === "landing") {
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`)
+      if (this.hitYr != "2019") {
+        this.hitting.fetchSeasonHitting(params)
+      }
+      if (this.pitchYr != "2019") {
+        this.hitting.fetchSeasonHitting(params)
+      }
       this.showRoster(this.nextteam);
       this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
       this.router.navigate(['landing'], { relativeTo: this.actr })
     }
     if (this.searchpick === "curhitting") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
-      let viewteam 
+      let viewteam
       this.store.select(Selectors.viewUserFav).subscribe(res => viewteam = res)
       this.store.dispatch(Actions.setViewTeam({ displayteam: viewteam }))
       this.hitting.fetchSeasonHitting(params)
@@ -86,13 +93,18 @@ export class SearchInterfaceComponent implements OnInit {
     }
     if (this.searchpick === "curpitching") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
-      this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
+      let viewteam
+      this.store.select(Selectors.viewUserFav).subscribe(res => viewteam = res)
+      this.store.dispatch(Actions.setViewTeam({ displayteam: viewteam }))
       this.pitching.fetchSeasonPitching(params)
       this.router.navigate(['pitching'], { relativeTo: this.actr })
     }
     if (this.searchpick === "alltrans") {
       let start = this.stdate.value
       let end = this.enddate.value
+      let viewteam
+      this.store.select(Selectors.viewUserFav).subscribe(res => viewteam = res)
+      this.store.dispatch(Actions.setViewTeam({ displayteam: viewteam }))
       if (this.valiDate(start, end)) {
         let startstring = moment(start).format("YYYYMMDD");
         let endstring = moment(end).format("YYYYMMDD");

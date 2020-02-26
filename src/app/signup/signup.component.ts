@@ -39,12 +39,8 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     let result: boolean = this.user.signup(this.newSignup.value.username,this.newSignup.value.password,this.newSignup.value.favteam)
-    console.log(this.newSignup)
-    console.log(this.dupeuser)
     if (result) {this.router.navigate(['login'])}
-    else { this.dupeuser = true;console.log(this.dupeuser);
-      // this.newSignup.patchValue({username: `${this.newSignup.value.username}`})
-    }
+    else { this.dupeuser = true }
   }
 
 }
