@@ -3,9 +3,9 @@
         <mat-form-field>
             <mat-label for="reportlist">Select Report</mat-label>
             <mat-select [(ngModel)]="searchmode">
+                <mat-option value="landing">View Team Summary</mat-option>
                 <mat-option value="curhitting">Search Batting Statistics</mat-option>
                 <mat-option value="curpitching">Search Pitching Statistics</mat-option>
-                <mat-option value="landing">View Team Summary</mat-option>
                 <mat-option value="alltrans">Search Leaguewide Transactions</mat-option>
             </mat-select>
         </mat-form-field>
@@ -18,13 +18,13 @@
             </mat-select>
         </mat-form-field>
         <!-- only visible when transactions is selected -->
-        <mat-form-field>
+        <mat-form-field *ngIf="searchmode === 'alltrans'">
             <mat-label for="start">Select Start Date</mat-label>
             <input matInput min="minDate" max="maxDate" [matDatepicker]='start' [formControl]="stdate">
             <mat-datepicker-toggle matSuffix [for]='start'></mat-datepicker-toggle>
             <mat-datepicker #start></mat-datepicker>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field *ngIf="searchmode === 'alltrans'">
             <mat-label for="end">Select End Date</mat-label>
             <input matInput min="minDate" max="maxDate" [matDatepicker]='end' [formControl]="enddate">
             <mat-datepicker-toggle matSuffix [for]='end'></mat-datepicker-toggle>
@@ -33,7 +33,7 @@
             <mat-error *ngIf="enddate.invalid">Not a valid selection.</mat-error>
         </mat-form-field>
         <!-- only visible when pitching/hitting stats is selected -->
-        <mat-form-field>
+        <mat-form-field *ngIf="searchmode === 'curhitting' || searchmode === 'curpitching'">
             <mat-label for="year">Season:</mat-label>
             <mat-select [(ngModel)]="searchyear">
                 <mat-option value="2019">2019</mat-option>

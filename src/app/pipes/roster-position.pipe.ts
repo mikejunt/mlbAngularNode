@@ -24,6 +24,10 @@ export class RosterPositionPipe implements PipeTransform {
       let outfielders = roster40.filter((obj) => obj["primary_position"] > "6")
       return outfielders
     }
+    else if (category === "position")  {
+      let position = roster40.filter((obj) => obj["primary_position"] > "1" && obj["primary_position"] <= "9")
+      return position
+    }
     return roster40
   }
 }

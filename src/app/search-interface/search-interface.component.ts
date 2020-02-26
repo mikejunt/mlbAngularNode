@@ -26,7 +26,7 @@ export class SearchInterfaceComponent implements OnInit {
   curteam: string
   teamlist$: Observable<Team[]>
   teamlist: Team[]
-  nextteam: string = ""
+  nextteam: string
   searchmode: string = "landing"
   searchpick: string = "landing"
   hitting$: Observable<Hitter[]>
