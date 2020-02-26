@@ -6,9 +6,10 @@ import { Pitcher } from '../interfaces/pitcher.interface';
 })
 export class MinipPipe implements PipeTransform {
 
-  transform(pitchers: Pitcher[], ip: number) {
+  transform(pitchers: Pitcher[], ip: string) {
     let tofilter = [...pitchers];
-    let filteredpitchers = tofilter.filter(pitcher => pitcher['ipn'] >= ip)
+    let ipn = parseInt(ip)
+    let filteredpitchers = tofilter.filter(pitcher => pitcher['ipn'] >= ipn)
     return filteredpitchers;
   }
 

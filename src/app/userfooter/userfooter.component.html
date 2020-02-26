@@ -1,5 +1,5 @@
 <footer [ngClass]="'bg'+ (this.favteam$ | async)">
     <div>All statistics presented or derived here are sourced from data Copyright
         {{((this.copyright$ | async) | copyright)[0]}} MLB Advanced Media, L.P. Use of any data presented on this page
-        is subject to<a href="{{((this.copyright$ | async) | copyright)[1]}}">these terms.</a></div>
+        is subject to<a href="{{((this.copyright$ | async) | copyright)[1]}}" target="_blank">these terms.</a></div>
 </footer>

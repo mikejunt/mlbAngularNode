@@ -1,30 +1,40 @@
-<p>pitching-display works!</p>
-
-<mat-table matSort matSortDisableClear="true" [dataSource]="pitchers | minip:50">
+<div>
+  <nav>
+    <mat-form-field>
+      <mat-label for="teamlist">Select Team</mat-label>
+      <mat-select [(ngModel)]="teamview">
+        <mat-option value="allteams">All MLB</mat-option>
+        <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
+          {{team["name_display_full"]}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="ipselect">Min IP:</mat-label>
+      <input matInput [(ngModel)]="ipselect">
+    </mat-form-field>
+  </nav>
+  <mat-table matSort matSortDisableClear="true" [dataSource]="pitchers | minip:ipselect | playerbyteam:teamview">
     <!-- Player Name Col -->
     <ng-container matColumnDef="player">
       <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
     </ng-container>
-  
-    <!-- HR COL -->
+    <!-- FIP COL -->
     <ng-container matColumnDef="fip">
       <mat-header-cell *matHeaderCellDef mat-sort-header> FIP </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
     </ng-container>
-  
-    <!-- OPS COL -->
+    <!-- K COL -->
     <ng-container matColumnDef="so">
       <mat-header-cell *matHeaderCellDef mat-sort-header> K </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["so"]}} </mat-cell>
     </ng-container>
-  
-    <!-- SLG Column -->
+    <!-- ERA Column -->
     <ng-container matColumnDef="era">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ERA </mat-header-cell>
       <mat-cell *matCellDef="let pitcher"> {{pitcher["era"]}} </mat-cell>
     </ng-container>
-  
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+</div>

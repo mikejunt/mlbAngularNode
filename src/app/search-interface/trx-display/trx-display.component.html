@@ -1,6 +1,13 @@
-<p>trx-display works!</p>
+<mat-form-field>
+  <mat-label for="teamlist">Select Team</mat-label>
+  <mat-select [(ngModel)]="teamview">
+    <mat-option value="allteams">All MLB</mat-option>
+    <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
+      {{team["name_display_full"]}}</mat-option>
+  </mat-select>
+</mat-form-field>
 
-<mat-table [dataSource]="(trx$ | async) | nodupetrx">
+<mat-table [dataSource]="trx | teamtrx:teamview | nodupetrx">
     <ng-container matColumnDef="trx">
       <mat-header-cell *matHeaderCellDef>Recent Transactions</mat-header-cell>
       <mat-cell *matCellDef="let trx">{{trx["effective_date"] | date}}   The {{trx["note"]}}</mat-cell>

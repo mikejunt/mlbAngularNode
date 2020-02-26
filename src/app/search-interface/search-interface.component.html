@@ -9,7 +9,7 @@
                 <mat-option value="alltrans">Search Leaguewide Transactions</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field *ngIf="searchmode === 'landing'">
             <mat-label for="teamlist">Select Team</mat-label>
             <mat-select [(ngModel)]="nextteam">
                 <mat-option *ngIf="searchmode != 'landing'" value="allteams">All MLB</mat-option>
@@ -78,19 +78,7 @@
                 <mat-option value="1980">1980</mat-option>
             </mat-select>
         </mat-form-field>
-        <!-- ONLY Hitting search -->
-        <mat-form-field>
-            <mat-label for="paselect">Min PA:</mat-label>
-            <input matInput [(ngModel)]="paselect">
-        </mat-form-field>
-        <!-- ONLY pitching search -->
-        <mat-form-field>
-            <mat-label for="ipselect">Min IP:</mat-label>
-            <input matInput [(ngModel)]="ipselect">
-        </mat-form-field>
+        <button mat-raised-button (click)="searchInit()">Search</button>
     </div>
-
-    <button class='btn btn-primary' (click)="searchInit()">CLICK ME</button>
-
     <router-outlet></router-outlet>
 </div>

@@ -6,9 +6,10 @@ import { Hitter } from '../interfaces/hitter.interface';
 })
 export class MinplatePipe implements PipeTransform {
 
-  transform(hitters: Hitter[], pa: number) {
+  transform(hitters: Hitter[], pa: string) {
+    let pan = parseInt(pa)
     let hitterish = [...hitters];
-    let filteredh = hitterish.filter(hitter => (parseInt(hitter['tpa'])) >= pa )
+    let filteredh = hitterish.filter(hitter => (parseInt(hitter['tpa'])) >= pan )
     return filteredh
   }
 

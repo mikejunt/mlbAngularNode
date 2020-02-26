@@ -78,7 +78,9 @@ export class SearchInterfaceComponent implements OnInit {
     }
     if (this.searchpick === "curhitting") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
-      this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
+      let viewteam 
+      this.store.select(Selectors.viewUserFav).subscribe(res => viewteam = res)
+      this.store.dispatch(Actions.setViewTeam({ displayteam: viewteam }))
       this.hitting.fetchSeasonHitting(params)
       this.router.navigate(['hitting'], { relativeTo: this.actr })
     }

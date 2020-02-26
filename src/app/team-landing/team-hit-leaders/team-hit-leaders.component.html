@@ -4,7 +4,7 @@
 <mat-tab-group  mat-stretch-tabs>
     <mat-tab label="OPS">
         <mat-table
-            [dataSource]="hitters | minplate:100 | playerbyteam:displayteam | leadersDesc:'ops'">
+            [dataSource]="hitters | minplate:'100' | playerbyteam:displayteam | leadersDesc:'ops'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
@@ -19,7 +19,7 @@
     </mat-tab>
     <mat-tab label="HR">
         <mat-table
-            [dataSource]="hitters | minplate:100 | playerbyteam:displayteam | leadersDesc:'hr'">
+            [dataSource]="hitters | minplate:'100' | playerbyteam:displayteam | leadersDesc:'hr'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
@@ -34,7 +34,7 @@
     </mat-tab>
     <mat-tab label="AVG">
         <mat-table
-            [dataSource]="hitters | minplate:100 | playerbyteam:displayteam | leadersDesc:'avg'">
+            [dataSource]="hitters | minplate:'100' | playerbyteam:displayteam | leadersDesc:'avg'">
             <ng-container matColumnDef="Name">
                 <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                 <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
