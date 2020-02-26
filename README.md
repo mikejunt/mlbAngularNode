@@ -1,45 +1,12 @@
-To Do List:
+This is my first major project in Angular, begun as a student at the Midland University Code Academy.  It utilizes Angular 9, ngrx/store, and design elements from Angular Material and Bootstrap.  It queries Major League Baseball statistics from the MLB Advanced Media API and displays them like a contemporary sports website, ranging from team and transaction information to player statistics.   This project originated as an API assignment outside of Angular which I began converting into Angular for practice.   
 
-Recent Transaction Display:
-* ~Configure API call and save to store~
-* ~configure basic query for trailing 7 days information on login~
-* ~Create sort-by-team pipe (starting OR finishing team is selected team~
-* ~Create transaction summary component for landing page (w/ secondary routing)~
+The next stretch goals for this project are:
 
-Create Footer
-* ~Pass Copyright info into store~
-* ~create footer & import copyright (may need display pipe)~
+* Convert the team color schemes to Angular Material Custom Themes & Configure the app to toggle theme appropriately based on team/player being viewed, or defaulting to the user's favorite team.   This is currently accomplished via simple css & ngClass and does not look very good or play well with Angular Material.
 
-Create "Leaders" display components
-* ~Angular Material Tabs, 3 stats per type~
-* ~Create custom "Select top 5" pipe~
-* ~Create secondary-named routing for both components~
+* When we learn some sort of back-end technology, move the API queries there and store responses in a database that allows for local filtration.   Current direct API-to-browser process is flawed due to the enormous size of query responses (JSON upwards of 1.8mb), and filtration must be done via Angular Pipes.   Using a backend technology would allow for filtered queries, resulting in less memory use, better performance, and significant aesthetic improvements such as the ability to integrate Material Table pagination or sort.   
 
-Configure Final Landing Page: Team Profile
-* ~Displays Roster40, Recent Transactions, Hitting & Pitching Leaders, Team information~
-* ~Is the landing page of child Routing~
-* ~Search component remains above header; selecting and activating navigates child routing away to appropriate search display component (pitcher, hitter, potentially expanded trx w/ datepicker)~
-* Utilize team information from Teamlist
+* Once this exists, new features could be considered such as player profile pages.   The API is not friendly to this currently (requiring statistics to be requested in either 'all players in a given season' or 'one single player for one specific season' format; this would result in excessive API queries and response time without some sort of back-end storage to hold old season information.
 
-
-Build out options menus for search:
-* ~Add minimum IP/PA~
-* ~Datepicker for Trx search~
-* ~Add alternative all-players query (not team specific), with optional positional selector (eg 1b)~
-* selects and pipes created for pos/PA/IP filter, but must decide a home
-* Angular Material expansion panels & menus
-
-Build out improved display for search results:
-* Pagination
-* Header sort
-
-Implement a Signup Screen
-* ~Move fake DB back inline so new user information can be pushed into array after signup~
-* ~accomplish form verification goals~
-
-~Re-implement AuthGuard~
-
-Stretch:
-
-* Angular Material Custom Theming: use 30 material Themes for team coloration, assign favteam theme to main widget & curteam theme to child routing; default back to favteam theme during non-team searching.
+The information and statistics presented within this application are either sourced directly or derived from other information received via the Major League Baseball API distributed by MLB Advanced Media and are subject to their copyright terms found at http://gdx.mlb.com/components/copyright.txt.   
 
