@@ -84,81 +84,78 @@ $mat-light-theme-background: (
 );
 
 
-// Compute font config
-
-
 // Theme Config
 
 body {
-  --primary-color: #df4601;
-  --primary-lighter-color: #f5c8b3;
-  --primary-darker-color: #d22f01;
+  --primary-color: #bd3039;
+  --primary-lighter-color: #ebc1c4;
+  --primary-darker-color: #a61e24;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 
 $mat-primary: (
-  main: #df4601,
-  lighter: #f5c8b3,
-  darker: #d22f01,
-  200: #df4601, // For slide toggle,
+  main: #bd3039,
+  lighter: #ebc1c4,
+  darker: #a61e24,
+  200: #bd3039, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
 );
-$team110theme-primary: mat-palette($mat-primary, main, lighter, darker);
+$team111theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #000000;
-  --accent-lighter-color: #b3b3b3;
-  --accent-darker-color: #000000;
+  --accent-color: #0c2340;
+  --accent-lighter-color: #b6bdc6;
+  --accent-darker-color: #06152a;
   --text-accent-color: #{$light-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$light-primary-text};
 }
 
 $mat-accent: (
-  main: #000000,
-  lighter: #b3b3b3,
-  darker: #000000,
-  200: #000000, // For slide toggle,
+  main: #0c2340,
+  lighter: #b6bdc6,
+  darker: #06152a,
+  200: #0c2340, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
 );
-$team110theme-accent: mat-palette($mat-accent, main, lighter, darker);
+$team111theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
 body {
-  --warn-color: #fbd872;
-  --warn-lighter-color: #fef3d5;
-  --warn-darker-color: #f9c855;
-  --text-warn-color: #{$dark-primary-text};
+  --warn-color: #7c7a7a;
+  --warn-lighter-color: #d8d7d7;
+  --warn-darker-color: #5f5d5d;
+  --text-warn-color: #{$light-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
-  --text-warn-darker-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
 }
 
 $mat-warn: (
-  main: #fbd872,
-  lighter: #fef3d5,
-  darker: #f9c855,
-  200: #fbd872, // For slide toggle,
+  main: #7c7a7a,
+  lighter: #d8d7d7,
+  darker: #5f5d5d,
+  200: #7c7a7a, // For slide toggle,
   contrast : (
-    main: $dark-primary-text,
+    main: $light-primary-text,
     lighter: $dark-primary-text,
-    darker: $dark-primary-text,
+    darker: $light-primary-text,
   )
 );
-$team110theme-warn: mat-palette($mat-warn, main, lighter, darker);;
+$team111theme-warn: mat-palette($mat-warn, main, lighter, darker);;
 
-$team110theme: mat-light-theme($team110theme-primary, $team110theme-accent, $team110theme-warn);
+$team111theme: mat-light-theme($team111theme-primary, $team111theme-accent, $team111theme-warn);
 
 // Theme Init
-@include angular-material-theme($team110theme);
+@include angular-material-theme($team111theme);
 
 // Specific component overrides, pieces that are not in line with the general theming
 

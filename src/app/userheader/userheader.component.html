@@ -1,7 +1,7 @@
 <div [ngClass]="'bg'+ (this.favteam$ | async)">
-    <mat-toolbar>
+    <mat-toolbar color="primary">
         <mat-toolbar-row>
-            <header class=""><span>Welcome, {{(username$ | async)}}</span><button mat-raised-button
+            <header class=""><span>Welcome, {{(username$ | async)}}</span><button mat-raised-button color="warn"
                     (click)="logout()">LOGOUT</button>
             </header>
         </mat-toolbar-row>
