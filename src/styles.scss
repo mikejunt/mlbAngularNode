@@ -7,6 +7,7 @@
 @import '../src/app/shared/chctheme.scss';
 @import '../src/app/shared/chwtheme.scss';
 @import '../src/app/shared/baltheme.scss';
+
 // @import '../src/app/shared/aritheme.scss';
 
 /**
@@ -14,7 +15,9 @@
 * https://materialtheme.arcsine.dev
 */
 
+
 @import '~@angular/material/theming';
+@import '../src/app/shared/leaders-widget-theme.scss';
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 
@@ -66,6 +69,33 @@ $mat-light-theme-foreground: (
   slider-off-active: $dark-disabled-text,
 );
 
+// Dark Theme text
+$light-text: #ffffff;
+$light-primary-text: $light-text;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);
+
+$mat-dark-theme-foreground: (
+  base:              $light-text,
+  divider:           $light-dividers,
+  dividers:          $light-dividers,
+  disabled:          $light-disabled-text,
+  disabled-button:   rgba($light-text, 0.3),
+  disabled-text:     $light-disabled-text,
+  elevation:         black,
+  hint-text:         $light-disabled-text,
+  secondary-text:    $light-accent-text,
+  accent-text:       $light-accent-text,
+  icon:              $light-text,
+  icons:             $light-text,
+  text:              $light-text,
+  slider-min:        $light-text,
+  slider-off:        rgba($light-text, 0.3),
+  slider-off-active: rgba($light-text, 0.3),
+);
+
 // Background config
 // Light bg
 $light-background:    #fafafa;
@@ -94,6 +124,32 @@ $mat-light-theme-background: (
   disabled-list-option:     $light-bg-darker-10,
 );
 
+// Dark bg
+$dark-background:     #2c2c2c;
+$dark-bg-lighter-5:   lighten($dark-background, 5%);
+$dark-bg-lighter-10:  lighten($dark-background, 10%);
+$dark-bg-lighter-20:  lighten($dark-background, 20%);
+$dark-bg-lighter-30:  lighten($dark-background, 30%);
+$light-bg-alpha-4:    rgba(#fafafa, 0.04);
+$light-bg-alpha-12:   rgba(#fafafa, 0.12);
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+  background:               $dark-background,
+  status-bar:               $dark-bg-lighter-20,
+  app-bar:                  $dark-bg-lighter-5,
+  hover:                    $light-bg-alpha-4,
+  card:                     $dark-bg-lighter-5,
+  dialog:                   $dark-bg-lighter-5,
+  disabled-button:          $light-bg-alpha-12,
+  raised-button:            $dark-bg-lighter-5,
+  focused-button:           $light-focused,
+  selected-button:          $dark-bg-lighter-20,
+  selected-disabled-button: $dark-bg-lighter-30,
+  disabled-button-toggle:   $dark-bg-lighter-10,
+  unselected-chip:          $dark-bg-lighter-20,
+  disabled-list-option:     $dark-bg-lighter-10,
+);
 
 // Compute font config
 @include mat-core($fontConfig);
@@ -168,16 +224,18 @@ $mlb-app-theme-warn: mat-palette($mat-warn, main, lighter, darker);;
 
 $mlb-app-theme: mat-light-theme($mlb-app-theme-primary, $mlb-app-theme-accent, $mlb-app-theme-warn);
 
-
 // Theme Init
 @include angular-material-theme($mlb-app-theme);
 
+
 .bg119 {
   @include angular-material-theme($team119theme);
+  @include leaders-widget-theme($team119theme);
 }
 
 .bg109 {
-  @include angular-material-theme($team109theme)
+  @include angular-material-theme($team109theme);
+  @include leaders-widget-theme($team109theme);
 }
 
 .bg145 {
@@ -199,7 +257,6 @@ $mlb-app-theme: mat-light-theme($mlb-app-theme-primary, $mlb-app-theme-accent, $
 .bg104 {
   @include angular-material-theme($team104theme);
 }
-
 
 // Specific component overrides, pieces that are not in line with the general theming
 
