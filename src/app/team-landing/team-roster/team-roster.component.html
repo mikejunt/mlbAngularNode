@@ -1,45 +1,45 @@
-<mat-toolbar color="primary">Current 40 Man Roster</mat-toolbar>
-<mat-progress-spinner *ngIf="roster.length == 0; else loaded" color="primary" mode="indeterminate">
-</mat-progress-spinner>
-<ng-template #loaded>
-<mat-tab-group  mat-stretch-tabs>
-    <mat-tab label="Pitchers">
-        <mat-table
-            [dataSource]="roster | sortRoster | rosterPosition:'pitcher'">
-            <ng-container matColumnDef="pos">
-                <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
-                <mat-cell *matCellDef="let roster"> {{roster["position_txt"]}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="number">
-                <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
-                <mat-cell *matCellDef="let roster"> {{roster["jersey_number"]}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
-                <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="rosterColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: rosterColumns;"></mat-row>
-        </mat-table>
-    </mat-tab>
-    <mat-tab label="Position Players">
-        <mat-table
-            [dataSource]="roster | sortRoster | rosterPosition:'position'">
-            <ng-container matColumnDef="pos">
-                <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
-                <mat-cell *matCellDef="let roster"> {{roster["position_txt"]}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="number">
-                <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
-                <mat-cell *matCellDef="let roster"> {{roster["jersey_number"]}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
-                <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="rosterColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: rosterColumns;"></mat-row>
-        </mat-table>
-    </mat-tab>
-</mat-tab-group>
-</ng-template>
+<div class="mat-app-background leaders-widget">
+    <mat-toolbar color="primary">Current 40 Man Roster</mat-toolbar>
+    <mat-progress-spinner *ngIf="roster.length == 0; else loaded" color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+    <ng-template #loaded>
+        <mat-tab-group color="primary" backgroundColor="accent" mat-stretch-tabs>
+            <mat-tab label="Pitchers">
+                <mat-table [dataSource]="roster | sortRoster | rosterPosition:'pitcher'">
+                    <ng-container matColumnDef="pos">
+                        <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["position_txt"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="number">
+                        <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["jersey_number"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="rosterColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: rosterColumns;"></mat-row>
+                </mat-table>
+            </mat-tab>
+            <mat-tab label="Position Players">
+                <mat-table [dataSource]="roster | sortRoster | rosterPosition:'position'">
+                    <ng-container matColumnDef="pos">
+                        <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["position_txt"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="number">
+                        <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["jersey_number"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="rosterColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: rosterColumns;"></mat-row>
+                </mat-table>
+            </mat-tab>
+        </mat-tab-group>
+    </ng-template>
+</div>
