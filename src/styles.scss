@@ -1,5 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+// Material Theming
+@import '~@angular/material/theming';
+// Team Theme Files
 @import '../src/app/shared/ladtheme.scss';
 @import '../src/app/shared/aritheme.scss';
 @import '../src/app/shared/bostheme.scss';
@@ -10,16 +12,8 @@
 
 // @import '../src/app/shared/aritheme.scss';
 
-/**
-* Generated theme by Material Theme Generator
-* https://materialtheme.arcsine.dev
-*/
-
-
-@import '~@angular/material/theming';
+// Custom Component Configurations
 @import '../src/app/shared/leaders-widget-theme.scss';
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
@@ -153,80 +147,6 @@ $mat-dark-theme-background: (
 
 // Compute font config
 @include mat-core($fontConfig);
-
-// Theme Config
-
-body {
-  --primary-color: #002f6c;
-  --primary-lighter-color: #b3c1d3;
-  --primary-darker-color: #001d4f;
-  --text-primary-color: #{$light-primary-text};
-  --text-primary-lighter-color: #{$dark-primary-text};
-  --text-primary-darker-color: #{$light-primary-text};
-}
-
-$mat-primary: (
-  main: #002f6c,
-  lighter: #b3c1d3,
-  darker: #001d4f,
-  200: #002f6c, // For slide toggle,
-  contrast : (
-    main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  )
-);
-$mlb-app-theme-primary: mat-palette($mat-primary, main, lighter, darker);
-
-body {
-  --accent-color: #a5acaf;
-  --accent-lighter-color: #e4e6e7;
-  --accent-darker-color: #8a9296;
-  --text-accent-color: #{$dark-primary-text};
-  --text-accent-lighter-color: #{$dark-primary-text};
-  --text-accent-darker-color: #{$dark-primary-text};
-}
-
-$mat-accent: (
-  main: #a5acaf,
-  lighter: #e4e6e7,
-  darker: #8a9296,
-  200: #a5acaf, // For slide toggle,
-  contrast : (
-    main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  )
-);
-$mlb-app-theme-accent: mat-palette($mat-accent, main, lighter, darker);
-
-body {
-  --warn-color: #ef3e42;
-  --warn-lighter-color: #fac5c6;
-  --warn-darker-color: #e8282b;
-  --text-warn-color: #{$light-primary-text};
-  --text-warn-lighter-color: #{$dark-primary-text};
-  --text-warn-darker-color: #{$light-primary-text};
-}
-
-$mat-warn: (
-  main: #ef3e42,
-  lighter: #fac5c6,
-  darker: #e8282b,
-  200: #ef3e42, // For slide toggle,
-  contrast : (
-    main: $light-primary-text,
-    lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  )
-);
-$mlb-app-theme-warn: mat-palette($mat-warn, main, lighter, darker);;
-
-$mlb-app-theme: mat-light-theme($mlb-app-theme-primary, $mlb-app-theme-accent, $mlb-app-theme-warn);
-
-// Theme Init
-@include angular-material-theme($mlb-app-theme);
-
 
 .bg119 {
   @include angular-material-theme($team119theme);

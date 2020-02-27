@@ -3,6 +3,7 @@ import { AppState } from './store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as Selectors from './store/selectors'
+import { Team } from './interfaces/team.interface';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ import * as Selectors from './store/selectors'
 export class AppComponent {
   title = 'mlbAngular';
   username$: Observable<string>
+  favteam$: Observable<string>
   constructor (private store: Store<AppState>) {
     this.username$ = this.store.select(Selectors.viewUserName)
+    this.favteam$ = this.store.select(Selectors.viewUserFav)
   }
 }
