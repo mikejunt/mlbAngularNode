@@ -64,6 +64,6 @@ $mat-warn: (
     darker: $dark-primary-text,
   )
 );
-$team144theme-warn: mat-palette($mat-warn, main, lighter, darker);;
+$team144theme-warn: mat-palette($mat-warn, main, lighter, darker);
 
 $team144theme: mat-light-theme($team144theme-primary, $team144theme-accent, $team144theme-warn);
