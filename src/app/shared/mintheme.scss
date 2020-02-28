@@ -1,0 +1,69 @@
+@import '~@angular/material/theming';
+
+body {
+  --primary-color: #002b5c;
+  --primary-lighter-color: #b3bfce;
+  --primary-darker-color: #001a41;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+
+$mat-primary: (
+  main: #002b5c,
+  lighter: #b3bfce,
+  darker: #001a41,
+  200: #002b5c, // For slide toggle,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$team142theme-primary: mat-palette($mat-primary, main, lighter, darker);
+
+body {
+  --accent-color: #d31145;
+  --accent-lighter-color: #f2b8c7;
+  --accent-darker-color: #c20a2e;
+  --text-accent-color: #{$light-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$light-primary-text};
+}
+
+$mat-accent: (
+  main: #d31145,
+  lighter: #f2b8c7,
+  darker: #c20a2e,
+  200: #d31145, // For slide toggle,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$team142theme-accent: mat-palette($mat-accent, main, lighter, darker);
+
+body {
+  --warn-color: #b9975b;
+  --warn-lighter-color: #eae0ce;
+  --warn-darker-color: #a27a40;
+  --text-warn-color: #{$dark-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}
+
+$mat-warn: (
+  main: #b9975b,
+  lighter: #eae0ce,
+  darker: #a27a40,
+  200: #b9975b, // For slide toggle,
+  contrast : (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$team142theme-warn: mat-palette($mat-warn, main, lighter, darker);;
+
+$team142theme: mat-light-theme($team142theme-primary, $team142theme-accent, $team142theme-warn);

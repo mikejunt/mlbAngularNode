@@ -147,6 +147,8 @@ $mat-dark-theme-background: (
 
 // Compute font config
 @include mat-core($fontConfig);
+// need solution to this
+@include angular-material-theme($team119theme);
 
 .bg119 {
   @include angular-material-theme($team119theme);
