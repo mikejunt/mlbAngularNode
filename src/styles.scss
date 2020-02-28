@@ -2,39 +2,10 @@
 // Material Theming
 @import '~@angular/material/theming';
 // Team Theme Files
-@import '../src/app/shared/ladtheme.scss';
-@import '../src/app/shared/aritheme.scss';
-@import '../src/app/shared/bostheme.scss';
-@import '../src/app/shared/atltheme.scss';
-@import '../src/app/shared/chctheme.scss';
-@import '../src/app/shared/chwtheme.scss';
-@import '../src/app/shared/baltheme.scss';
-@import '../src/app/shared/cintheme.scss';
-@import '../src/app/shared/cletheme.scss';
-@import '../src/app/shared/coltheme.scss';
-@import '../src/app/shared/dettheme.scss';
-@import '../src/app/shared/houtheme.scss';
-@import '../src/app/shared/kcrtheme.scss';
-@import '../src/app/shared/laatheme.scss';
-@import '../src/app/shared/miatheme.scss';
-@import '../src/app/shared/miltheme.scss';
-@import '../src/app/shared/mintheme.scss';
-@import '../src/app/shared/nymtheme.scss';
-@import '../src/app/shared/nyytheme.scss';
-@import '../src/app/shared/oaktheme.scss';
-@import '../src/app/shared/phitheme.scss';
-@import '../src/app/shared/pittheme.scss';
-@import '../src/app/shared/sdptheme.scss';
-@import '../src/app/shared/seatheme.scss';
-@import '../src/app/shared/sfgtheme.scss';
-@import '../src/app/shared/stltheme.scss';
-@import '../src/app/shared/tbrtheme.scss';
-@import '../src/app/shared/textheme.scss';
-@import '../src/app/shared/tortheme.scss';
-@import '../src/app/shared/wastheme.scss';
+@import '../src/app/shared/team-theme-scss/index.scss';
 
 // Custom Component Configurations
-@import '../src/app/shared/leaders-widget-theme.scss';
+@import '../src/app/shared/custom-component-scss/leaders-widget-theme.scss';
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
