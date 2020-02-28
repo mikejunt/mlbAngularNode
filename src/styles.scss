@@ -9,8 +9,29 @@
 @import '../src/app/shared/chctheme.scss';
 @import '../src/app/shared/chwtheme.scss';
 @import '../src/app/shared/baltheme.scss';
-
-// @import '../src/app/shared/aritheme.scss';
+@import '../src/app/shared/cintheme.scss';
+@import '../src/app/shared/cletheme.scss';
+@import '../src/app/shared/coltheme.scss';
+@import '../src/app/shared/dettheme.scss';
+@import '../src/app/shared/houtheme.scss';
+@import '../src/app/shared/kcrtheme.scss';
+@import '../src/app/shared/laatheme.scss';
+@import '../src/app/shared/miatheme.scss';
+@import '../src/app/shared/miltheme.scss';
+@import '../src/app/shared/mintheme.scss';
+@import '../src/app/shared/nymtheme.scss';
+@import '../src/app/shared/nyytheme.scss';
+@import '../src/app/shared/oaktheme.scss';
+@import '../src/app/shared/phitheme.scss';
+@import '../src/app/shared/pittheme.scss';
+@import '../src/app/shared/sdptheme.scss';
+@import '../src/app/shared/seatheme.scss';
+@import '../src/app/shared/sfgtheme.scss';
+@import '../src/app/shared/stltheme.scss';
+@import '../src/app/shared/tbrtheme.scss';
+@import '../src/app/shared/textheme.scss';
+@import '../src/app/shared/tortheme.scss';
+@import '../src/app/shared/wastheme.scss';
 
 // Custom Component Configurations
 @import '../src/app/shared/leaders-widget-theme.scss';
@@ -152,12 +173,12 @@ $mat-dark-theme-background: (
 
 .bg119 {
   @include angular-material-theme($team119theme);
-  @include leaders-widget-theme($team119theme);
+  // @include leaders-widget-theme($team119theme);
 }
 
 .bg109 {
   @include angular-material-theme($team109theme);
-  @include leaders-widget-theme($team109theme);
+  // @include leaders-widget-theme($team109theme);
 }
 
 .bg145 {
@@ -176,8 +197,101 @@ $mat-dark-theme-background: (
   @include angular-material-theme($team112theme)
 }
 
-.bg104 {
-  @include angular-material-theme($team104theme);
+.bg113 {
+  @include angular-material-theme($team113theme);
+  // @include leaders-widget-theme($team113theme);
+}
+
+.bg114 {
+  @include angular-material-theme($team114theme)
+}
+
+.bg116 {
+  @include angular-material-theme($team116theme)
+}
+
+.bg117 {
+  @include angular-material-theme($team117theme)
+}
+
+.bg118 {
+  @include angular-material-theme($team118theme)
+}
+
+.bg108 {
+  @include angular-material-theme($team108theme)
+}
+
+.bg142 {
+  @include angular-material-theme($team142theme)
+}
+
+.bg147 {
+  @include angular-material-theme($team147theme)
+}
+
+.bg133 {
+  @include angular-material-theme($team133theme)
+}
+
+.bg136 {
+  @include angular-material-theme($team136theme)
+}
+
+.bg139 {
+  @include angular-material-theme($team139theme)
+}
+
+.bg140 {
+  @include angular-material-theme($team140theme)
+}
+
+.bg141 {
+  @include angular-material-theme($team141theme)
+}
+
+.bg144 {
+  @include angular-material-theme($team144theme)
+}
+
+.bg115 {
+  @include angular-material-theme($team115theme)
+}
+
+.bg146 {
+  @include angular-material-theme($team146theme)
+}
+
+.bg158 {
+  @include angular-material-theme($team158theme)
+}
+
+.bg121 {
+  @include angular-material-theme($team121theme)
+}
+
+.bg143 {
+  @include angular-material-theme($team143theme)
+}
+
+.bg134 {
+  @include angular-material-theme($team134theme)
+}
+
+.bg135 {
+  @include angular-material-theme($team135theme)
+}
+
+.bg137 {
+  @include angular-material-theme($team137theme)
+}
+
+.bg138 {
+  @include angular-material-theme($team138theme)
+}
+
+.bg120 {
+  @include angular-material-theme($team120theme)
 }
 
 // Specific component overrides, pieces that are not in line with the general theming

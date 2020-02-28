@@ -1,48 +1,48 @@
 @import '~@angular/material/theming';
 
 body {
-  --primary-color: #c6011f;
-  --primary-lighter-color: #eeb3bc;
-  --primary-darker-color: #b10112;
+  --primary-color: #ab0003;
+  --primary-lighter-color: #e6b3b3;
+  --primary-darker-color: #910002;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 
 $mat-primary: (
-  main: #c6011f,
-  lighter: #eeb3bc,
-  darker: #b10112,
-  200: #c6011f, // For slide toggle,
+  main: #ab0003,
+  lighter: #e6b3b3,
+  darker: #910002,
+  200: #ab0003, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
 );
-$team113theme-primary: mat-palette($mat-primary, main, lighter, darker);
+$team120theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #000000;
-  --accent-lighter-color: #b3b3b3;
-  --accent-darker-color: #000000;
+  --accent-color: #14225a;
+  --accent-lighter-color: #b9bdce;
+  --accent-darker-color: #0b143f;
   --text-accent-color: #{$light-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$light-primary-text};
 }
 
 $mat-accent: (
-  main: #000000,
-  lighter: #b3b3b3,
-  darker: #000000,
-  200: #000000, // For slide toggle,
+  main: #14225a,
+  lighter: #b9bdce,
+  darker: #0b143f,
+  200: #14225a, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
 );
-$team113theme-accent: mat-palette($mat-accent, main, lighter, darker);
+$team120theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
 body {
   --warn-color: #ff0000;
@@ -64,6 +64,6 @@ $mat-warn: (
     darker: $light-primary-text,
   )
 );
-$team113theme-warn: mat-palette($mat-warn, main, lighter, darker);
+$team120theme-warn: mat-palette($mat-warn, main, lighter, darker);;
 
-$team113theme: mat-light-theme($team113theme-primary, $team113theme-accent, $team113theme-warn);
+$team120theme: mat-light-theme($team120theme-primary, $team120theme-accent, $team120theme-warn);
