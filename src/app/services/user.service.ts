@@ -14,15 +14,19 @@ import * as Selectors from '../store/selectors'
 })
 export class UserService {
 
-  userlist$: Observable<User[]>
-  userlist: User[]
-  nextUserId: number = 4
-  currentUser: User
+  userlist$: Observable<User[]>;
+  userlist: User[];
+  nextUserId: number = 4;
+  currentUser: User;
+  favteam$: Observable<string>;
+  favteam: string;
 
 
   constructor(private http: HttpClient, private router: Router, private store: Store<AppState>) {
     this.userlist$ = this.store.select(Selectors.viewUserList);
-    this.userlist$.subscribe(res => this.userlist = res)
+    this.userlist$.subscribe(res => this.userlist = res);
+    this.favteam$ = this.store.select(Selectors.viewUserFav);
+    this.favteam$.subscribe(res => {this.changeFavTheme(res);this.favteam = res})
   }
 
   authenticate(username: string, password: string) {
@@ -46,7 +50,13 @@ export class UserService {
 
   logout() {
     this.store.dispatch(Actions.logout());
-    this.router.navigate(['login'])
+    this.router.navigate(['/login'])
+  }
+
+  changeFavTheme(newfav: string) {
+    let body = document.getElementById("body")
+    body.classList.remove(`bg${this.favteam}`)
+    body.classList.add(`bg${newfav}`)
   }
 
 }
