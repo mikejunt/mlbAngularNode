@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store';
@@ -13,14 +13,11 @@ import * as Selectors from '../store/selectors'
   providedIn: 'root'
 })
 export class UserService {
-
   userlist$: Observable<User[]>;
   userlist: User[];
   nextUserId: number = 4;
-  currentUser: User;
   favteam$: Observable<string>;
   favteam: string;
-
 
   constructor(private http: HttpClient, private router: Router, private store: Store<AppState>) {
     this.userlist$ = this.store.select(Selectors.viewUserList);
@@ -45,7 +42,6 @@ export class UserService {
     let usernamecheck = this.userlist.filter(obj => obj.username === newuser.username)
     if (usernamecheck.length === 1) return false
     else {this.store.dispatch(Actions.createNewUser({newuser}));return true}
-
   }
 
   logout() {

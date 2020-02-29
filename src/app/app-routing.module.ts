@@ -6,16 +6,17 @@ import { HittingDisplayComponent } from './search-interface/hitting-display/hitt
 import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component';
 import { TeamRosterComponent } from './team-landing/team-roster/team-roster.component';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
-import { LoginGuard } from './guards/login.guard';
+import { UserGuard } from './guards/User.guard';
 import { TeamLandingComponent } from './team-landing/team-landing.component';
 import { SignupComponent } from './signup/signup.component';
 import { SignupGuard } from './guards/signup.guard';
+import { UserchildGuard } from './guards/userchild.guard';
 
 
 
 const routes: Routes = [
   {
-    path: 'search', component: SearchInterfaceComponent, canActivate: [LoginGuard], children: [
+    path: 'search', component: SearchInterfaceComponent, canActivate: [UserGuard], canActivateChild: [UserchildGuard], children: [
       { path: 'hitting', component: HittingDisplayComponent },
       { path: 'pitching', component: PitchingDisplayComponent },
       { path: 'landing', component: TeamLandingComponent },

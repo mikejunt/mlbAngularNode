@@ -30,11 +30,10 @@ export class HittingService {
       .subscribe(response => this.store.dispatch(Actions.saveHitters({ hitting: response })))
   }
 
-
   collect(players, stat: string): number {
     return players.reduce((acc: number, player: Object) => acc + parseFloat(player[stat]), 0)
   }
 
   logError(err) { console.log(err); return err }
-
+  
 }

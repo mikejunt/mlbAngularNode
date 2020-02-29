@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, tap, debounceTime, retry, catchError, distinctUntilChanged } from 'rxjs/operators'
+import { map, tap, retry, catchError } from 'rxjs/operators'
 import { Store } from '@ngrx/store';
 import * as Actions from '../store/actions/'
 import { AppState } from '../store';
@@ -10,10 +9,10 @@ import { AppState } from '../store';
 @Injectable({
   providedIn: 'root'
 })
+
 export class StaticqueryService {
   private teamsUrl = `https://lookup-service-prod.mlb.com/json/named.team_all_season.bam?`;
   private trxUrl = 'http://lookup-service-prod.mlb.com/json/named.transaction_all.bam?';
-
   copynotice: string = ""
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }

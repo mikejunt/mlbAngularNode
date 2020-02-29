@@ -8,7 +8,7 @@ import * as Selectors from '../store/selectors'
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class UserGuard implements CanActivate {
   username$: Observable<string>
   username: string
   constructor (private store: Store<AppState>, private router: Router) {

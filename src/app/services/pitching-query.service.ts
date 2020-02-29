@@ -49,7 +49,6 @@ export class PitchingService {
       .subscribe(response => { this.store.dispatch(Actions.savePitchers({ pitching: response })) })
   }
 
-
   logError(err) { console.log(err); return err }
 
 }
