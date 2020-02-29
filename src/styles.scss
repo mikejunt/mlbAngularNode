@@ -1,12 +1,9 @@
-@import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 // Material Theming
 @import '~@angular/material/theming';
 // Team Theme Files
 @import '../src/app/shared/team-theme-scss/index.scss';
-
 // Custom Component Configurations
 @import '../src/app/shared/custom-component-scss/leaders-widget-theme.scss';
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
      
@@ -141,6 +138,10 @@ $mat-dark-theme-background: (
 @include mat-core($fontConfig);
 // need solution to this
 @include angular-material-theme($team119theme);
+
+body.mat-app-background {
+  margin: 0;
+}
 
 .bg119 {
   @include angular-material-theme($team119theme);

@@ -10,13 +10,12 @@ import { AppState } from '../store';
   styleUrls: ['./userfooter.component.scss']
 })
 export class UserfooterComponent implements OnInit {
-
-  favteam$: Observable<string>;
   copyright$: Observable<string | string[]>;
+  copyright: string | string[]
   
   constructor(private store: Store<AppState>) {
-      this.favteam$ = this.store.pipe(select(Selectors.viewUserFav));
-      this.copyright$ = this.store.pipe(select(Selectors.viewCopyNotice))
+      this.copyright$ = this.store.pipe(select(Selectors.viewCopyNotice));
+      this.copyright$.subscribe(res => this.copyright = res);
    }
 
   ngOnInit(): void {

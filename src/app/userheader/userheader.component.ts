@@ -14,14 +14,10 @@ import * as Selectors from  '../store/selectors';
   styleUrls: ['./userheader.component.scss']
 })
 export class UserheaderComponent implements OnInit {
-  teamlist$: Observable<Team[]>
-  favteam$: Observable<string>;
   username$: Observable<string>;
   
   constructor(private user: UserService, private staticquery: StaticqueryService, 
     private store: Store<AppState>) {
-      this.teamlist$ = this.store.pipe(select(Selectors.viewTeams));
-      this.favteam$ = this.store.pipe(select(Selectors.viewUserFav));
       this.username$ = this.store.pipe(select(Selectors.viewUserName))
    }
 

@@ -20,6 +20,17 @@
     flex-grow: 1;
 }
 
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-100 {
+    flex-basis: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
 @media (min-width: 600px) {
     #side {
         min-width: 480px

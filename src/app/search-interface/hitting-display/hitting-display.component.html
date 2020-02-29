@@ -1,9 +1,17 @@
 <nav>
-  <button (click)="setpos($event)" id="all">ALL</button><button (click)="setpos($event)" id="C">C</button><button
-    (click)="setpos($event)" id="1B">1B</button><button (click)="setpos($event)" id="2B">2B</button><button
-    (click)="setpos($event)" id="SS">SS</button><button (click)="setpos($event)" id="3B">3B</button><button
-    (click)="setpos($event)" id="LF">LF</button><button (click)="setpos($event)" id="CF">CF</button><button
-    (click)="setpos($event)" id="RF">RF</button><button (click)="setpos($event)" id="ALLOF">OF</button>
+  <mat-button-toggle-group [(ngModel)]="filterpos">
+  <mat-button-toggle value="all">ALL</mat-button-toggle>
+  <mat-button-toggle value="C">C</mat-button-toggle>
+  <mat-button-toggle value="1B">1B</mat-button-toggle>
+  <mat-button-toggle value="2B">2B</mat-button-toggle>
+  <mat-button-toggle value="SS">SS</mat-button-toggle>
+  <mat-button-toggle value="3B">3B</mat-button-toggle>
+  <mat-button-toggle value="LF">LF</mat-button-toggle>
+  <mat-button-toggle value="CF">CF</mat-button-toggle>
+  <mat-button-toggle value="RF">RF</mat-button-toggle>
+  <mat-button-toggle value="ALLOF">OF</mat-button-toggle>
+</mat-button-toggle-group>
+
   <mat-form-field>
     <mat-label for="paselect">Min PA:</mat-label>
     <input matInput [(ngModel)]="paselect">
@@ -11,16 +19,16 @@
   <mat-form-field>
     <mat-label for="teamlist">Select Team</mat-label>
     <mat-select [(ngModel)]="teamview">
-        <mat-option value="allteams">All MLB</mat-option>
-        <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
-            {{team["name_display_full"]}}</mat-option>
+      <mat-option value="allteams">All MLB</mat-option>
+      <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
+        {{team["name_display_full"]}}</mat-option>
     </mat-select>
-</mat-form-field>
+  </mat-form-field>
 </nav>
 
 <mat-table matSort [dataSource]="hitters | minplate:paselect | playerbypos:filterpos | playerbyteam:teamview">
   <!-- Player Name Col -->
-  <ng-container matColumnDef="Name">
+  <ng-container matColumnDef="Name" sticky>
     <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
     <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
   </ng-container>
@@ -43,6 +51,6 @@
     <mat-cell *matCellDef="let hitter"> {{hitter["slg"]}} </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
