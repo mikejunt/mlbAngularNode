@@ -4,6 +4,7 @@
 @import '../src/app/shared/team-theme-scss/index.scss';
 // Custom Component Configurations
 @import '../src/app/shared/custom-component-scss/leaders-widget-theme.scss';
+@import '../src/app/shared/custom-component-scss//footer-config-theme.scss';
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
      
@@ -144,6 +145,7 @@ body.mat-app-background {
 .bg119 {
   @include angular-material-theme($team119theme);
   // @include leaders-widget-theme($team119theme);
+  @include footer-config-theme($team119theme);
 }
 
 .bg109 {
