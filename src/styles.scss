@@ -151,119 +151,148 @@ body.mat-app-background {
 .bg109 {
   @include angular-material-theme($team109theme);
   // @include leaders-widget-theme($team109theme);
+  @include footer-config-theme($team109theme);
 }
 
 .bg145 {
   @include angular-material-theme($team145theme);
+  @include footer-config-theme($team145theme);
 }
   
 .bg111 {
   @include angular-material-theme($team111theme);
+  @include footer-config-theme($team111theme);
 }
 
 .bg110 {
   @include angular-material-theme($team110theme);
+  @include footer-config-theme($team110theme);
 }
 
 .bg112 {
-  @include angular-material-theme($team112theme)
+  @include angular-material-theme($team112theme);
+  @include footer-config-theme($team112theme);
 }
 
 .bg113 {
   @include angular-material-theme($team113theme);
+  @include footer-config-theme($team113theme);
   // @include leaders-widget-theme($team113theme);
 }
 
 .bg114 {
-  @include angular-material-theme($team114theme)
+  @include angular-material-theme($team114theme);
+  @include footer-config-theme($team114theme);
 }
 
 .bg116 {
-  @include angular-material-theme($team116theme)
+  @include angular-material-theme($team116theme);
+  @include footer-config-theme($team116theme);
 }
 
 .bg117 {
-  @include angular-material-theme($team117theme)
+  @include angular-material-theme($team117theme);
+  @include footer-config-theme($team117theme);
 }
 
 .bg118 {
-  @include angular-material-theme($team118theme)
+  @include angular-material-theme($team118theme);
+  @include footer-config-theme($team118theme);
 }
 
 .bg108 {
-  @include angular-material-theme($team108theme)
+  @include angular-material-theme($team108theme);
+  @include footer-config-theme($team108theme);
 }
 
 .bg142 {
-  @include angular-material-theme($team142theme)
+  @include angular-material-theme($team142theme);
+  @include footer-config-theme($team142theme);
 }
 
 .bg147 {
-  @include angular-material-theme($team147theme)
+  @include angular-material-theme($team147theme);
+  @include footer-config-theme($team147theme);
 }
 
 .bg133 {
-  @include angular-material-theme($team133theme)
+  @include angular-material-theme($team133theme);
+  @include footer-config-theme($team133theme);
 }
 
 .bg136 {
-  @include angular-material-theme($team136theme)
+  @include angular-material-theme($team136theme);
+  @include footer-config-theme($team136theme);
 }
 
 .bg139 {
-  @include angular-material-theme($team139theme)
+  @include angular-material-theme($team139theme);
+  @include footer-config-theme($team139theme);
 }
 
 .bg140 {
-  @include angular-material-theme($team140theme)
+  @include angular-material-theme($team140theme);
+  @include footer-config-theme($team140theme);
 }
 
 .bg141 {
-  @include angular-material-theme($team141theme)
+  @include angular-material-theme($team141theme);
+  @include footer-config-theme($team141theme);
 }
 
 .bg144 {
-  @include angular-material-theme($team144theme)
+  @include angular-material-theme($team144theme);
+  @include footer-config-theme($team144theme);
 }
 
 .bg115 {
-  @include angular-material-theme($team115theme)
+  @include angular-material-theme($team115theme);
+  @include footer-config-theme($team115theme);
 }
 
 .bg146 {
-  @include angular-material-theme($team146theme)
+  @include angular-material-theme($team146theme);
+  @include footer-config-theme($team146theme);
 }
 
 .bg158 {
-  @include angular-material-theme($team158theme)
+  @include angular-material-theme($team158theme);
+  @include footer-config-theme($team158theme);
 }
 
 .bg121 {
-  @include angular-material-theme($team121theme)
+  @include angular-material-theme($team121theme);
+  @include footer-config-theme($team121theme);
 }
 
 .bg143 {
-  @include angular-material-theme($team143theme)
+  @include angular-material-theme($team143theme);
+  @include footer-config-theme($team134theme);
 }
 
 .bg134 {
-  @include angular-material-theme($team134theme)
+  @include angular-material-theme($team134theme);
+  @include footer-config-theme($team134theme);
 }
 
 .bg135 {
-  @include angular-material-theme($team135theme)
+  @include angular-material-theme($team135theme);
+  @include footer-config-theme($team135theme);
 }
 
 .bg137 {
-  @include angular-material-theme($team137theme)
+  @include angular-material-theme($team137theme);
+  @include footer-config-theme($team137theme);
 }
 
 .bg138 {
-  @include angular-material-theme($team138theme)
+  @include angular-material-theme($team138theme);
+  @include footer-config-theme($team138theme);
 }
 
 .bg120 {
-  @include angular-material-theme($team120theme)
+  @include angular-material-theme($team120theme);
+  @include footer-config-theme($team120theme);
 }
 
 // Specific component overrides, pieces that are not in line with the general theming

@@ -10,7 +10,7 @@
 <mat-table [dataSource]="trx | teamtrx:teamview | nodupetrx">
     <ng-container matColumnDef="trx">
       <mat-header-cell *matHeaderCellDef>Recent Transactions</mat-header-cell>
-      <mat-cell *matCellDef="let trx">{{trx["effective_date"] | date}}   The {{trx["note"]}}</mat-cell>
+      <mat-cell *matCellDef="let trx">{{trx["effective_date"] | date}} - {{trx["note"]}}</mat-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

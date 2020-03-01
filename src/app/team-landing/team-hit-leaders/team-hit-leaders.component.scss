@@ -1,5 +1,4 @@
-@media(max-width:2000px){
-    .mat-tab-label {
-        min-width: 72px !important;
-    }
-}
+.mat-header-row>.mat-header-cell,.mat-row>.mat-cell {
+    justify-content: center;
+  }
+  

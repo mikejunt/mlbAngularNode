@@ -1,0 +1,12 @@
+// Not a real file, just a template laying out pulling all relevant palette information
+// from a theme for styling compponent
+
+@import '~@angular/material/theming';
+
+@mixin component-name-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+}

@@ -2,15 +2,12 @@
 
 @mixin footer-config-theme($theme) {
     $primary: map-get($theme, primary);
-    $accent: map-get($theme, accent);
-    $warn: map-get($theme, warn);
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-    $is-dark-theme: map-get($theme, is-dark);
-
     
     .footer-container {
         background-color: mat-color($primary);
-        color: mat-color($primary, default-contrast) 
+        color: mat-color($primary, default-contrast); 
+    }
+    a.footer-link:link,a.footer-link:visited {
+        color: mat-color($primary, default-contrast);
     }
 }
