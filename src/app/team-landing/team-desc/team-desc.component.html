@@ -1,8 +1,9 @@
-<div class="mat-app-background leaders-widget desc-container">
+<div class="mat-app-background leaders-widget">
     <mat-toolbar color="primary">
-        <h3>{{displayteam['name_display_full']}}</h3>
+        {{displayteam['name_display_full']}}
     </mat-toolbar>
+    <div class="desc-container">
     <p>{{displayteam['venue_name']}}, {{displayteam['address_line1']}}, {{displayteam['address_city']}}, {{displayteam['state']}}.</p>
     <p>{{displayteam['division_full']}} - Active since {{displayteam['first_year_of_play']}}</p>
     <p>Team Website: <a href="http://{{displayteam['base_url']}}" target="_blank">{{displayteam['base_url']}}</a></p>
-</div>
+</div></div>

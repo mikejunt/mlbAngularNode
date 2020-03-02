@@ -1,7 +1,7 @@
 <div>
     <mat-toolbar color="primary">
         <mat-toolbar-row>
-            <header class=""><span>Welcome, {{(username$ | async)}}</span><button mat-raised-button color="warn"
+            <header class="header-container"><span class="header-welcome">Welcome, {{(username$ | async)}}</span><button class="header-button" mat-raised-button color="warn"
                     (click)="logout()">LOGOUT</button>
             </header>
         </mat-toolbar-row>
