@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const user = require ('./server/routes/user.routes')
 const logger = require ('./server/middleware/logger')
+const bodyParser = require('body-parser')
 
 app.use(logger)
 app.use(bodyParser.json())
