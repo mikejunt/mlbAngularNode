@@ -1,0 +1,34 @@
+.display-content-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+
+// this page is not fully mobile responsive.  In time it will be converted to cdk-table,
+// feature many more columns and none of the table elements will flex
+// display of this quantity of data in fully responsive fashion is unrealistic
+
+.display-positional-toggles {
+    flex-basis: 420px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.display-filter-container {
+    display: flex;
+    flex-basis: 420px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: space-between;
+}
+
+.display-pt-filter,.display-team-filter {
+    flex: 0 0 210px;
+}
+
+.display-padding {
+    padding-left: 16px;
+    padding-right: 16px;
+}

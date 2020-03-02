@@ -1,0 +1,39 @@
+.search-control-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-right: 16px;
+}
+
+.search-field-container {
+    flex: 0 0 220px;
+}
+
+.search-button-holder {
+    flex: 0 0 111px;
+}
+
+.search-field-container,.search-button-holder {
+    padding-left: 16px;
+    height: 57px;
+}
+
+.button-spacing-container {
+    align-items: center;
+    display: flex;
+    max-width: 220px;
+    height: 57px;
+    justify-content: center;
+}
+
+.search-button {
+    max-width: 76px;
+    max-height: 36px;
+}
+
+
+@media (max-width: 775px) {
+    .search-field-container.search-report-select,.search-button-holder {
+        flex: 0 0 100%;
+    }
+}
