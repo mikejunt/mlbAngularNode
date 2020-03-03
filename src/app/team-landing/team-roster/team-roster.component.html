@@ -14,12 +14,16 @@
                         <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
                         <mat-cell *matCellDef="let roster"> {{roster["jersey_number"]}} </mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="throws">
+                        <mat-header-cell *matHeaderCellDef> Throws </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["throws"]}} </mat-cell>
+                    </ng-container>
                     <ng-container matColumnDef="name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
                     </ng-container>
-                    <mat-header-row *matHeaderRowDef="rosterColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: rosterColumns;"></mat-row>
+                    <mat-header-row *matHeaderRowDef="rosterPColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: rosterPColumns;"></mat-row>
                 </mat-table>
             </mat-tab>
             <mat-tab label="Position Players">
@@ -32,12 +36,16 @@
                         <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
                         <mat-cell *matCellDef="let roster"> {{roster["jersey_number"]}} </mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="bats">
+                        <mat-header-cell *matHeaderCellDef> Bats </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["bats"]}} </mat-cell>
+                    </ng-container>
                     <ng-container matColumnDef="name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
                     </ng-container>
-                    <mat-header-row *matHeaderRowDef="rosterColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: rosterColumns;"></mat-row>
+                    <mat-header-row *matHeaderRowDef="rosterHColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: rosterHColumns;"></mat-row>
                 </mat-table>
             </mat-tab>
         </mat-tab-group>

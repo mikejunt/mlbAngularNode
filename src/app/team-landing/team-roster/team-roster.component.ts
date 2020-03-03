@@ -13,7 +13,8 @@ import * as Selectors from '../../store/selectors'
 export class TeamRosterComponent implements OnInit {
   roster$: Observable<Player[]>
   roster: Player[];
-  rosterColumns: string[] = ['pos', 'number','name'];
+  rosterHColumns: string[] = ['pos', 'number', 'bats','name'];
+  rosterPColumns: string[] = ['pos', 'number','throws','name'];
 
   constructor(private store: Store<AppState>) {
     this.roster$ = this.store.pipe(select(Selectors.viewRoster));
