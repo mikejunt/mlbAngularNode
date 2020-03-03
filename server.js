@@ -9,7 +9,6 @@ app.use(logger)
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/dist/mlbAngular/'));
 
-app.use('/api/user', user)
-app.get('/', (req, res) => res.sendFile('/dist/mlbAngular/index.html'));
-app.get("*", (req,res)=> res.redirect("back"))
+app.use('/api/user/', user)
+app.get('*', (req, res) => res.sendFile('/dist/mlbAngular/index.html',{root: __dirname + '/'}));
 app.listen(port, () => console.log(`Server active on localhost:${port}`))

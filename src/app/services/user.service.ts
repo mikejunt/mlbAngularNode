@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -27,6 +27,7 @@ export class UserService {
   }
 
   authenticate(username: string, password: string) {
+    this.http.post('http://localhost:3000/api/user/login', {username: username, password: password}).subscribe(res => console.log(res))
     let loginattempt = this.userlist.filter(obj => obj.username === username && obj.password === password);
     if (loginattempt.length === 1) {
       let username = loginattempt[0]["username"]; let favteam = loginattempt[0]["favteam"];
