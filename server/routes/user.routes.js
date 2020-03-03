@@ -9,7 +9,6 @@ const userlist = [
 let nextuserid = 4;
 
 router.post('/login', (req, res, next) => {
-    console.log(req.body.params )
     let filteredusers = userlist.filter(obj => obj.username === req.body.username)
     if (filteredusers.length != 1) {
         return res.send({ success: false, msg: "Username or password invalid." })

@@ -23,26 +23,27 @@ export class UserService {
     this.userlist$ = this.store.select(Selectors.viewUserList);
     this.userlist$.subscribe(res => this.userlist = res);
     this.favteam$ = this.store.select(Selectors.viewUserFav);
-    this.favteam$.subscribe(res => {this.changeFavTheme(res);this.favteam = res})
+    this.favteam$.subscribe(res => { this.changeFavTheme(res); this.favteam = res })
   }
 
   authenticate(username: string, password: string) {
-    this.http.post('http://localhost:3000/api/user/login', {username: username, password: password}).subscribe(res => console.log(res))
-    let loginattempt = this.userlist.filter(obj => obj.username === username && obj.password === password);
-    if (loginattempt.length === 1) {
-      let username = loginattempt[0]["username"]; let favteam = loginattempt[0]["favteam"];
-      this.store.dispatch(Actions.login({ user: { username: username, favteam: favteam } }))
-      this.store.dispatch(Actions.setViewTeam({ displayteam: favteam }))
-      this.router.navigate(['search'])
-    }
-    else return false
+    this.http.post('http://localhost:3000/api/user/login', { username: username, password: password }).subscribe(res => {
+      if (res["success"]) {
+        let favteam = res["favteam"];
+        this.store.dispatch(Actions.login({ user: { username: username, favteam: favteam } }))
+        this.store.dispatch(Actions.setViewTeam({ displayteam: favteam }))
+        this.router.navigate(['search'])
+      }
+      else return false
+    })
   }
 
   signup(inputname: string, inputpassword: string, inputfavteam: string) {
-    let newuser: User = {userid: this.nextUserId, username: inputname, password: inputpassword, favteam: inputfavteam}
-    let usernamecheck = this.userlist.filter(obj => obj.username === newuser.username)
-    if (usernamecheck.length === 1) return false
-    else {this.store.dispatch(Actions.createNewUser({newuser}));return true}
+    let newuser: User = { userid: this.nextUserId, username: inputname, password: inputpassword, favteam: inputfavteam }
+    return this.http.post('http://localhost:3000/api/user/signup', newuser).subscribe(res => {
+      console.log(res)
+      return res["success"]
+    })
   }
 
   logout() {
