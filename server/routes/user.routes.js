@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt')
+const { client, pool } = require('../config/db.config')
 const userlist = [
     { userid: 1, username: "Mike", password: "$2b$10$UGmAN.EPQegTVszZuNW3Ce/xPFmEkkoK0mG.2d.tDs6OrSosgYmy.", favteam: "119" },
     { userid: 2, username: "Sarah", password: "$2b$10$UGmAN.EPQegTVszZuNW3Ce/xPFmEkkoK0mG.2d.tDs6OrSosgYmy.", favteam: "134" },
@@ -35,11 +36,25 @@ router.post('/signup', (req, res, next) => {
             return res.send({ success: false, msg: "bcrypt failed to hash." }
             )
         }
-        userlist.push({ userid: nextuserid, username: req.body.username, password: result, favteam: req.body.favteam })
-        nextuserid++;
-        return res.send({ success: true, msg: "" })
+        let newuser = { userid: nextuserid, username: req.body.username, password: result, favteam: req.body.favteam }
+        let test = [req.body.username, result, req.body.favteam]
+        pool.connect((err, client, release) => {
+            if (err) {
+                return console.log("error getting client", err.stack)
+            }
+            client.query("INSERT INTO users VALUES (DEFAULT, $1,$2,$3)", test, (err, result, field) => {
+                release();
+                if (err) {
+                    return console.log("error on query", err.stack)
+                }
+                console.log(result)
+            })
+        })
+            userlist.push(newuser)
+            nextuserid++;
+            return res.send({ success: true, msg: "" })
+        })
     })
-})
 
 
-module.exports = router
+    module.exports = router
