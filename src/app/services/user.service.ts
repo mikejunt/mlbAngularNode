@@ -27,7 +27,7 @@ export class UserService {
   }
 
   authenticate(username: string, password: string) {
-    this.http.post('http://localhost:3000/api/user/login', { username: username, password: password }).subscribe(res => {
+    this.http.post('/api/user/login', { username: username, password: password }).subscribe(res => {
       if (res["success"]) {
         let favteam = res["favteam"];
         this.store.dispatch(Actions.login({ user: { username: username, favteam: favteam } }))
@@ -40,7 +40,7 @@ export class UserService {
 
   signup(inputname: string, inputpassword: string, inputfavteam: string) {
     let newuser: User = { userid: this.nextUserId, username: inputname, password: inputpassword, favteam: inputfavteam }
-    return this.http.post('http://localhost:3000/api/user/signup', newuser).subscribe(res => {
+    return this.http.post('/api/user/signup', newuser).subscribe(res => {
       console.log(res)
       return res["success"]
     })
