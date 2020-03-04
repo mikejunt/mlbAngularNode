@@ -2,7 +2,7 @@ import { AppState } from '..'
 
 
 
-export const viewTeams = (state: AppState) => state.teamlist.teamlist
+export const viewTeams = (state: AppState) => state.teaminfo.teamlist
 export const viewRoster = (state: AppState) => state.roster.roster
 export const viewHitting = (state: AppState) => state.hitting.hitting
 export const viewPitching = (state: AppState) => state.pitching.pitching
@@ -14,3 +14,4 @@ export const viewTrx = (state: AppState) => state.transactions.transactions
 export const viewCurPitching = (state: AppState) => state.curpitching.curpitching
 export const viewCurHitting = (state: AppState) => state.curhitting.curhitting
 export const viewUserList = (state: AppState) => state.userlist.userlist
+export const viewTeamDetails = (state: AppState) => state.teaminfo.teamdata

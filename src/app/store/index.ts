@@ -13,7 +13,7 @@ export interface AppState {
   roster: Reducers.RosterState
   hitting: Reducers.HittingState
   pitching: Reducers.PitchingState
-  teamlist: Reducers.TeamState
+  teaminfo: Reducers.TeamState
   displayteam: Reducers.TeamViewState
   user: Reducers.UserState
   transactions: Reducers.TransactionListState
@@ -27,7 +27,7 @@ export const reducers: ActionReducerMap<AppState> = {
   hitting: Reducers.saveHitting,
   roster: Reducers.saveRoster40,
   pitching: Reducers.savePitching,
-  teamlist: Reducers.saveTeamList,
+  teaminfo: Reducers.saveTeamList,
   displayteam: Reducers.changeViewTeam,
   user: Reducers.updateLoginStatus,
   transactions: Reducers.saveTransactionList,
