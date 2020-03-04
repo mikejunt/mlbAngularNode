@@ -37,6 +37,7 @@ import { TeamDescComponent } from './team-landing/team-desc/team-desc.component'
 import { LeadersAscPipe } from './pipes/leaders-asc.pipe';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { SignupComponent } from './signup/signup.component';
+import { MomentdatePipe } from './pipes/momentdate.pipe';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { SignupComponent } from './signup/signup.component';
     TeamDescComponent,
     LeadersAscPipe,
     SignupComponent,
+    MomentdatePipe,
   ],
   imports: [
     BrowserModule,

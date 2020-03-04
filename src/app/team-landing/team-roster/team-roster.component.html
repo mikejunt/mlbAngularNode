@@ -22,6 +22,10 @@
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="debut">
+                        <mat-header-cell *matHeaderCellDef> MLB Debut </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["pro_debut_date"] | momentdate}} </mat-cell>
+                    </ng-container>
                     <mat-header-row *matHeaderRowDef="rosterPColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: rosterPColumns;"></mat-row>
                 </mat-table>
@@ -43,6 +47,10 @@
                     <ng-container matColumnDef="name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let roster"> {{roster["name_display_first_last"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="debut">
+                        <mat-header-cell *matHeaderCellDef> MLB Debut </mat-header-cell>
+                        <mat-cell *matCellDef="let roster"> {{roster["pro_debut_date"] | momentdate}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="rosterHColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: rosterHColumns;"></mat-row>
