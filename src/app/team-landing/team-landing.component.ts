@@ -14,13 +14,10 @@ export class TeamLandingComponent implements OnInit {
   displayteam$: Observable<string>
   displayteam: string
 
-  constructor(private store: Store<AppState>, private staticquery: StaticqueryService) {
-    this.displayteam$ = this.store.select(Selectors.viewSelectedTeam)
-    this.displayteam$.subscribe(res => this.displayteam = res)
-   }
+  constructor(private store: Store<AppState>, private staticquery: StaticqueryService) {   }
 
   ngOnInit(): void {
-    this.staticquery.fetchTeamDetails(this.displayteam)
+    
   }
 
 }

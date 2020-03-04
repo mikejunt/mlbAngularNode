@@ -79,6 +79,7 @@ export class SearchInterfaceComponent implements OnInit {
       if (this.pitchYr != "2019") {
         this.hitting.fetchSeasonHitting(params)
       }
+      this.staticquery.fetchTeamDetails(this.nextteam)
       this.showRoster(this.nextteam);
       this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
       this.router.navigate(['landing'], { relativeTo: this.actr })
