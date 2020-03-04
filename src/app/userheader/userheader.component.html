@@ -1,8 +1,13 @@
 <div>
     <mat-toolbar color="primary">
         <mat-toolbar-row>
-            <header class=""><span>Welcome, {{(username$ | async)}}</span><button mat-raised-button color="warn"
-                    (click)="logout()">LOGOUT</button>
+            <header class="header-container">
+                <div class="header-welcome">
+                    <span>Welcome, {{(username$ | async)}}</span>
+                </div>
+                <div class="header-button">
+                    <button mat-raised-button color="warn" (click)="logout()">LOGOUT</button>
+                </div>
             </header>
         </mat-toolbar-row>
     </mat-toolbar>

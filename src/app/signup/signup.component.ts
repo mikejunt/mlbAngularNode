@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void { }
 
   onSubmit() {
-    let result: boolean = this.user.signup(this.newSignup.value.username,this.newSignup.value.password,this.newSignup.value.favteam)
+    let result = this.user.signup(this.newSignup.value.username,this.newSignup.value.password,this.newSignup.value.favteam)
     if (result) {this.router.navigate(['login'])}
     else { this.dupeuser = true }
   }
