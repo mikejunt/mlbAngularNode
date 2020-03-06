@@ -1,7 +1,11 @@
 <div class="signup-position">
     <div class="signup-centerer">
         <div class="signup-holder floating-panel">
-            <mat-toolbar color="primary">Register New User</mat-toolbar>
+            <mat-toolbar class="toolbar-container" color="primary">
+                <div class="toolbar-content">Register New User</div>
+                <div class="toolbar-button"><button mat-raised-button color="warn"
+                        [routerLink]="['/login']">Back</button></div>
+            </mat-toolbar>
             <form [formGroup]="newSignup" (ngSubmit)="onSubmit()">
                 <div class="signup-section padding-top">
                     <mat-form-field>

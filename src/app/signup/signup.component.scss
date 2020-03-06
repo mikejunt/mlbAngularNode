@@ -30,6 +30,20 @@
     flex: 0 1 500px;
 }
 
+.toolbar-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.toolbar-content {
+    flex: 0 0 180px;
+}
+
+.toolbar-button {
+    flex: 0 0 64px;
+}
+
 @media (min-width: 505px) {
     .signup-position {
         height: 100vh;
