@@ -12,7 +12,7 @@
     flex-wrap: wrap;
     flex-shrink: 1;
     flex-basis: 480px;
-    align-items: flex-start;
+    align-content: flex-start;
 }
 
 #hitlead,#pitchlead,#trans {
@@ -22,7 +22,7 @@
 
 .flex-row {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .flex-100 {
