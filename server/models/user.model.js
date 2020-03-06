@@ -46,5 +46,5 @@ function logIn(response, request) {
 }
 
 
-module.exports.signUp = signUp
+module.exports.signup = signUp
 module.exports.login = logIn
