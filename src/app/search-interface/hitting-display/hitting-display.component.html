@@ -32,32 +32,25 @@
     </div>
   </div>
 </nav>
-
-<mat-table matSort [dataSource]="hitters | minplate:paselect | playerbypos:filterpos | playerbyteam:teamview">
-  <!-- Player Name Col -->
-  <ng-container matColumnDef="Name" sticky>
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-    <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
-  </ng-container>
-
-  <!-- HR COL -->
-  <ng-container matColumnDef="HR">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> HR </mat-header-cell>
-    <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
-  </ng-container>
-
-  <!-- OPS COL -->
-  <ng-container matColumnDef="OPS">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> OPS </mat-header-cell>
-    <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
-  </ng-container>
-
-  <!-- SLG Column -->
-  <ng-container matColumnDef="SLG">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> SLG </mat-header-cell>
-    <mat-cell *matCellDef="let hitter"> {{hitter["slg"]}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+<div class="results-display">
+  <mat-table matSort [dataSource]="hitters | minplate:paselect | playerbypos:filterpos | playerbyteam:teamview">
+    <ng-container matColumnDef="Name" sticky>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="HR">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> HR </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="OPS">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> OPS </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="SLG">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> SLG </mat-header-cell>
+      <mat-cell *matCellDef="let hitter"> {{hitter["slg"]}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

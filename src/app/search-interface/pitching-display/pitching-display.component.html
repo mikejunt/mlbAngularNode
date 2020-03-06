@@ -13,28 +13,26 @@
       <input matInput [(ngModel)]="ipselect">
     </mat-form-field>
   </nav>
-  <mat-table matSort matSortDisableClear="true" [dataSource]="pitchers | minip:ipselect | playerbyteam:teamview">
-    <!-- Player Name Col -->
-    <ng-container matColumnDef="player" sticky>
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
-    </ng-container>
-    <!-- FIP COL -->
-    <ng-container matColumnDef="fip">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> FIP </mat-header-cell>
-      <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
-    </ng-container>
-    <!-- K COL -->
-    <ng-container matColumnDef="so">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> K </mat-header-cell>
-      <mat-cell *matCellDef="let pitcher"> {{pitcher["so"]}} </mat-cell>
-    </ng-container>
-    <!-- ERA Column -->
-    <ng-container matColumnDef="era">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ERA </mat-header-cell>
-      <mat-cell *matCellDef="let pitcher"> {{pitcher["era"]}} </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>
+  <div class="display-container">
+    <mat-table matSort matSortDisableClear="true" [dataSource]="pitchers | minip:ipselect | playerbyteam:teamview">
+      <ng-container matColumnDef="player" sticky>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="fip">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> FIP </mat-header-cell>
+        <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="so">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> K </mat-header-cell>
+        <mat-cell *matCellDef="let pitcher"> {{pitcher["so"]}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="era">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ERA </mat-header-cell>
+        <mat-cell *matCellDef="let pitcher"> {{pitcher["era"]}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  
