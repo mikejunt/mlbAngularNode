@@ -8,7 +8,7 @@
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     
-    @media (min-width: 500px) {
+    @media (min-width: 505px) {
         .floating-panel {
             border-color: mat-color($primary);
             border-style: solid;
