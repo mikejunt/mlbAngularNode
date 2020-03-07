@@ -1,3 +1,5 @@
+// this is a template theme imported to index.scss
+
 @import '~@angular/material/theming';
 
 @mixin landing-panels-theme($theme) {
@@ -7,10 +9,8 @@
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    @media(min-width: 1217px) {
         .landing-panel {
-        border: solid 1px map-get($primary, main);
-        border-radius: 4px;
+        border: solid 2px map-get($primary, main);
+        border-radius: 5px;
         }
-    }
 }

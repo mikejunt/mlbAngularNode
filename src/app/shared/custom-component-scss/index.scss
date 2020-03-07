@@ -37,5 +37,10 @@
         align-items: center;
         flex-direction: row;
     }
+
+    .landing-panel {
+        border: solid 2px map-get($primary, main);
+        border-radius: 5px;
+        }
 }
 

@@ -30,6 +30,14 @@
     flex-shrink: 0;
 }
 
+.panel-padding {
+    padding: 16px 16px 0px 16px;
+}
+
+.bottom-padding {
+    padding: 16px;
+}
+
 @media (min-width: 600px) {
     #side {
         min-width: 480px
