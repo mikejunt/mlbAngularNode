@@ -12,7 +12,7 @@ export interface UserState {
 export const initialUserState: UserState = {
     user: {
         username: "",
-        favteam: "133"
+        favteam: "136"
     }
 }
 

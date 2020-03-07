@@ -25,5 +25,18 @@
     a.footer-link:link,a.footer-link:visited {
         color: mat-color($primary, default-contrast);
     }
+    .sub-header {
+        background-color: map-get($primary, main);
+        height: 54px;
+        width: 100%;
+        color: map-get($primary, default-contrast);
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: 450;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
 }
 

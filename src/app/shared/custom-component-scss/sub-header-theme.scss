@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+@mixin sub-header-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    
+    .sub-header {
+        background-image: linear-gradient(map-get($primary, main) 60%,map-get($primary, main),map-get($accent, main));
+        height: 54px;
+        width: 100%;
+        color: map-get($primary, default-contrast);
+        line-height: 20px;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+}
