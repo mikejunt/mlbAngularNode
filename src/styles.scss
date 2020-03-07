@@ -5,7 +5,7 @@
 // Master custom component theme
 @import '../src/app/shared/custom-component-scss/index.scss';
 // space to import WIP theme
-// @import '../src/app/shared/custom-component-scss//sub-header-theme.scss';
+@import '../src/app/shared/custom-component-scss/widescreen-landing-panels.scss';
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
      
@@ -147,7 +147,7 @@ body.mat-app-background {
   @include angular-material-theme($team119theme);
   @include custom-component-themes($team119theme);
   // import of WIP theme
-  // @include sub-header-theme($team119theme);
+  @include landing-panels-theme($team119theme);
 }
 
 .bg109 {

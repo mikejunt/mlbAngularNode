@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@mixin landing-panels-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    @media(min-width: 1217px) {
+        .landing-panel {
+        border: solid 1px map-get($primary, main);
+        border-radius: 4px;
+        }
+    }
+}
