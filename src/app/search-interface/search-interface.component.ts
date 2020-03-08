@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StaticqueryService } from '../services/static-query.service';
-import { RosterService } from '../services/roster-query.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../store';
@@ -11,8 +10,6 @@ import * as Selectors from '../store/selectors';
 import { Team } from '../interfaces/team.interface';
 import { HittingService } from '../services/hitting-query.service';
 import { PitchingService } from '../services/pitching-query.service';
-import { Hitter } from '../interfaces/hitter.interface';
-import { Pitcher } from '../interfaces/pitcher.interface';
 import * as moment from 'moment'
 import { FormControl } from '@angular/forms';
 
@@ -22,11 +19,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search-interface.component.scss']
 })
 export class SearchInterfaceComponent implements OnInit {
-  curteam$: Observable<string>
-  curteam: string
   teamlist$: Observable<Team[]>
   teamlist: Team[]
-  nextteam: string
   searchmode: string = "hitting"
   searchpick: string = "hitting"
   searchyear: string = "2019"
@@ -42,13 +36,9 @@ export class SearchInterfaceComponent implements OnInit {
 
 
 
-  constructor(private staticquery: StaticqueryService,
-    private rosterquery: RosterService, private router: Router, private actr: ActivatedRoute,
+  constructor(private staticquery: StaticqueryService, private router: Router, private actr: ActivatedRoute,
     private store: Store<AppState>, private hitting: HittingService, private pitching: PitchingService) {
-    this.curteam$ = store.pipe(select(Selectors.viewSelectedTeam));
-    this.curteam$.subscribe(res => this.nextteam = res);
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
-    this.curteam$.subscribe(res => this.curteam = res);
     this.teamlist$.subscribe(res => this.teamlist = res);
   }
 
@@ -56,37 +46,25 @@ export class SearchInterfaceComponent implements OnInit {
     this.searchInit();
   }
 
-  
-
   searchInit() {
     this.searchpick = this.searchmode;
-    if (this.searchpick === "curhitting") {
+    if (this.searchpick === "hitting") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
-      let viewteam
-      this.store.select(Selectors.viewUserFav).subscribe(res => viewteam = res)
-      this.store.dispatch(Actions.setViewTeam({ displayteam: viewteam }))
       this.hitting.fetchSeasonHitting(params)
       this.router.navigate(['hitting'], { relativeTo: this.actr })
     }
-    if (this.searchpick === "curpitching") {
+    if (this.searchpick === "pitching") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
-      let viewteam
-      this.store.select(Selectors.viewUserFav).subscribe(res => viewteam = res)
-      this.store.dispatch(Actions.setViewTeam({ displayteam: viewteam }))
       this.pitching.fetchSeasonPitching(params)
       this.router.navigate(['pitching'], { relativeTo: this.actr })
     }
-    if (this.searchpick === "alltrans") {
+    if (this.searchpick === "trans") {
       let start = this.stdate.value
       let end = this.enddate.value
-      let viewteam
-      this.store.select(Selectors.viewUserFav).subscribe(res => viewteam = res)
-      this.store.dispatch(Actions.setViewTeam({ displayteam: viewteam }))
       if (this.valiDate(start, end)) {
         let startstring = moment(start).format("YYYYMMDD");
         let endstring = moment(end).format("YYYYMMDD");
         const params = new HttpParams().set('sport_code', `'mlb'`).set('start_date', `'${startstring}'`).set('end_date', `'${endstring}'`);
-        this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
         this.staticquery.fetchTrx(params)
         this.router.navigate(['alltrans'], { relativeTo: this.actr })
       }
