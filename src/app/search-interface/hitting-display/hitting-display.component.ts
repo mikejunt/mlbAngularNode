@@ -5,6 +5,8 @@ import { Hitter } from 'src/app/interfaces/hitter.interface';
 import { Observable } from 'rxjs';
 import * as Selectors from '../../store/selectors'
 import { Team } from 'src/app/interfaces/team.interface';
+import { SearchTerms } from 'src/app/interfaces/search.terms.interface';
+import * as Actions from '../../store/actions'
 
 @Component({
   selector: 'app-hitting-display',
@@ -20,17 +22,21 @@ export class HittingDisplayComponent implements OnInit {
   teamlist$: Observable<Team[]>
   teamlist: Team[]
   teamview: string = "allteams"
+  searchterms$: Observable<SearchTerms>
 
-  constructor(private store: Store<AppState>) { this.hitters$ = this.store.select(Selectors.viewHitting);
+  constructor(private store: Store<AppState>) {
+  this.hitters$ = this.store.select(Selectors.viewHitting);
     this.hitters$.subscribe(hit => this.hitters = hit)
     this.teamlist$ = this.store.select(Selectors.viewTeams)
-    this.teamlist$.subscribe(res => this.teamlist = res) }
-
-  ngOnInit(): void {
+    this.teamlist$.subscribe(res => this.teamlist = res)
+    this.searchterms$ = this.store.select(Selectors.viewSearchTerms)
+    this.searchterms$.subscribe(res => 
+      {this.paselect = res.ptfilter;this.filterpos = res.posfilter;this.teamview = res.teamfilter })
   }
 
-  setpos(e) {
-    this.filterpos = e.target.id
+  ngOnInit(): void {
+    let terms: SearchTerms = {searchyear: "2019", posfilter: "all", ptfilter: "500", teamfilter: "allteams"}
+    this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
   }
 
 }
