@@ -74,7 +74,7 @@ export class UserheaderComponent implements OnInit {
 
   viewstats(category: string) {
     console.log(category)
-    this.router.navigate(['search/'])
+    this.router.navigate([`/${category}`])
   }
 
   logout() { this.user.logout() }
