@@ -1,25 +1,25 @@
-<div class="mat-app-background">
-    <div class="search-control-container">
-        <div class="search-field-container">
-            <mat-form-field>
-                <mat-label for="year">Season:</mat-label>
-                <mat-select [(ngModel)]="searchterms.searchyear">
-                    <mat-option value="2019">2019</mat-option>
-                    <mat-option value="2018">2018</mat-option>
-                    <mat-option value="2017">2017</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="search-button-holder">
-            <div class="button-spacing-container">
-                <button class="search-button" color="accent" mat-raised-button (click)="searchInit()">Search</button>
-            </div>
-        </div>
+<div class="search-control-container">
+    <div class="search-field-container">
+        <mat-form-field>
+            <mat-label for="year">Season:</mat-label>
+            <mat-select [(ngModel)]="searchterms.searchyear">
+                <mat-option value="2019">2019</mat-option>
+                <mat-option value="2018">2018</mat-option>
+                <mat-option value="2017">2017</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
-</div>
-
-<nav class="display-content-holder">
-    <div class="display-positional-toggles display-padding" *ngIf="this.mode === 'hitting'">
+    <div class="search-field-container">
+        <mat-form-field>
+            <mat-label for="teamlist">Select Team</mat-label>
+            <mat-select [(ngModel)]="searchterms.teamfilter">
+                <mat-option value="allteams">All MLB</mat-option>
+                <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
+                    {{team["name_display_brief"]}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="search-positional-toggles" *ngIf="this.mode === 'hitting'">
         <mat-button-toggle-group [(ngModel)]="searchterms.posfilter">
             <mat-button-toggle value="all">ALL</mat-button-toggle>
             <mat-button-toggle value="C">C</mat-button-toggle>
@@ -33,28 +33,21 @@
             <mat-button-toggle value="ALLOF">OF</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
-    <div class="display-filter-container display-padding">
-        <div class="display-pt-filter" *ngIf="this.mode === 'hitting'">
-            <mat-form-field>
-                <mat-label for="paselect">Min PA:</mat-label>
-                <input matInput [(ngModel)]="searchterms.ptfilter">
-            </mat-form-field>
-        </div>
-        <div class="display-pt-filter" *ngIf="this.mode === 'pitching'">
-            <mat-form-field>
-                <mat-label for="ipselect">Min IP:</mat-label>
-                <input matInput [(ngModel)]="searchterms.ptfilter">
-            </mat-form-field>
-        </div>
-    </div>
-    <div class="display-team-filter">
+    <div class="search-field-container" *ngIf="this.mode === 'hitting'">
         <mat-form-field>
-            <mat-label for="teamlist">Select Team</mat-label>
-            <mat-select [(ngModel)]="searchterms.teamfilter">
-                <mat-option value="allteams">All MLB</mat-option>
-                <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
-                    {{team["name_display_brief"]}}</mat-option>
-            </mat-select>
+            <mat-label for="paselect">Min PA:</mat-label>
+            <input matInput [(ngModel)]="searchterms.ptfilter">
         </mat-form-field>
     </div>
-</nav>
+    <div class="search-field-container" *ngIf="this.mode === 'pitching'">
+        <mat-form-field>
+            <mat-label for="ipselect">Min IP:</mat-label>
+            <input matInput [(ngModel)]="searchterms.ptfilter">
+        </mat-form-field>
+    </div>
+    <div class="search-field-container">
+        <div class="button-spacing-container">
+            <button class="search-button" color="primary" mat-raised-button (click)="searchInit()">Search</button>
+        </div>
+    </div>
+</div>
