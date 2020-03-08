@@ -22,6 +22,7 @@ import { PitchingService } from '../services/pitching-query.service';
 })
 export class UserheaderComponent implements OnInit {
   username$: Observable<string>;
+  username: string
   teamlist$: Observable<Team[]>;
   teamlist: Team[];
   displayteam$: Observable<string>
@@ -35,6 +36,7 @@ export class UserheaderComponent implements OnInit {
     private store: Store<AppState>, private router: Router, private roster: RosterService,
     private hitting: HittingService, private pitching: PitchingService) {
     this.username$ = this.store.select(Selectors.viewUserName)
+    this.username$.subscribe(res => this.username = res)
     this.teamlist$ = this.store.select(Selectors.viewTeams)
     this.teamlist$.subscribe(res => this.teamlist = res)
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam)
