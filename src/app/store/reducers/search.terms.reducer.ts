@@ -9,7 +9,8 @@ export interface SearchTermState {
 
 export const initialSearchTermState:SearchTermState = {
         searchterms: {
-            ptfilter: "100",
+            ipfilter: "100",
+            pafilter: "500",
             teamfilter: "allteams",
             posfilter: "all",
             searchyear: "2019"

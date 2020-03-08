@@ -31,11 +31,11 @@ export class HittingDisplayComponent implements OnInit {
     this.teamlist$.subscribe(res => this.teamlist = res)
     this.searchterms$ = this.store.select(Selectors.viewSearchTerms)
     this.searchterms$.subscribe(res => 
-      {this.paselect = res.ptfilter;this.filterpos = res.posfilter;this.teamview = res.teamfilter })
+      {this.paselect = res.pafilter;this.filterpos = res.posfilter;this.teamview = res.teamfilter })
   }
 
   ngOnInit(): void {
-    let terms: SearchTerms = {searchyear: "2019", posfilter: "all", ptfilter: "500", teamfilter: "allteams"}
+    let terms: SearchTerms = {searchyear: "2019", posfilter: "all", pafilter: "500", teamfilter: "allteams", ipfilter: "100"}
     this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
   }
 

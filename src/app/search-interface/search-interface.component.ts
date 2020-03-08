@@ -22,7 +22,8 @@ export class SearchInterfaceComponent implements OnInit {
   teamlist: Team[]
   mode: string
   searchterms: SearchTerms = {
-    ptfilter: "100",
+    pafilter: "500",
+    ipfilter: "100",
     teamfilter: "allteams",
     posfilter: "all",
     searchyear: "2019"

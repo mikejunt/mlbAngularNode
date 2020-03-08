@@ -31,11 +31,11 @@ export class PitchingDisplayComponent implements OnInit {
     this.teamlist$ = this.store.select(Selectors.viewTeams);
     this.teamlist$.subscribe(res => this.teamlist = res);
     this.searchterms$ = this.store.select(Selectors.viewSearchTerms);
-    this.searchterms$.subscribe(res =>{this.ipselect = res.ptfilter;this.teamview = res.teamfilter})
+    this.searchterms$.subscribe(res =>{this.ipselect = res.ipfilter;this.teamview = res.teamfilter})
   }
 
   ngOnInit(): void {
-    let terms: SearchTerms = {searchyear: "2019", posfilter: "all", ptfilter: "150", teamfilter: "allteams"}
+    let terms: SearchTerms = {searchyear: "2019", posfilter: "all", ipfilter: "100", teamfilter: "allteams", pafilter: "500"}
     this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
   }
 

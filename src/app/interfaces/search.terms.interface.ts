@@ -1,5 +1,6 @@
 export interface SearchTerms {
-    ptfilter: string,
+    ipfilter: string,
+    pafilter: string,
     teamfilter: string,
     posfilter: string,
     searchyear: string,

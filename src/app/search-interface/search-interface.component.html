@@ -37,13 +37,13 @@
     <div class="search-field-container" *ngIf="this.mode === 'hitting'">
         <mat-form-field>
             <mat-label for="paselect">Min PA:</mat-label>
-            <input matInput [(ngModel)]="searchterms.ptfilter">
+            <input matInput [(ngModel)]="searchterms.pafilter">
         </mat-form-field>
     </div>
     <div class="search-field-container" *ngIf="this.mode === 'pitching'">
         <mat-form-field>
             <mat-label for="ipselect">Min IP:</mat-label>
-            <input matInput [(ngModel)]="searchterms.ptfilter">
+            <input matInput [(ngModel)]="searchterms.ipfilter">
         </mat-form-field>
     </div>
     <div class="search-field-container">
