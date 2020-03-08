@@ -7,7 +7,7 @@ export interface TeamViewState {
 }
 
 export const initialViewTeamState:TeamViewState = {
-        displayteam: "119"
+        displayteam: "136"
 }
 
 

@@ -1,5 +1,5 @@
-<div class="mat-app-background">
-    <mat-toolbar color="primary">Batting Leaders</mat-toolbar>
+<div class="mat-app-background landing-panel">
+    <div class="sub-header">Batting Leaders</div>
     <mat-progress-spinner *ngIf="hitters.length == 0; else loaded" color="primary" mode="indeterminate">
     </mat-progress-spinner>
     <ng-template #loaded>

@@ -1,0 +1,24 @@
+/// this component theme is a template
+
+@import '~@angular/material/theming';
+
+@mixin sub-header-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    
+    .sub-header {
+        background-color: mat-color(primary);
+        height: 54px;
+        color: mat-color($primary, default-contrast);
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: 450;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+}

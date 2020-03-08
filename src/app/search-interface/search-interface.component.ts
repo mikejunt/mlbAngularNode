@@ -57,7 +57,7 @@ export class SearchInterfaceComponent implements OnInit {
     this.pitching$.subscribe(res => { if (res.length != 0) { this.pitchYr = res[0]['season'] } });
     this.hitting$.subscribe(res => { if (res.length != 0) { this.hitYr = res[0]['season'] } });
     this.curteam$.subscribe(res => this.curteam = res);
-    this.teamlist$.subscribe(res => this.teamlist = res)
+    this.teamlist$.subscribe(res => this.teamlist = res);
   }
 
   ngOnInit(): void {

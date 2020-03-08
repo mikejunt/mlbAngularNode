@@ -1,3 +1,7 @@
+// this is a template for this custom component theme.  It is not imported but copy/pasted directly into index.scss.
+// this avoids issues with using map-get multiple times to pass the theming information through import paths.
+// angular material uses the same single-file structure
+
 @import '~@angular/material/theming';
 
 @mixin footer-config-theme($theme) {

@@ -1,11 +1,11 @@
-<div class="mat-app-background">
-    <mat-toolbar color="primary">Pitching Leaders</mat-toolbar>
+<div class="mat-app-background landing-panel">
+    <div class="sub-header">Pitching Leaders</div>
     <mat-progress-spinner *ngIf="pitchers.length == 0; else loaded" color="primary" mode="indeterminate">
     </mat-progress-spinner>
     <ng-template #loaded>
         <mat-tab-group color="primary" backgroundColor="accent" mat-stretch-tabs>
             <mat-tab label="FIP">
-                <mat-table  [dataSource]="pitchers | minip:'50' | playerbyteam:displayteam | leadersAsc:'fip'">
+                <mat-table [dataSource]="pitchers | minip:'50' | playerbyteam:displayteam | leadersAsc:'fip'">
                     <ng-container matColumnDef="Name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>

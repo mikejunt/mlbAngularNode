@@ -1,0 +1,21 @@
+// this is a template for this custom component theme.  It is not imported but copy/pasted directly into index.scss.
+// this avoids issues with using map-get multiple times to pass the theming information through import paths.
+// angular material uses the same single-file structure
+
+@import '~@angular/material/theming';
+
+@mixin floating-panel-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    
+    @media (min-width: 505px) {
+        .floating-panel {
+            border-color: mat-color($primary);
+            border-style: solid;
+            border-width: 2px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            box-shadow: 1px 1px 8px 1px mat-color($accent);
+        }
+    }
+}

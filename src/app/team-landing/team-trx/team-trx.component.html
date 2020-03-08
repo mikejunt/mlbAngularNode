@@ -1,5 +1,5 @@
-<div class="mat-app-background">
-  <mat-toolbar color="primary">Recent Transactions</mat-toolbar>
+<div class="mat-app-background landing-panel">
+  <div class="sub-header">Recent Transactions</div>
   <mat-progress-spinner *ngIf="trx.length == 0; else loaded" color="primary" mode="indeterminate">
   </mat-progress-spinner>
   <ng-template #loaded>

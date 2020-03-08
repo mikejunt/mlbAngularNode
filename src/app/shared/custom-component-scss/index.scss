@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+
+@mixin custom-component-themes($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    @media (min-width: 500px) {
+        .floating-panel {
+            border-color: mat-color($primary);
+            border-style: solid;
+            border-width: 2px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            box-shadow: 1px 1px 8px 1px mat-color($accent);
+        }
+    }
+
+    .footer-container {
+        background-color: mat-color($primary);
+        color: mat-color($primary, default-contrast); 
+    }
+    a.footer-link:link,a.footer-link:visited {
+        color: mat-color($primary, default-contrast);
+    }
+    .sub-header {
+        background-color: mat-color($primary);
+        height: 54px;
+        color: mat-color($primary, default-contrast);
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: 450;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .landing-panel {
+        border: solid 2px map-get($primary, main);
+        border-radius: 5px;
+        }
+}
+
