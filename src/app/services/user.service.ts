@@ -32,7 +32,7 @@ export class UserService {
         let favteam = res["favteam"];
         this.store.dispatch(Actions.login({ user: { username: username, favteam: favteam } }))
         this.store.dispatch(Actions.setViewTeam({ displayteam: favteam }))
-        this.router.navigate(['search'])
+        this.router.navigate(['landing'])
       }
       else return false
     })

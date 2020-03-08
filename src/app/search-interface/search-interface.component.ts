@@ -27,12 +27,8 @@ export class SearchInterfaceComponent implements OnInit {
   teamlist$: Observable<Team[]>
   teamlist: Team[]
   nextteam: string
-  searchmode: string = "landing"
-  searchpick: string = "landing"
-  hitting$: Observable<Hitter[]>
-  pitching$: Observable<Pitcher[]>
-  pitchYr: string
-  hitYr: string
+  searchmode: string = "hitting"
+  searchpick: string = "hitting"
   searchyear: string = "2019"
   paselect: string = "350"
   ipselect: string = "50"
@@ -52,10 +48,6 @@ export class SearchInterfaceComponent implements OnInit {
     this.curteam$ = store.pipe(select(Selectors.viewSelectedTeam));
     this.curteam$.subscribe(res => this.nextteam = res);
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
-    this.pitching$ = store.pipe(select(Selectors.viewPitching));
-    this.hitting$ = store.pipe(select(Selectors.viewHitting));
-    this.pitching$.subscribe(res => { if (res.length != 0) { this.pitchYr = res[0]['season'] } });
-    this.hitting$.subscribe(res => { if (res.length != 0) { this.hitYr = res[0]['season'] } });
     this.curteam$.subscribe(res => this.curteam = res);
     this.teamlist$.subscribe(res => this.teamlist = res);
   }
@@ -64,26 +56,10 @@ export class SearchInterfaceComponent implements OnInit {
     this.searchInit();
   }
 
-  showRoster(team: string) {
-    const params = new HttpParams().set('team_id', `'${team}'`)
-    this.rosterquery.fetchRoster(params)
-  }
+  
 
   searchInit() {
     this.searchpick = this.searchmode;
-    if (this.searchpick === "landing") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`)
-      if (this.hitYr != "2019") {
-        this.hitting.fetchSeasonHitting(params)
-      }
-      if (this.pitchYr != "2019") {
-        this.hitting.fetchSeasonHitting(params)
-      }
-      this.staticquery.fetchTeamDetails(this.nextteam)
-      this.showRoster(this.nextteam);
-      this.store.dispatch(Actions.setViewTeam({ displayteam: this.nextteam }))
-      this.router.navigate(['landing'], { relativeTo: this.actr })
-    }
     if (this.searchpick === "curhitting") {
       const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
       let viewteam

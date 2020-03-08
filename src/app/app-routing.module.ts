@@ -14,16 +14,14 @@ import { UserchildGuard } from './guards/userchild.guard';
 
 
 const routes: Routes = [
-  {
-    path: 'search', component: SearchInterfaceComponent, canActivate: [UserGuard], canActivateChild: [UserchildGuard], children: [
+  {path: 'search', component: SearchInterfaceComponent, canActivate: [UserGuard], canActivateChild: [UserchildGuard], children: [
       { path: 'hitting', component: HittingDisplayComponent },
       { path: 'pitching', component: PitchingDisplayComponent },
-      { path: 'landing', component: TeamLandingComponent },
       { path: 'alltrans', component: TrxDisplayComponent },
-      { path: '', redirectTo: 'landing', pathMatch: 'prefix' }
+      { path: '', redirectTo: 'hitting', pathMatch: 'prefix' }
     ]
   },
-  { path: 'landing', component: TeamLandingComponent},
+  { path: 'landing', component: TeamLandingComponent, canActivate: [UserGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent, canActivate: [SignupGuard]},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
