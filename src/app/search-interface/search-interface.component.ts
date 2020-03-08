@@ -12,6 +12,7 @@ import { HittingService } from '../services/hitting-query.service';
 import { PitchingService } from '../services/pitching-query.service';
 import * as moment from 'moment'
 import { FormControl } from '@angular/forms';
+import { SearchTerms } from '../interfaces/search.terms.interface';
 
 @Component({
   selector: 'app-search-interface',
@@ -21,17 +22,13 @@ import { FormControl } from '@angular/forms';
 export class SearchInterfaceComponent implements OnInit {
   teamlist$: Observable<Team[]>
   teamlist: Team[]
-  searchmode: string = "hitting"
-  searchpick: string = "hitting"
-  searchyear: string = "2019"
-  paselect: string = "350"
-  ipselect: string = "50"
-  stdate = new FormControl(moment(0, "HH").subtract(3, 'days'));
-  enddate = new FormControl(moment(0, "HH"))
-  minMoment = moment(0, "HH").subtract(10, 'years').format()
-  maxMoment = moment(0, "HH").add(1, 'days').format()
-  minDate = new Date(this.minMoment)
-  maxDate = new Date(this.maxMoment)
+  mode: string
+  searchterms: SearchTerms = {
+    ptfilter: "100",
+    teamfilter: "allteams",
+    posfilter: "all",
+    searchyear: "2019"
+  }
 
 
 
@@ -43,39 +40,24 @@ export class SearchInterfaceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchInit();
+    this.mode = this.actr.snapshot.routeConfig.path
   }
 
   searchInit() {
-    this.searchpick = this.searchmode;
-    if (this.searchpick === "hitting") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
+
+    if (this.mode === "hitting") {
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchterms.searchyear}'`);
       this.hitting.fetchSeasonHitting(params)
       this.router.navigate(['hitting'], { relativeTo: this.actr })
     }
-    if (this.searchpick === "pitching") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchyear}'`);
+    if (this.mode === "pitching") {
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchterms.searchyear}'`);
       this.pitching.fetchSeasonPitching(params)
       this.router.navigate(['pitching'], { relativeTo: this.actr })
     }
-    if (this.searchpick === "trans") {
-      let start = this.stdate.value
-      let end = this.enddate.value
-      if (this.valiDate(start, end)) {
-        let startstring = moment(start).format("YYYYMMDD");
-        let endstring = moment(end).format("YYYYMMDD");
-        const params = new HttpParams().set('sport_code', `'mlb'`).set('start_date', `'${startstring}'`).set('end_date', `'${endstring}'`);
-        this.staticquery.fetchTrx(params)
-        this.router.navigate(['alltrans'], { relativeTo: this.actr })
-      }
-    }
+
   }
 
-  valiDate(start: moment.Moment, end: moment.Moment) {
-    let stvalid = (moment(start).isBetween(this.minMoment, end))
-    let evalid = (moment(end).isBetween(start, moment()))
-    return (stvalid && evalid)
-  }
 
 
 

@@ -1,39 +1,9 @@
 <div class="mat-app-background">
     <div class="search-control-container">
-        <div class="search-field-container search-report-select">
-            <mat-form-field>
-                <mat-label for="reportlist">Select Report</mat-label>
-                <mat-select [(ngModel)]="searchmode">
-                    <mat-option value="hitting">Search Batting Statistics</mat-option>
-                    <mat-option value="pitching">Search Pitching Statistics</mat-option>
-                    <mat-option value="trans">Search Leaguewide Transactions</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <!-- only visible when transactions is selected -->
-        <div class="search-field-container search-date-container" *ngIf="searchmode === 'alltrans'">
-            <mat-form-field>
-                <mat-label for="start">Select Start Date</mat-label>
-                <input matInput min="minDate" max="maxDate" [matDatepicker]='start' [formControl]="stdate">
-                <mat-datepicker-toggle matSuffix [for]='start'></mat-datepicker-toggle>
-                <mat-datepicker #start></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div class="search-field-container" *ngIf="searchmode === 'alltrans'">
-            <mat-form-field>
-                <mat-label for="end">Select End Date</mat-label>
-                <input matInput min="minDate" max="maxDate" [matDatepicker]='end' [formControl]="enddate">
-                <mat-datepicker-toggle matSuffix [for]='end'></mat-datepicker-toggle>
-                <mat-datepicker #end></mat-datepicker>
-                <mat-error></mat-error>
-                <mat-error *ngIf="enddate.invalid">Not a valid selection.</mat-error>
-            </mat-form-field>
-        </div>
-        <div class="search-field-container" *ngIf="searchmode === 'curhitting' || searchmode === 'curpitching'">
-            <!-- only visible when pitching/hitting stats is selected -->
+        <div class="search-field-container" *ngIf="true">
             <mat-form-field>
                 <mat-label for="year">Season:</mat-label>
-                <mat-select [(ngModel)]="searchyear">
+                <mat-select [(ngModel)]="searchterms.searchyear">
                     <mat-option value="2019">2019</mat-option>
                     <mat-option value="2018">2018</mat-option>
                     <mat-option value="2017">2017</mat-option>
@@ -46,5 +16,43 @@
             </div>
         </div>
     </div>
-    <router-outlet></router-outlet>
 </div>
+
+<nav class="display-content-holder">
+    <div class="display-positional-toggles display-padding">
+      <mat-button-toggle-group [(ngModel)]="searchterms.posfilter">
+        <mat-button-toggle value="all">ALL</mat-button-toggle>
+        <mat-button-toggle value="C">C</mat-button-toggle>
+        <mat-button-toggle value="1B">1B</mat-button-toggle>
+        <mat-button-toggle value="2B">2B</mat-button-toggle>
+        <mat-button-toggle value="SS">SS</mat-button-toggle>
+        <mat-button-toggle value="3B">3B</mat-button-toggle>
+        <mat-button-toggle value="LF">LF</mat-button-toggle>
+        <mat-button-toggle value="CF">CF</mat-button-toggle>
+        <mat-button-toggle value="RF">RF</mat-button-toggle>
+        <mat-button-toggle value="ALLOF">OF</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div class="display-filter-container display-padding">
+      <div class="display-pt-filter">
+        <mat-form-field>
+          <mat-label for="paselect">Min PA:</mat-label>
+          <input matInput [(ngModel)]="searchterms.ptfilter">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="ipselect">Min IP:</mat-label>
+            <input matInput [(ngModel)]="searchterms.ptfilter">
+          </mat-form-field>
+      </div>
+      <div class="display-team-filter">
+        <mat-form-field>
+          <mat-label for="teamlist">Select Team</mat-label>
+          <mat-select [(ngModel)]="searchterms.teamfilter">
+            <mat-option value="allteams">All MLB</mat-option>
+            <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
+              {{team["name_display_brief"]}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </nav>
