@@ -23,6 +23,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'landing', pathMatch: 'prefix' }
     ]
   },
+  { path: 'landing', component: TeamLandingComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent, canActivate: [SignupGuard]},
   { path: '', redirectTo: 'login', pathMatch: 'full' },

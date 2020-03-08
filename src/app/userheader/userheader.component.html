@@ -5,6 +5,10 @@
                 <div class="header-welcome">
                     <span>Welcome, {{(username$ | async)}}</span>
                 </div>
+                <button mat-button [matMenuTriggerFor]="teammenu">Teams</button>
+                <mat-menu #teammenu="matMenu">
+                    <button mat-menu-item *ngFor="let team of teamlist" (click)="viewteam(team['mlb_org_id'])">{{team["name_display_brief"]}}</button>
+                </mat-menu>
                 <div class="header-button">
                     <button mat-raised-button color="warn" (click)="logout()">LOGOUT</button>
                 </div>

@@ -1,7 +1,7 @@
 const { client, pool } = require('../config/db.config')
 
 function allTeams(response) {
-    pool.query('SELECT mlb_org_id, name_display_full FROM teams')
+    pool.query('SELECT mlb_org_id, name_display_full, name_display_brief FROM teams ORDER BY name_display_brief ASC')
     .then(res => {
         if (res.rows.length === 0 || res.rows.length === undefined) {
             return response.send({success: false, msg: "Database error: Connection interrupted or data missing."})
