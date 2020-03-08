@@ -1,5 +1,5 @@
 function log(req,res,next) {
-    console.log("Activity @",req.path);
+    console.log("Activity @",req.path,"from",req.ip);
     next()
 }
 
