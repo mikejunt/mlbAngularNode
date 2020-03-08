@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">{{teamdata["name_display_full"]}}</mat-toolbar>
+<div [ngClass]="'bg'+ this.curteam"><mat-toolbar color="primary">{{teamdata["name_display_full"]}}</mat-toolbar>
 <div class="flex-row mat-app-background">
     <div id="main" class="flex-row flex-grow">
         <div class="flex-100">
@@ -21,4 +21,5 @@
             <app-team-trx></app-team-trx>
         </div>
     </div>
+</div>
 </div>

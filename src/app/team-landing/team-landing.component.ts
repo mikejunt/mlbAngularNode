@@ -16,10 +16,14 @@ export class TeamLandingComponent implements OnInit {
   constructor(private store: Store<AppState>, private staticquery: StaticqueryService) {
     this.teamdata$ = this.store.select(Selectors.viewTeamDetails);
     this.teamdata$.subscribe(res => this.teamdata = res)
+    this.curteam$ = this.store.select(Selectors.viewSelectedTeam)
+    this.curteam$.subscribe(res => this.curteam = res)
   }
   
   teamdata$: Observable<Team>
   teamdata: Team
+  curteam$: Observable<string>
+  curteam: string
 
 
   ngOnInit(): void {

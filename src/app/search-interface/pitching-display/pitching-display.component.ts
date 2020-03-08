@@ -3,8 +3,10 @@ import { Observable } from 'rxjs';
 import { Pitcher } from 'src/app/interfaces/pitcher.interface';
 import { AppState } from 'src/app/store';
 import { Store } from '@ngrx/store';
-import * as Selectors from '../../store/selectors'
+import * as Selectors from '../../store/selectors';
+import * as Actions from '../../store/actions';
 import { Team } from 'src/app/interfaces/team.interface';
+import { SearchTerms } from 'src/app/interfaces/search.terms.interface';
 
 @Component({
   selector: 'app-pitching-display',
@@ -20,16 +22,21 @@ export class PitchingDisplayComponent implements OnInit {
   teamlist$: Observable<Team[]>
   teamlist: Team[]
   teamview: string = "allteams"
+  searchterms$: Observable<SearchTerms>
 
   constructor(private store: Store<AppState>) {
     this.pitchers$ = this.store.select(Selectors.viewPitching)
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam); 
     this.pitchers$.subscribe(pitch => this.pitchers = pitch); 
-    this.teamlist$ = this.store.select(Selectors.viewTeams)
-    this.teamlist$.subscribe(res => this.teamlist = res)
+    this.teamlist$ = this.store.select(Selectors.viewTeams);
+    this.teamlist$.subscribe(res => this.teamlist = res);
+    this.searchterms$ = this.store.select(Selectors.viewSearchTerms);
+    this.searchterms$.subscribe(res =>{this.ipselect = res.ptfilter;this.teamview = res.teamfilter})
   }
 
   ngOnInit(): void {
+    let terms: SearchTerms = {searchyear: "2019", posfilter: "all", ptfilter: "150", teamfilter: "allteams"}
+    this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
   }
 
 }

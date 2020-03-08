@@ -21,6 +21,7 @@ export interface AppState {
   curpitching: Reducers.CurrentYrPitchingState
   curhitting: Reducers.CurrentYrHittingState
   userlist: Reducers.UserListState
+  searchterms: Reducers.SearchTermState
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -34,7 +35,8 @@ export const reducers: ActionReducerMap<AppState> = {
   copyright: Reducers.setCopyNotice,
   curpitching: Reducers.saveCurPitching,
   curhitting: Reducers.saveCurHitting,
-  userlist: Reducers.addNewUserStatus
+  userlist: Reducers.addNewUserStatus,
+  searchterms: Reducers.setSearchTerms
 }
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

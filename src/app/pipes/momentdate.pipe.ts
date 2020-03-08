@@ -7,8 +7,8 @@ import * as moment from 'moment'
 export class MomentdatePipe implements PipeTransform {
 
   transform(date: string) {
-    if (date === "") {return date}
-    let displaydate = moment(date).format("dddd, MMMM, Do, YYYY")
+    if (date === "") {return "N/A"}
+    let displaydate = moment(date).format("MM-DD-YYYY")
     return displaydate
   }
 
