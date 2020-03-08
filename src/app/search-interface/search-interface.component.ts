@@ -30,9 +30,6 @@ export class SearchInterfaceComponent implements OnInit {
     searchyear: "2019"
   }
 
-
-
-
   constructor(private staticquery: StaticqueryService, private router: Router, private actr: ActivatedRoute,
     private store: Store<AppState>, private hitting: HittingService, private pitching: PitchingService) {
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
@@ -44,21 +41,16 @@ export class SearchInterfaceComponent implements OnInit {
   }
 
   searchInit() {
-
+    console.log(this.searchterms)
+    const terms = {...this.searchterms}
+    this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
     if (this.mode === "hitting") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchterms.searchyear}'`);
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${terms.searchyear}'`);
       this.hitting.fetchSeasonHitting(params)
-      this.router.navigate(['hitting'], { relativeTo: this.actr })
     }
     if (this.mode === "pitching") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.searchterms.searchyear}'`);
+      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${terms.searchyear}'`);
       this.pitching.fetchSeasonPitching(params)
-      this.router.navigate(['pitching'], { relativeTo: this.actr })
     }
-
   }
-
-
-
-
 }
