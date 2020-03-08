@@ -15,3 +15,4 @@ export const viewCurPitching = (state: AppState) => state.curpitching.curpitchin
 export const viewCurHitting = (state: AppState) => state.curhitting.curhitting
 export const viewUserList = (state: AppState) => state.userlist.userlist
 export const viewTeamDetails = (state: AppState) => state.teaminfo.teamdata
+export const viewSearchTerms = (state: AppState) => state.searchterms.searchterms
