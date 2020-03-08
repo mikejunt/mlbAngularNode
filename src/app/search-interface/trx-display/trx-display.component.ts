@@ -18,14 +18,14 @@ import { StaticqueryService } from 'src/app/services/static-query.service';
 export class TrxDisplayComponent implements OnInit {
   trx$: Observable<Transaction[]>;
   trx: Transaction[]
-  displayedColumns: string[] = ['trx'];
+  displayedColumns: string[] = ['date','note'];
   teamlist$: Observable<Team[]>
   teamlist: Team[]
   teamview: string = "allteams"
   stdate = new FormControl(moment(0, "HH").subtract(7, 'days'));
   enddate = new FormControl(moment(0, "HH"))
-  minMoment = moment(0, "HH").subtract(4, 'years').format()
-  maxMoment = moment(0, "HH").add(1, 'days').format()
+  minMoment = moment(0, "HH").subtract(3, 'years').format()
+  maxMoment = moment(0, "HH").format()
   minDate = new Date(this.minMoment)
   maxDate = new Date(this.maxMoment)
 

@@ -10,8 +10,6 @@ import * as Selectors from '../store/selectors';
 import { Team } from '../interfaces/team.interface';
 import { HittingService } from '../services/hitting-query.service';
 import { PitchingService } from '../services/pitching-query.service';
-import * as moment from 'moment'
-import { FormControl } from '@angular/forms';
 import { SearchTerms } from '../interfaces/search.terms.interface';
 
 @Component({

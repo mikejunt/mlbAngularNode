@@ -1,4 +1,34 @@
 .trans-sizing {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 16px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    flex: 0 0 480px;
+}
+
+.trans-position {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.transaction-field {
+    flex: 0 0 202px;
+}
+
+.button-align {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.trans-button {
+    height: 36px;
+}
+
+@media (min-width: 975px)  {
+    .trans-sizing {
+        flex: 0 0 960px;
+    }
 }
