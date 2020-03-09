@@ -10,6 +10,7 @@ import * as Selectors from '../store/selectors'
 import { CrossFieldMatcher } from './crossfield.matcher';
 import { passwordMatchValidator } from './password-match.validator';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -28,9 +29,9 @@ export class SignupComponent implements OnInit {
     favteam: ['', Validators.compose([Validators.required, Validators.maxLength(3), Validators.minLength(3)])]
   }, { validator: passwordMatchValidator })
   matcher: CrossFieldMatcher
-  dupeuser: boolean = false
+  errmsg: string;
 
-  constructor(private user: UserService, private store: Store<AppState>, private forms: FormBuilder, private router: Router) {
+  constructor(private user: UserService, private store: Store<AppState>, private forms: FormBuilder, private router: Router, private snack: MatSnackBar) {
     this.teamlist$ = this.store.select(Selectors.viewTeams);
     this.teamlist$.subscribe(res => this.teamlist = res)
   }
@@ -42,8 +43,7 @@ export class SignupComponent implements OnInit {
     this.user.signup(this.newSignup.value.username, this.newSignup.value.password, this.newSignup.value.favteam).subscribe(result => {
       console.log(result['success'])
       if (result['success']) { this.router.navigate(['login']) }
-      else { this.dupeuser = true }
-      console.log("dupe:",this.dupeuser)
+      else {this.snack.open(result['msg'],"",{duration: 3000})  }
     })
   }
 }

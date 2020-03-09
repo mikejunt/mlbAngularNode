@@ -11,8 +11,8 @@
                     <mat-form-field>
                         <mat-label for="username">Enter Username:</mat-label>
                         <input matInput formControlName="username" placeholder="e.g. Mike">
-                        <mat-error *ngIf="dupeuser">Username in use, please choose another.</mat-error>
                         <mat-hint>Usernames are 4 to 12 characters.</mat-hint>
+                        <mat-error>Usernames are 4 to 12 characters.</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="signup-section">
