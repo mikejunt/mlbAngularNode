@@ -41,7 +41,6 @@ export class UserService {
   signup(inputname: string, inputpassword: string, inputfavteam: string) {
     let newuser: User = { userid: this.nextUserId, username: inputname, password: inputpassword, favteam: inputfavteam }
     return this.http.post('/api/user/signup', newuser).subscribe(res => {
-      console.log(res)
       return res["success"]
     })
   }

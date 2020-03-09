@@ -40,7 +40,6 @@ export class SearchInterfaceComponent implements OnInit {
   }
 
   searchInit() {
-    console.log(this.searchterms)
     const terms = {...this.searchterms}
     this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
     if (this.mode === "hitting") {

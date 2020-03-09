@@ -75,7 +75,6 @@ export class UserheaderComponent implements OnInit {
   }
 
   viewstats(category: string) {
-    console.log(category)
     this.router.navigate([`/${category}`])
   }
 
