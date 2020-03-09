@@ -18,7 +18,7 @@
                     </mat-menu>
                 </div>
                 <div class="header-button">
-                    <button mat-flat-button color="accent" [matMenuTriggerFor]="usermenu">{{username}}</button>
+                    <button mat-flat-button color="warn" [matMenuTriggerFor]="usermenu">{{username}}</button>
                     <mat-menu #usermenu="matMenu">
                         <button mat-menu-item (click)="logout()">LOGOUT</button>
                     </mat-menu>
