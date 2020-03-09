@@ -3,18 +3,16 @@
         <div class="signup-holder floating-panel">
             <mat-toolbar class="toolbar-container" color="primary">
                 <div class="toolbar-content">Register New User</div>
-                <div class="toolbar-button"><button mat-raised-button color="accent"
+                <div class="toolbar-button"><button type="button" mat-raised-button color="accent"
                         [routerLink]="['/login']">Back</button></div>
             </mat-toolbar>
-            <form [formGroup]="newSignup" (ngSubmit)="onSubmit()">
+            <form [formGroup]="newSignup" (ngSubmit)="onSubmit($event)">
                 <div class="signup-section padding-top">
                     <mat-form-field>
                         <mat-label for="username">Enter Username:</mat-label>
                         <input matInput formControlName="username" placeholder="e.g. Mike">
-                        <!-- <mat-error *ngIf="dupeuser">Username in use, please choose another.</mat-error> -->
-                        <mat-error
-                            *ngIf="!newSignup.valid && (newSignup.controls.username.dirty || newSignup.controls.username.touched)">
-                            Usernames must be between 4 and 12 characters.</mat-error>
+                        <mat-error *ngIf="dupeuser">Username in use, please choose another.</mat-error>
+                        <mat-hint>Usernames are 4 to 12 characters.</mat-hint>
                     </mat-form-field>
                 </div>
                 <div class="signup-section">

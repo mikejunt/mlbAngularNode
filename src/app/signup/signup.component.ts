@@ -31,16 +31,19 @@ export class SignupComponent implements OnInit {
   dupeuser: boolean = false
 
   constructor(private user: UserService, private store: Store<AppState>, private forms: FormBuilder, private router: Router) {
-  this.teamlist$ = this.store.select(Selectors.viewTeams);
+    this.teamlist$ = this.store.select(Selectors.viewTeams);
     this.teamlist$.subscribe(res => this.teamlist = res)
   }
 
   ngOnInit(): void { }
 
-  onSubmit() {
-    let result = this.user.signup(this.newSignup.value.username,this.newSignup.value.password,this.newSignup.value.favteam)
-    if (result) {this.router.navigate(['login'])}
-    else { this.dupeuser = true }
+  onSubmit(e) {
+    console.log(this.newSignup.valid)
+    this.user.signup(this.newSignup.value.username, this.newSignup.value.password, this.newSignup.value.favteam).subscribe(result => {
+      console.log(result['success'])
+      if (result['success']) { this.router.navigate(['login']) }
+      else { this.dupeuser = true }
+      console.log("dupe:",this.dupeuser)
+    })
   }
-
 }
