@@ -10,7 +10,7 @@ import { AppState } from '../store';
   providedIn: 'root'
 })
 export class PitchingService {
-  private seasonpitchingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?`
+  private seasonpitchingUrl = `https://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?`
   lgFIPconstant: number = 3.10
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }

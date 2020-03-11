@@ -11,7 +11,7 @@ import { AppState } from '../store';
 })
 
 export class StaticqueryService {
-  private trxUrl = 'http://lookup-service-prod.mlb.com/json/named.transaction_all.bam?';
+  private trxUrl = 'https://lookup-service-prod.mlb.com/json/named.transaction_all.bam?';
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }
 

@@ -9,7 +9,7 @@ import * as Actions from '../store/actions'
   providedIn: 'root'
 })
 export class RosterService {
-  private rosterUrl = `http://lookup-service-prod.mlb.com/json/named.roster_40.bam?`;
+  private rosterUrl = `https://lookup-service-prod.mlb.com/json/named.roster_40.bam?`;
   constructor(private http: HttpClient, private store: Store<AppState>) { }
   fetchRoster(params: HttpParams) {
     this.http.get(`${this.rosterUrl}`, { params }).pipe(

@@ -11,7 +11,7 @@ import { AppState } from '../store';
   providedIn: 'root'
 })
 export class HittingService {
-  private seasonhittingUrl = `http://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?`
+  private seasonhittingUrl = `https://lookup-service-prod.mlb.com/json/named.cur_hitting.bam?`
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }
 
