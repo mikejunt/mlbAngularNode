@@ -6,6 +6,10 @@
     flex: 0 0 480px;
 }
 
+.display-wrapper {
+    min-width: 480px;
+}
+
 .trans-position {
     display: flex;
     flex-flow: row wrap;

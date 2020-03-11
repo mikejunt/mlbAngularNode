@@ -1,47 +1,49 @@
-<div class="trans-position">
-  <div class="trans-sizing">
-    <div class="transaction-field" *ngIf="true">
-      <mat-form-field>
-        <mat-label for="start">Select Start Date</mat-label>
-        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]='start' [formControl]="stdate" disabled>
-        <mat-datepicker-toggle matSuffix [for]='start'></mat-datepicker-toggle>
-        <mat-datepicker #start disabled="false"></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div class="transaction-field" *ngIf="true">
-      <mat-form-field>
-        <mat-label for="end">Select End Date</mat-label>
-        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]='end' [formControl]="enddate" disabled>
-        <mat-datepicker-toggle matSuffix [for]='end'></mat-datepicker-toggle>
-        <mat-datepicker #end disabled="false"></mat-datepicker>
-        <mat-error></mat-error>
-        <mat-error *ngIf="enddate.invalid">Not a valid selection.</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="transaction-field">
-      <mat-form-field>
-        <mat-label for="teamlist">Select Team</mat-label>
-        <mat-select [(ngModel)]="teamview">
-          <mat-option value="allteams">All MLB</mat-option>
-          <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
-            {{team["name_display_full"]}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="transaction-field button-align">
-      <button mat-raised-button class="trans-button" color="primary" (click)="getTrx()">Search</button>
+<div class="display-wrapper">
+  <div class="trans-position">
+    <div class="trans-sizing">
+      <div class="transaction-field" *ngIf="true">
+        <mat-form-field>
+          <mat-label for="start">Select Start Date</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]='start' [formControl]="stdate" disabled>
+          <mat-datepicker-toggle matSuffix [for]='start'></mat-datepicker-toggle>
+          <mat-datepicker #start disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="transaction-field" *ngIf="true">
+        <mat-form-field>
+          <mat-label for="end">Select End Date</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]='end' [formControl]="enddate" disabled>
+          <mat-datepicker-toggle matSuffix [for]='end'></mat-datepicker-toggle>
+          <mat-datepicker #end disabled="false"></mat-datepicker>
+          <mat-error></mat-error>
+          <mat-error *ngIf="enddate.invalid">Not a valid selection.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="transaction-field">
+        <mat-form-field>
+          <mat-label for="teamlist">Select Team</mat-label>
+          <mat-select [(ngModel)]="teamview">
+            <mat-option value="allteams">All MLB</mat-option>
+            <mat-option *ngFor="let team of teamlist; index as i" value="{{team['mlb_org_id']}}">
+              {{team["name_display_full"]}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="transaction-field button-align">
+        <button mat-raised-button class="trans-button" color="primary" (click)="getTrx()">Search</button>
+      </div>
     </div>
   </div>
+  <mat-table [dataSource]="trx | teamtrx:teamview | nodupetrx">
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef>Recent Transactions</mat-header-cell>
+      <mat-cell *matCellDef="let trx">{{trx["effective_date"] | date}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="note">
+      <mat-header-cell *matHeaderCellDef>Recent Transactions</mat-header-cell>
+      <mat-cell *matCellDef="let trx">{{trx["note"]}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
-<mat-table [dataSource]="trx | teamtrx:teamview | nodupetrx">
-  <ng-container matColumnDef="date">
-    <mat-header-cell *matHeaderCellDef>Recent Transactions</mat-header-cell>
-    <mat-cell *matCellDef="let trx">{{trx["effective_date"] | date}}</mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="note">
-    <mat-header-cell *matHeaderCellDef>Recent Transactions</mat-header-cell>
-    <mat-cell *matCellDef="let trx">{{trx["note"]}}</mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
