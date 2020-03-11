@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HittingDisplayComponent } from './search-interface/hitting-display/hitting-display.component';
 import { PitchingDisplayComponent } from './search-interface/pitching-display/pitching-display.component';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
-import { UserGuard } from './guards/User.guard';
+import { UserGuard } from './guards/user.guard';
 import { TeamLandingComponent } from './team-landing/team-landing.component';
 import { SignupComponent } from './signup/signup.component';
 
