@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 const user = require ('./server/routes/user.routes')
 const teams = require ('./server/routes/teams.routes')
 const logger = require ('./server/middleware/logger')
