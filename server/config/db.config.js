@@ -1,15 +1,25 @@
 const { Pool, Client } = require('pg')
-const connectionString = process.env.DATABASE_URL
 
-const client = new Client({connectionString: connectionString,
-                           ssl: true});
 
-const pool = new Pool({connectionString: connectionString,
-                       ssl: true});
+const environment = (process.env.ENVIRONMENT === "production")
 
-pool.connect(err=>console.log(err, "from pool connect"))
+const client = new Client({connectionString: process.env.DATABASE_URL,
+                           ssl: environment});
 
-client.connect(err=>console.log(err))
+const pool = new Pool({connectionString: process.env.DATABASE_URL,
+                       ssl: environment});
+
+pool.connect((err,client,done) => {
+    if (err) {
+        console.log("Pool encountered connection error:", err)
+    }
+})
+
+client.connect(err => {
+    if (err) {
+        console.log("Client encountered error on connect:", err)
+    }
+})
 
 pool.on('error', (err,client) => console.log("Pool error:", err))
 
