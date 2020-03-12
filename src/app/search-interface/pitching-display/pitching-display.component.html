@@ -1,4 +1,5 @@
 <div class="display-wrapper">
+  <app-userheader></app-userheader>
   <app-search-interface></app-search-interface>
   <div class="display-container">
     <mat-table matSort matSortDisableClear="true" [dataSource]="pitchers | minip:ipselect | playerbyteam:teamview">
@@ -21,4 +22,5 @@
       <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <app-userfooter></app-userfooter>
   </div>

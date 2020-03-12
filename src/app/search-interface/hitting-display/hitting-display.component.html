@@ -1,4 +1,5 @@
 <div class="display-wrapper">
+  <app-userheader>  </app-userheader>
   <app-search-interface></app-search-interface>
   <div class="results-display">
     <mat-table matSort [dataSource]="hitters | minplate:paselect | playerbypos:filterpos | playerbyteam:teamview">
@@ -22,4 +23,5 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
+  <app-userfooter></app-userfooter>
 </div>

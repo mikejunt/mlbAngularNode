@@ -1,4 +1,5 @@
 <div class="display-wrapper">
+  <app-userheader></app-userheader>
   <div class="trans-position">
     <div class="trans-sizing">
       <div class="transaction-field" *ngIf="true">
@@ -46,4 +47,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+  <app-userfooter></app-userfooter>
 </div>
