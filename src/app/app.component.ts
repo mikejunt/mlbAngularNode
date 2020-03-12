@@ -11,7 +11,7 @@ import { Team } from './interfaces/team.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mlbAngular';
+  title = "Mike's Baseball App";
   username$: Observable<string>
   favteam$: Observable<string>
   constructor (private store: Store<AppState>) {

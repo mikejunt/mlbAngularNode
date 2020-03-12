@@ -2,6 +2,8 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    min-width: 480px;
+    overflow: auto;
 }
 
 .search-control-container {
