@@ -8,15 +8,15 @@
         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="hr">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> HR </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header start="desc"> HR </mat-header-cell>
         <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="ops">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> OPS </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header start="desc"> OPS </mat-header-cell>
         <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="slg">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> SLG </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header start="desc"> SLG </mat-header-cell>
         <mat-cell *matCellDef="let hitter"> {{hitter["slg"]}} </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></mat-header-row>
