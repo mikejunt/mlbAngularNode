@@ -39,10 +39,34 @@ function allHitting(request, response) {
     }
 }
 function teamHitting(request, response) {
-    if (request.body.position === "all") {
+    if (request.body.posfilter === "all") {
         const season = request.body.season
         const search = [request.body.minpa, request.params.id]
         pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND team_id = $2 ORDER BY obp DESC`, search)
+            .then(res => {
+                if (res.rows.length === 0 || res.rows.length === undefined) {
+                    return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
+                }
+                return response.send({ success: true, msg: "", data: res.rows })
+            })
+            .catch(err => { return response.send({ success: false, msg: `Database Error: Code ${err.code}` }) })
+    }
+    else if (request.body.posfilter === "OF") {
+        const season = request.body.season
+        const search = [request.body.minpa, request.params.id]
+        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND team_id = $2 AND primary_position LIKE '_F' ORDER BY obp DESC`, search)
+            .then(res => {
+                if (res.rows.length === 0 || res.rows.length === undefined) {
+                    return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
+                }
+                return response.send({ success: true, msg: "", data: res.rows })
+            })
+            .catch(err => { return response.send({ success: false, msg: `Database Error: Code ${err.code}` }) })
+    }
+    else {
+        const season = request.body.season
+        const search = [request.body.minpa, request.params.id, request.body.posfilter]
+        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND team_id = $2 AND primary_position = $3 ORDER BY obp DESC`, search)
             .then(res => {
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
