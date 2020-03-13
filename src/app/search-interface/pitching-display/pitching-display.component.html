@@ -2,7 +2,7 @@
   <app-userheader></app-userheader>
   <app-search-interface></app-search-interface>
   <div class="display-container">
-    <mat-table matSort matSortDisableClear="true" [dataSource]="pitchers | minip:ipselect | playerbyteam:teamview">
+    <mat-table matSort matSortDisableClear="true" (matSortChange)="sortTable($event)" [dataSource]="pitchdata">
       <ng-container matColumnDef="player" sticky>
         <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
         <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
@@ -12,7 +12,7 @@
         <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="so">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> K </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header start="desc"> K </mat-header-cell>
         <mat-cell *matCellDef="let pitcher"> {{pitcher["so"]}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="era">
@@ -22,5 +22,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[30,60]"></mat-paginator>
+    </div>
     <app-userfooter></app-userfooter>
   </div>

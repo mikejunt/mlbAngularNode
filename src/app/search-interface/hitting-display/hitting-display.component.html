@@ -1,5 +1,5 @@
 <div class="display-wrapper">
-  <app-userheader>  </app-userheader>
+  <app-userheader></app-userheader>
   <app-search-interface></app-search-interface>
   <div class="results-display">
     <mat-table matSort matSortDisableClear="true" [dataSource]="hitdata" (matSortChange)="sortTable($event)">
@@ -22,7 +22,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-    <mat-paginator [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[30,60]"></mat-paginator>
   </div>
   <app-userfooter></app-userfooter>
 </div>
