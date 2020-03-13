@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
     this.staticquery.fetchTrx(params)
     const statparams = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${this.curyear}'`);
     this.hitting.fetchSeasonHitting(statparams)
-    this.pitching.fetchSeasonPitching(statparams) 
   }
 
   loginCheck() { this.user.authenticate(this.loginForm.value.username, this.loginForm.value.password) }

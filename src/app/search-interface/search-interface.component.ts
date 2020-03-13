@@ -47,8 +47,7 @@ export class SearchInterfaceComponent implements OnInit {
       this.hitting.fetchSeasonHitting(params)
     }
     if (this.mode === "pitching") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${terms.searchyear}'`);
-      this.pitching.fetchSeasonPitching(params)
+      this.pitching.fetchSeasonPitching(terms)
     }
   }
 }

@@ -11,6 +11,7 @@ import { SearchTerms } from 'src/app/interfaces/search.terms.interface';
 import { Sort, MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { PitchingService } from 'src/app/services/pitching-query.service';
 
 @Component({
   selector: 'app-pitching-display',
@@ -31,15 +32,11 @@ export class PitchingDisplayComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
   @ViewChild(MatSort, { static: true }) sort: MatSort
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private pitching: PitchingService) {
     this.pitchers$ = this.store.select(Selectors.viewPitching)
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam); 
-    this.pitchers$.subscribe(pitch => this.pitchers = pitch); 
     this.teamlist$ = this.store.select(Selectors.viewTeams);
-    this.teamlist$.subscribe(res => this.teamlist = res);
-    this.searchterms$ = this.store.select(Selectors.viewSearchTerms);
-    this.searchterms$.subscribe(res =>{this.ipselect = res.ipfilter;this.teamview = res.teamfilter})
-  }
+    this.searchterms$ = this.store.select(Selectors.viewSearchTerms);  }
 
   sortTable(sort:Sort) {
     console.log(sort)
@@ -47,6 +44,7 @@ export class PitchingDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     let terms: SearchTerms = {searchyear: "2019", posfilter: "all", ipfilter: "100", teamfilter: "allteams", pafilter: "500"}
+    this.pitching.fetchSeasonPitching(terms)
     this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
     this.teamlist$.subscribe(res => this.teamlist = res);
     this.searchterms$.subscribe(res =>{this.ipselect = res.ipfilter;this.teamview = res.teamfilter})

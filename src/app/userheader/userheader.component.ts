@@ -10,8 +10,6 @@ import * as Actions from '../store/actions'
 import { Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 import { RosterService } from '../services/roster-query.service'
-import { Hitter } from '../interfaces/hitter.interface';
-import { Pitcher } from '../interfaces/pitcher.interface';
 import { HittingService } from '../services/hitting-query.service';
 import { PitchingService } from '../services/pitching-query.service';
 
@@ -27,39 +25,25 @@ export class UserheaderComponent implements OnInit {
   teamlist: Team[];
   displayteam$: Observable<string>
   displayteam: string
-  hitting$: Observable<Hitter[]>
-  pitching$: Observable<Pitcher[]>
-  pitchYr: string
-  hitYr: string
 
   constructor(private user: UserService, private staticquery: StaticqueryService,
     private store: Store<AppState>, private router: Router, private roster: RosterService,
     private hitting: HittingService, private pitching: PitchingService) {
     this.username$ = this.store.select(Selectors.viewUserName)
-    this.username$.subscribe(res => this.username = res)
     this.teamlist$ = this.store.select(Selectors.viewTeams)
-    this.teamlist$.subscribe(res => this.teamlist = res)
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam)
-    this.displayteam$.subscribe(res => this.displayteam = res)
-    this.pitching$ = store.pipe(select(Selectors.viewPitching));
-    this.hitting$ = store.pipe(select(Selectors.viewHitting));
-    this.pitching$.subscribe(res => { if (res.length != 0) { this.pitchYr = res[0]['season'] } });
-    this.hitting$.subscribe(res => { if (res.length != 0) { this.hitYr = res[0]['season'] } });
   }
 
-  getData(team: string) {
-    this.staticquery.fetchTeamDetails(team)
-    this.showRoster(team)
-    const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'2019'`)
-    if (this.hitYr != "2019") {
-      this.hitting.fetchSeasonHitting(params)
-    }
-    if (this.pitchYr != "2019") {
-      this.hitting.fetchSeasonHitting(params)
-    }
+  getData(teamid: string) {
+    this.staticquery.fetchTeamDetails(teamid)
+    this.showRoster(teamid)
+    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid})
   }
 
   ngOnInit(): void {
+    this.username$.subscribe(res => this.username = res)
+    this.teamlist$.subscribe(res => this.teamlist = res)
+    this.displayteam$.subscribe(res => this.displayteam = res)
     this.getData(this.displayteam)
   }
 
@@ -69,7 +53,7 @@ export class UserheaderComponent implements OnInit {
   }
 
   viewteam(teamid: string) {
-    this.getData(teamid)
+    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid})
     this.store.dispatch(Actions.setViewTeam({ displayteam: teamid }))
     this.router.navigate(['/landing'])
   }
