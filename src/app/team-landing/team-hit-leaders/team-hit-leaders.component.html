@@ -1,5 +1,5 @@
 <div class="mat-app-background landing-panel">
-    <div class="sub-header">Batting Leaders</div>
+    <div *ngIf="hitters.length != 0" class="sub-header">Batting Leaders ({{hitters[0]['season']}})</div>
     <mat-progress-spinner *ngIf="hitters.length == 0; else loaded" color="primary" mode="indeterminate">
     </mat-progress-spinner>
     <ng-template #loaded>
@@ -13,6 +13,10 @@
                     <ng-container matColumnDef="woba">
                         <mat-header-cell *matHeaderCellDef> wOBA </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["woba"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="tpa">
+                        <mat-header-cell *matHeaderCellDef> PA </mat-header-cell>
+                        <mat-cell *matCellDef="let hitter"> {{hitter["tpa"]}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="wobaColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: wobaColumns;"></mat-row>
@@ -28,6 +32,10 @@
                         <mat-header-cell *matHeaderCellDef> HR </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="tpa">
+                        <mat-header-cell *matHeaderCellDef> PA </mat-header-cell>
+                        <mat-cell *matCellDef="let hitter"> {{hitter["tpa"]}} </mat-cell>
+                    </ng-container>
                     <mat-header-row *matHeaderRowDef="hrColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: hrColumns;"></mat-row>
                 </mat-table>
@@ -41,6 +49,10 @@
                     <ng-container matColumnDef="ops">
                         <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="tpa">
+                        <mat-header-cell *matHeaderCellDef> PA </mat-header-cell>
+                        <mat-cell *matCellDef="let hitter"> {{hitter["tpa"]}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="opsColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: opsColumns;"></mat-row>

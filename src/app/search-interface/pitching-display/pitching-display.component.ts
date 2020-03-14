@@ -30,7 +30,7 @@ export class PitchingDisplayComponent implements OnInit {
   }
 
   sortTable(sort:Sort) {
-    console.log(sort)
+    // console.log(sort)
   }
 
   ngOnInit(): void {

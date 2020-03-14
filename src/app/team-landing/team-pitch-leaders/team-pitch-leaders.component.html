@@ -1,5 +1,5 @@
 <div class="mat-app-background landing-panel">
-    <div class="sub-header">Pitching Leaders</div>
+    <div *ngIf="pitchers.length != 0" class="sub-header">Pitching Leaders ({{pitchers[0]['season']}})</div>
     <mat-progress-spinner *ngIf="pitchers.length == 0; else loaded" color="primary" mode="indeterminate">
     </mat-progress-spinner>
     <ng-template #loaded>
@@ -13,6 +13,10 @@
                     <ng-container matColumnDef="fip">
                         <mat-header-cell *matHeaderCellDef> FIP </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="ip">
+                        <mat-header-cell *matHeaderCellDef> IP </mat-header-cell>
+                        <mat-cell *matCellDef="let pitcher"> {{pitcher["ip"]}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="fipColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: fipColumns;"></mat-row>
@@ -28,6 +32,10 @@
                         <mat-header-cell *matHeaderCellDef> K </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["so"]}} </mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="ip">
+                        <mat-header-cell *matHeaderCellDef> IP </mat-header-cell>
+                        <mat-cell *matCellDef="let pitcher"> {{pitcher["ip"]}} </mat-cell>
+                    </ng-container>
                     <mat-header-row *matHeaderRowDef="soColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: soColumns;"></mat-row>
                 </mat-table>
@@ -41,6 +49,10 @@
                     <ng-container matColumnDef="era">
                         <mat-header-cell *matHeaderCellDef> ERA </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["era"]}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="ip">
+                        <mat-header-cell *matHeaderCellDef> IP </mat-header-cell>
+                        <mat-cell *matCellDef="let pitcher"> {{pitcher["ip"]}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="eraColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: eraColumns;"></mat-row>

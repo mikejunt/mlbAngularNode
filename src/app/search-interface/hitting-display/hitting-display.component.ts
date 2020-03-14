@@ -27,7 +27,7 @@ export class HittingDisplayComponent implements OnInit {
   }
 
   sortTable(sort:Sort) {
-    console.log(sort)
+    // console.log(sort)
   }
 
 
