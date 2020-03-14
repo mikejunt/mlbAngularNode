@@ -7,6 +7,10 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../store';
 import * as Actions from '../store/actions';
 import * as Selectors from '../store/selectors'
+import { PitchingService } from './pitching-query.service';
+import { StaticqueryService } from './static-query.service';
+import { RosterService } from './roster-query.service';
+import { HittingService } from './hitting-query.service';
 
 
 @Injectable({
@@ -19,7 +23,9 @@ export class UserService {
   favteam$: Observable<string>;
   favteam: string;
 
-  constructor(private http: HttpClient, private router: Router, private store: Store<AppState>) {
+  constructor(private http: HttpClient, private router: Router, private store: Store<AppState>, 
+    private hitting: HittingService, private pitching: PitchingService, 
+    private staticquery: StaticqueryService, private roster: RosterService) {
     this.userlist$ = this.store.select(Selectors.viewUserList);
     this.userlist$.subscribe(res => this.userlist = res);
     this.favteam$ = this.store.select(Selectors.viewUserFav);
@@ -32,6 +38,7 @@ export class UserService {
         let favteam = res["favteam"];
         this.store.dispatch(Actions.login({ user: { username: username, favteam: favteam } }))
         this.store.dispatch(Actions.setViewTeam({ displayteam: favteam }))
+        this.getinitialData(favteam)
         this.router.navigate(['landing'])
       }
       else return false
@@ -52,6 +59,14 @@ export class UserService {
     let body = document.getElementById("body")
     body.classList.remove(`bg${this.favteam}`)
     body.classList.add(`bg${newfav}`)
+  }
+
+  getinitialData(teamid: string) {
+    this.staticquery.fetchTeamDetails(teamid)
+    const params = new HttpParams().set('team_id', `'${teamid}'`)
+    this.roster.fetchRoster(params)
+    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid, posfilter: "all", ipfilter: "50"})
+    this.hitting.fetchSeasonHitting({searchyear: "2019", teamfilter: teamid, posfilter: "all", pafilter: "300"})
   }
 
 }

@@ -14,13 +14,12 @@ export class TeamDescComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {
     this.teamdata$ = this.store.select(Selectors.viewTeamDetails);
-    this.teamdata$.subscribe(res => this.teamdata = res)
   }
   teamdata$: Observable<Team>
   teamdata: Team
 
   ngOnInit(): void {
-
+    this.teamdata$.subscribe(res => this.teamdata = res)
   }
 
 }

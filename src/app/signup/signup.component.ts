@@ -33,10 +33,10 @@ export class SignupComponent implements OnInit {
 
   constructor(private user: UserService, private store: Store<AppState>, private forms: FormBuilder, private router: Router, private snack: MatSnackBar) {
     this.teamlist$ = this.store.select(Selectors.viewTeams);
-    this.teamlist$.subscribe(res => this.teamlist = res)
+    
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {this.teamlist$.subscribe(res => this.teamlist = res)}
 
   onSubmit(e) {
     console.log(this.newSignup.valid)

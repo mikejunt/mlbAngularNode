@@ -43,8 +43,7 @@ export class SearchInterfaceComponent implements OnInit {
     const terms = {...this.searchterms}
     this.store.dispatch(Actions.saveSearchTerms({searchterms: terms}))
     if (this.mode === "hitting") {
-      const params = new HttpParams().set('sport_code', `'mlb'`).set('game_type', `'R'`).set('season', `'${terms.searchyear}'`);
-      this.hitting.fetchSeasonHitting(params)
+      this.hitting.fetchSeasonHitting(terms)
     }
     if (this.mode === "pitching") {
       this.pitching.fetchSeasonPitching(terms)

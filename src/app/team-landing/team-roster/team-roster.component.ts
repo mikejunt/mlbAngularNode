@@ -13,15 +13,16 @@ import * as Selectors from '../../store/selectors'
 export class TeamRosterComponent implements OnInit {
   roster$: Observable<Player[]>
   roster: Player[];
-  rosterHColumns: string[] = ['pos', 'number', 'bats','name', 'debut'];
-  rosterPColumns: string[] = ['pos', 'number','throws','name', 'debut'];
+  rosterHColumns: string[] = ['pos', 'number', 'bats', 'name', 'debut'];
+  rosterPColumns: string[] = ['pos', 'number', 'throws', 'name', 'debut'];
 
   constructor(private store: Store<AppState>) {
     this.roster$ = this.store.pipe(select(Selectors.viewRoster));
-    this.roster$.subscribe(res => this.roster = res)
+
   }
 
   ngOnInit(): void {
+    this.roster$.subscribe(res => this.roster = res)
   }
 
 }

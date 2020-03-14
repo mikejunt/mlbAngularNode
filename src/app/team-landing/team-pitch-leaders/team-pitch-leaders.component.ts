@@ -22,11 +22,11 @@ export class TeamPitchLeadersComponent implements OnInit {
   constructor(private store: Store<AppState>) {
     this.pitchers$ = this.store.select(Selectors.viewPitching);
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam);
-    this.pitchers$.subscribe(res => this.pitchers = res);
-    this.displayteam$.subscribe(res => this.displayteam = res)
   }
 
   ngOnInit(): void {
+    this.pitchers$.subscribe(res => this.pitchers = res);
+    this.displayteam$.subscribe(res => this.displayteam = res)
   }
 
 }

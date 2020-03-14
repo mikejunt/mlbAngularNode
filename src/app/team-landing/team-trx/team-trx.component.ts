@@ -17,12 +17,14 @@ export class TeamTrxComponent implements OnInit {
   displayteam$: Observable<string>
   displayteam: string
 
-  constructor(private store: Store<AppState>) { this.trx$ = this.store.select(Selectors.viewTrx);
+  constructor(private store: Store<AppState>) {
+    this.trx$ = this.store.select(Selectors.viewTrx);
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam);
-  this.displayteam$.subscribe(res => this.displayteam = res)
-this.trx$.subscribe(res => this.trx = res) }
+  }
 
   ngOnInit(): void {
+    this.displayteam$.subscribe(res => this.displayteam = res)
+    this.trx$.subscribe(res => this.trx = res)
   }
 
 }

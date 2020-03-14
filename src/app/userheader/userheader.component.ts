@@ -34,17 +34,10 @@ export class UserheaderComponent implements OnInit {
     this.displayteam$ = this.store.select(Selectors.viewSelectedTeam)
   }
 
-  getData(teamid: string) {
-    this.staticquery.fetchTeamDetails(teamid)
-    this.showRoster(teamid)
-    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid})
-  }
-
   ngOnInit(): void {
     this.username$.subscribe(res => this.username = res)
     this.teamlist$.subscribe(res => this.teamlist = res)
     this.displayteam$.subscribe(res => this.displayteam = res)
-    this.getData(this.displayteam)
   }
 
   showRoster(team: string) {
@@ -53,7 +46,9 @@ export class UserheaderComponent implements OnInit {
   }
 
   viewteam(teamid: string) {
-    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid})
+    this.showRoster(teamid)
+    this.hitting.fetchSeasonHitting({searchyear: "2019", teamfilter: teamid, posfilter: "all", pafilter: "300"})
+    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid, posfilter: "all", ipfilter: "50"})
     this.store.dispatch(Actions.setViewTeam({ displayteam: teamid }))
     this.router.navigate(['/landing'])
   }
