@@ -22,7 +22,7 @@ export class SearchInterfaceComponent implements OnInit {
   mode: string
   searchterms: SearchTerms = {
     pafilter: "500",
-    ipfilter: "100",
+    ipfilter: "150",
     teamfilter: "allteams",
     posfilter: "all",
     searchyear: "2019"

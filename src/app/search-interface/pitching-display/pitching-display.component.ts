@@ -18,7 +18,7 @@ import { PitchingService } from 'src/app/services/pitching-query.service';
 export class PitchingDisplayComponent implements OnInit {
   displayteam$: Observable<string>
   pitchers$: Observable<Pitcher[]>;
-  displayedColumns: string[] = ['player', 'fip', 'so', 'era']
+  displayedColumns: string[] = ['player','name','w','l','sv','g','gs','ip','so','bb','hr','era','fip']
   pitchers: Pitcher[]
   pitchdata: MatTableDataSource<Pitcher>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator

@@ -7,7 +7,7 @@ function collect(players, stat) {
 function allPitching(request, response) {
     const season = request.body.season
     const search = [request.body.minip]
-    pool.query(`SELECT p.gidp,p.player,p.np,p.sho,p.bk,p.sv,p.bb,p.so,p.wp,p.hb,p.rs,p.cg,p.player_id,p.gs,p.ibb,p.team_id,p.hr,p.era,p.fip,p.hld,p.g,p.ip,p.w,p.r,p.er,t.name_abbrev,t.league_abbrev,t.name FROM "${season}pitching" AS p INNER JOIN teams AS t ON p.team_id = t.team_id WHERE p.ip > $1 ORDER BY fip ASC`, search)
+    pool.query(`SELECT p.gidp,p.player,p.np,p.sho,p.bk,p.sv,p.bb,p.so,p.wp,p.hb,p.rs,p.l,p.cg,p.player_id,p.gs,p.ibb,p.team_id,p.hr,p.era,p.fip,p.hld,p.g,p.ip,p.w,p.r,p.er,t.name_abbrev,t.league_abbrev,t.name FROM "${season}pitching" AS p INNER JOIN teams AS t ON p.team_id = t.team_id WHERE p.ip > $1 ORDER BY fip ASC`, search)
         .then(res => {
             if (res.rows.length === 0 || res.rows.length === undefined) {
                 return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
@@ -20,7 +20,7 @@ function allPitching(request, response) {
 function teamPitching(request, response) {
     const season = request.body.season
     const search = [request.body.minip, request.params.id]
-    pool.query(`SELECT p.gidp,p.player,p.np,p.sho,p.bk,p.sv,p.bb,p.so,p.wp,p.hb,p.rs,p.cg,p.player_id,p.gs,p.ibb,p.team_id,p.hr,p.era,p.fip,p.hld,p.g,p.ip,p.w,p.r,p.er,t.name_abbrev,t.league_abbrev,t.name FROM "${season}pitching" AS p INNER JOIN teams AS t ON p.team_id = t.team_id WHERE p.ip > $1 AND t.team_id = $2 ORDER BY fip ASC`, search)
+    pool.query(`SELECT p.gidp,p.player,p.np,p.sho,p.bk,p.sv,p.bb,p.so,p.wp,p.hb,p.rs,p.cg,p.player_id,p.gs,p.l,p.ibb,p.team_id,p.hr,p.era,p.fip,p.hld,p.g,p.ip,p.w,p.r,p.er,t.name_abbrev,t.league_abbrev,t.name FROM "${season}pitching" AS p INNER JOIN teams AS t ON p.team_id = t.team_id WHERE p.ip > $1 AND t.team_id = $2 ORDER BY fip ASC`, search)
         .then(res => {
             if (res.rows.length === 0 || res.rows.length === undefined) {
                 return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })

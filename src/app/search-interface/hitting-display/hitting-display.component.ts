@@ -16,7 +16,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 })
 export class HittingDisplayComponent implements OnInit {
   hitters$: Observable<Hitter[]>;
-  displayedColumns: string[] = ['name', 'hr', 'ops', 'slg'];
+  displayedColumns: string[] = ['player','name','g','tpa','r','hr','rbi','sb','cs','avg','obp','slg','ops','woba'];
   hitters: Hitter[]
   hitdata: MatTableDataSource<Hitter>
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator
