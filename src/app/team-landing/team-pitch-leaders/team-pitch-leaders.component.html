@@ -6,12 +6,12 @@
         <mat-tab-group color="primary" backgroundColor="accent" mat-stretch-tabs>
             <mat-tab label="FIP">
                 <mat-table [dataSource]="pitchers | leadersAsc:'fip'">
-                    <ng-container matColumnDef="Name">
+                    <ng-container matColumnDef="player">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
-                    <ng-container matColumnDef="FIP">
-                        <mat-header-cell *matHeaderCellDef> Wins </mat-header-cell>
+                    <ng-container matColumnDef="fip">
+                        <mat-header-cell *matHeaderCellDef> FIP </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="fipColumns"></mat-header-row>
@@ -20,11 +20,11 @@
             </mat-tab>
             <mat-tab label="Strikeouts">
                 <mat-table [dataSource]="pitchers | leadersDesc:'so'">
-                    <ng-container matColumnDef="Name">
+                    <ng-container matColumnDef="player">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
-                    <ng-container matColumnDef="SO">
+                    <ng-container matColumnDef="so">
                         <mat-header-cell *matHeaderCellDef> K </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["so"]}} </mat-cell>
                     </ng-container>
@@ -34,11 +34,11 @@
             </mat-tab>
             <mat-tab label="ERA">
                 <mat-table [dataSource]="pitchers | leadersAsc:'era'">
-                    <ng-container matColumnDef="Name">
+                    <ng-container matColumnDef="player">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
-                    <ng-container matColumnDef="ERA">
+                    <ng-container matColumnDef="era">
                         <mat-header-cell *matHeaderCellDef> ERA </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["era"]}} </mat-cell>
                     </ng-container>

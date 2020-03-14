@@ -13,9 +13,9 @@ import { Observable } from 'rxjs';
 export class TeamHitLeadersComponent implements OnInit {
   displayteam$: Observable<string>
   hitters$: Observable<Hitter[]>;
-  wobaColumns: string[] = ['Name', 'woba'];
-  hrColumns: string[] = ['Name', 'HR'];
-  opsColumns: string[] = ['Name', 'ops'];
+  wobaColumns: string[] = ['player', 'woba'];
+  hrColumns: string[] = ['player', 'hr'];
+  opsColumns: string[] = ['player', 'ops'];
   hitters: Hitter[];
   displayteam: string
 

@@ -6,7 +6,7 @@
         <mat-tab-group color="primary" backgroundColor="accent" mat-stretch-tabs>
             <mat-tab label="wOBA">
                 <mat-table [dataSource]="hitters | leadersDesc:'woba'">
-                    <ng-container matColumnDef="Name">
+                    <ng-container matColumnDef="player">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
@@ -20,7 +20,7 @@
             </mat-tab>
             <mat-tab label="HR">
                 <mat-table [dataSource]="hitters | leadersDesc:'hr'">
-                    <ng-container matColumnDef="Name">
+                    <ng-container matColumnDef="player">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
@@ -34,7 +34,7 @@
             </mat-tab>
             <mat-tab label="OPS">
                 <mat-table [dataSource]="hitters | leadersDesc:'ops'">
-                    <ng-container matColumnDef="Name">
+                    <ng-container matColumnDef="player">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
