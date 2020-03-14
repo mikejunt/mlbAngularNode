@@ -5,14 +5,14 @@
     <ng-template #loaded>
         <mat-tab-group color="primary" backgroundColor="accent" mat-stretch-tabs>
             <mat-tab label="OPS">
-                <mat-table [dataSource]="hitters">
+                <mat-table [dataSource]="hitters | leadersDesc:'obp'">
                     <ng-container matColumnDef="Name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="OPS">
-                        <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
-                        <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
+                        <mat-header-cell *matHeaderCellDef> OBP </mat-header-cell>
+                        <mat-cell *matCellDef="let hitter"> {{hitter["obp"]}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="opsColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: opsColumns;"></mat-row>

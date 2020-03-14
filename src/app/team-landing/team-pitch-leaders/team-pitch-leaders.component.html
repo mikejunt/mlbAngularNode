@@ -5,14 +5,14 @@
     <ng-template #loaded>
         <mat-tab-group color="primary" backgroundColor="accent" mat-stretch-tabs>
             <mat-tab label="FIP">
-                <mat-table [dataSource]="pitchers">
+                <mat-table [dataSource]="pitchers | leadersDesc:'w'">
                     <ng-container matColumnDef="Name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let pitcher"> {{pitcher["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="FIP">
-                        <mat-header-cell *matHeaderCellDef> FIP </mat-header-cell>
-                        <mat-cell *matCellDef="let pitcher"> {{pitcher["fip"]}} </mat-cell>
+                        <mat-header-cell *matHeaderCellDef> Wins </mat-header-cell>
+                        <mat-cell *matCellDef="let pitcher"> {{pitcher["w"]}} </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="fipColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: fipColumns;"></mat-row>
