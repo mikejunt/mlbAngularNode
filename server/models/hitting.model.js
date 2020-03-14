@@ -76,5 +76,31 @@ function teamHitting(request, response) {
             .catch(err => { return response.send({ success: false, msg: `Database Error: Code ${err.code}` }) })
     }
 }
+
+// doesnt calculate woba constants
+function advStats(request, response) {
+    const season = request.body.season
+    pool.query(`SELECT * FROM "${season}hitting"`).then(res => {
+        // let data = res.rows
+        // let errors = []
+        // data.forEach(obj => {
+        //     let ubb = obj['bb'] - obj['ibb']
+        //     let single = obj['h'] - obj['hr'] - obj['t'] - obj['d']
+        //     let woba = (((0.693 * ubb) + (0.723 * obj['hbp']) + (0.877 * single) + (1.232 * obj['d'])
+        //      + (1.552 * obj['t']) + (1.98 * obj['hr'])) / ((obj['ab'] + obj['bb'] - obj['ibb'] + obj['sf'] + obj['hbp'])))
+        //     let slg = obj['tb'] / obj['ab']
+        //     let obp = ((obj['h']+obj['bb']+obj['hbp']) / (obj['ab'] + obj['bb'] + obj['hbp'] + obj['sf']))
+        //     let ops = slg + obp
+        //     console.log(ubb, single, woba, slg, obp, ops, obj['player'], obj['player_id'])
+        //     if (isNaN(woba)) {woba = 0}
+        //     if (isNaN(ops)) {ops = 0}
+        //     let insert = [woba, single, ops, obj['id']]
+        //     pool.query(`UPDATE "${season}hitting" SET woba = $1, s = $2, ops = $3 WHERE id = $4`, insert).catch(err=>{console.log(obj['player'], woba, err);errors.push(obj['player'])})
+        // })
+        return response.send({msg: "Complete", errors: errors})
+    })
+}
+
 module.exports.allHitting = allHitting
 module.exports.teamHitting = teamHitting
+module.exports.advStats = advStats
