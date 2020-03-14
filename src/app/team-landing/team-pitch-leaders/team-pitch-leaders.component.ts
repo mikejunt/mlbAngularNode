@@ -25,7 +25,7 @@ export class TeamPitchLeadersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pitchers$.subscribe(res =>{console.log(res);this.pitchers = res});
+    this.pitchers$.subscribe(res =>{this.pitchers = res});
     this.displayteam$.subscribe(res => this.displayteam = res)
   }
 

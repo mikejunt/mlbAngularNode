@@ -58,7 +58,7 @@ export class PitchingService {
     else {
       this.http.post(`/api/pitching/${terms.teamfilter}`, { season: terms.searchyear, minip: terms.ipfilter }).subscribe(res => {
         if (!res['success']) { console.log(res) }
-        else { console.log(res['data']);this.store.dispatch(Actions.savePitchers({ pitching: res['data'] })) }
+        else { this.store.dispatch(Actions.savePitchers({ pitching: res['data'] })) }
       })
     }
   }

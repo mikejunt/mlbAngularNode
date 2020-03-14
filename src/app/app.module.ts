@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserheaderComponent } from './userheader/userheader.component';
-import { SortTeamPipe } from './pipes/sort-team.pipe';
 import { SearchInterfaceComponent } from './search-interface/search-interface.component';
 import { TeamRosterComponent } from './team-landing/team-roster/team-roster.component';
 import { SortRosterPipe } from './pipes/sort-roster.pipe';
@@ -18,10 +17,6 @@ import { PitchingDisplayComponent } from './search-interface/pitching-display/pi
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
 import { NameFirstLastPipe } from './pipes/name-first-last.pipe';
-import { MinplatePipe } from './pipes/minplate.pipe';
-import { MinipPipe } from './pipes/minip.pipe';
-import { PlayerbyteamPipe } from './pipes/playerbyteam.pipe';
-import { PlayerbyposPipe } from './pipes/playerbypos.pipe';
 import { TeamtrxPipe } from './pipes/teamtrx.pipe';
 import { TrxDisplayComponent } from './search-interface/trx-display/trx-display.component';
 import { UserfooterComponent } from './userfooter/userfooter.component';
@@ -46,7 +41,6 @@ import { MomentdatePipe } from './pipes/momentdate.pipe';
     AppComponent,
     LoginComponent,
     UserheaderComponent,
-    SortTeamPipe,
     SearchInterfaceComponent,
     TeamRosterComponent,
     SortRosterPipe,
@@ -54,10 +48,6 @@ import { MomentdatePipe } from './pipes/momentdate.pipe';
     HittingDisplayComponent,
     PitchingDisplayComponent,
     NameFirstLastPipe,
-    MinplatePipe,
-    MinipPipe,
-    PlayerbyteamPipe,
-    PlayerbyposPipe,
     TeamtrxPipe,
     TrxDisplayComponent,
     UserfooterComponent,

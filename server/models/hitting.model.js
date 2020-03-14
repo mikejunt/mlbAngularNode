@@ -1,7 +1,6 @@
 const { client, pool } = require('../config/db.config')
 
 function allHitting(request, response) {
-    console.log (request.body)
     if (request.body.posfilter === "all") {
         const season = request.body.season
         const search = [request.body.minpa]

@@ -39,9 +39,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {this.teamlist$.subscribe(res => this.teamlist = res)}
 
   onSubmit(e) {
-    console.log(this.newSignup.valid)
     this.user.signup(this.newSignup.value.username, this.newSignup.value.password, this.newSignup.value.favteam).subscribe(result => {
-      console.log(result['success'])
       if (result['success']) { this.router.navigate(['login']) }
       else {this.snack.open(result['msg'],"",{duration: 3000})  }
     })

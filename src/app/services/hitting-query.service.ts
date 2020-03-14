@@ -42,7 +42,7 @@ export class HittingService {
     else {
       this.http.post(`/api/hitting/${terms.teamfilter}`, { season: terms.searchyear, minpa: terms.pafilter, posfilter: terms.posfilter }).subscribe(res => {
         if (!res['success']) { console.log(res) }
-        else { console.log(res);this.store.dispatch(Actions.saveHitters({ hitting: res['data'] })) }
+        else { this.store.dispatch(Actions.saveHitters({ hitting: res['data'] })) }
       })
     }
   }
