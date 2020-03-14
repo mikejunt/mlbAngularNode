@@ -4,18 +4,18 @@
     </mat-progress-spinner>
     <ng-template #loaded>
         <mat-tab-group color="primary" backgroundColor="accent" mat-stretch-tabs>
-            <mat-tab label="OPS">
-                <mat-table [dataSource]="hitters | leadersDesc:'obp'">
+            <mat-tab label="wOBA">
+                <mat-table [dataSource]="hitters | leadersDesc:'woba'">
                     <ng-container matColumnDef="Name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
-                    <ng-container matColumnDef="OPS">
-                        <mat-header-cell *matHeaderCellDef> OBP </mat-header-cell>
-                        <mat-cell *matCellDef="let hitter"> {{hitter["obp"]}} </mat-cell>
+                    <ng-container matColumnDef="woba">
+                        <mat-header-cell *matHeaderCellDef> wOBA </mat-header-cell>
+                        <mat-cell *matCellDef="let hitter"> {{hitter["woba"]}} </mat-cell>
                     </ng-container>
-                    <mat-header-row *matHeaderRowDef="opsColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: opsColumns;"></mat-row>
+                    <mat-header-row *matHeaderRowDef="wobaColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: wobaColumns;"></mat-row>
                 </mat-table>
             </mat-tab>
             <mat-tab label="HR">
@@ -24,7 +24,7 @@
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
-                    <ng-container matColumnDef="HR">
+                    <ng-container matColumnDef="hr">
                         <mat-header-cell *matHeaderCellDef> HR </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["hr"]}} </mat-cell>
                     </ng-container>
@@ -32,18 +32,18 @@
                     <mat-row *matRowDef="let row; columns: hrColumns;"></mat-row>
                 </mat-table>
             </mat-tab>
-            <mat-tab label="AVG">
-                <mat-table [dataSource]="hitters | leadersDesc:'avg'">
+            <mat-tab label="OPS">
+                <mat-table [dataSource]="hitters | leadersDesc:'ops'">
                     <ng-container matColumnDef="Name">
                         <mat-header-cell *matHeaderCellDef> Player </mat-header-cell>
                         <mat-cell *matCellDef="let hitter"> {{hitter["player"] | nameFirstLast}} </mat-cell>
                     </ng-container>
-                    <ng-container matColumnDef="AVG">
-                        <mat-header-cell *matHeaderCellDef> AVG </mat-header-cell>
-                        <mat-cell *matCellDef="let hitter"> {{hitter["avg"]}} </mat-cell>
+                    <ng-container matColumnDef="ops">
+                        <mat-header-cell *matHeaderCellDef> OPS </mat-header-cell>
+                        <mat-cell *matCellDef="let hitter"> {{hitter["ops"]}} </mat-cell>
                     </ng-container>
-                    <mat-header-row *matHeaderRowDef="avgColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: avgColumns;"></mat-row>
+                    <mat-header-row *matHeaderRowDef="opsColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: opsColumns;"></mat-row>
                 </mat-table>
             </mat-tab>
         </mat-tab-group>

@@ -4,7 +4,7 @@ function allHitting(request, response) {
     if (request.body.posfilter === "all") {
         const season = request.body.season
         const search = [request.body.minpa]
-        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 ORDER BY obp DESC`, search)
+        pool.query(`SELECT h.hr,h.player,h.rbi,h.tb,h.slg,h.avg,h.bb,h.hbp,h.g,h.d,h.so,h.tpa,h.h,h.cs,h.obp,h.t,h.season,h.r,h.sb,h.player_id,h.ab,h.ibb,h.team_id,h.woba,h.s,h.ops,t.name,t.name_abbrev,t.league FROM "${season}hitting" AS h INNER JOIN teams AS t ON h.team_id = t.team_id WHERE tpa > $1 ORDER BY woba DESC`, search)
             .then(res => {
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
@@ -16,7 +16,7 @@ function allHitting(request, response) {
     else if (request.body.posfilter === "ALLOF") {
         const season = request.body.season
         const search = [request.body.minpa]
-        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND primary_position LIKE '_F' ORDER BY obp DESC`, search)
+        pool.query(`SELECT h.hr,h.player,h.rbi,h.tb,h.slg,h.avg,h.bb,h.hbp,h.g,h.d,h.so,h.tpa,h.h,h.cs,h.obp,h.t,h.season,h.r,h.sb,h.player_id,h.ab,h.ibb,h.team_id,h.woba,h.s,h.ops,t.name,t.name_abbrev,t.league FROM "${season}hitting" AS h INNER JOIN teams AS t ON h.team_id = t.team_id WHERE tpa > $1 AND h.primary_position LIKE '_F' ORDER BY woba DESC`, search)
             .then(res => {
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
@@ -28,7 +28,8 @@ function allHitting(request, response) {
     else {
         const season = request.body.season
         const search = [request.body.minpa, request.body.posfilter]
-        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND primary_position = $2 ORDER BY obp DESC`, search)
+                pool.query(`SELECT h.hr,h.player,h.rbi,h.tb,h.slg,h.avg,h.bb,h.hbp,h.g,h.d,h.so,h.tpa,h.h,h.cs,h.obp,h.t,h.season,h.r,h.sb,h.player_id,h.ab,h.ibb,h.team_id,h.woba,h.s,h.ops,t.name,t.name_abbrev,t.league FROM "${season}hitting" AS h INNER JOIN teams AS t ON h.team_id = t.team_id WHERE tpa > $1 AND h.primary_position = $2 ORDER BY woba DESC`, search)
+
             .then(res => {
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
@@ -42,19 +43,19 @@ function teamHitting(request, response) {
     if (request.body.posfilter === "all") {
         const season = request.body.season
         const search = [request.body.minpa, request.params.id]
-        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND team_id = $2 ORDER BY obp DESC`, search)
+        pool.query(`SELECT h.hr,h.player,h.rbi,h.tb,h.slg,h.avg,h.bb,h.hbp,h.g,h.d,h.so,h.tpa,h.h,h.cs,h.obp,h.t,h.season,h.r,h.sb,h.player_id,h.ab,h.ibb,h.team_id,h.woba,h.s,h.ops,t.name,t.name_abbrev,t.league FROM "${season}hitting" AS h INNER JOIN teams AS t ON h.team_id = t.team_id WHERE tpa > $1 AND h.team_id = $2 ORDER BY woba DESC`, search)
             .then(res => {
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
                 }
                 return response.send({ success: true, msg: "", data: res.rows })
             })
-            .catch(err => { return response.send({ success: false, msg: `Database Error: Code ${err.code}` }) })
+            .catch(err => { return response.send({ success: false, msg: `Database Error: Code ${err}` }) })
     }
-    else if (request.body.posfilter === "OF") {
+    else if (request.body.posfilter === "ALLOF") {
         const season = request.body.season
         const search = [request.body.minpa, request.params.id]
-        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND team_id = $2 AND primary_position LIKE '_F' ORDER BY obp DESC`, search)
+        pool.query(`SELECT h.hr,h.player,h.rbi,h.tb,h.slg,h.avg,h.bb,h.hbp,h.g,h.d,h.so,h.tpa,h.h,h.cs,h.obp,h.t,h.season,h.r,h.sb,h.player_id,h.ab,h.ibb,h.team_id,h.woba,h.s,h.ops,t.name,t.name_abbrev,t.league FROM "${season}hitting" AS h INNER JOIN teams AS t ON h.team_id = t.team_id WHERE tpa > $1 AND h.team_id = $2 AND h.primary_position LIKE '_F' ORDER BY woba DESC`, search)
             .then(res => {
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
@@ -66,7 +67,7 @@ function teamHitting(request, response) {
     else {
         const season = request.body.season
         const search = [request.body.minpa, request.params.id, request.body.posfilter]
-        pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND team_id = $2 AND primary_position = $3 ORDER BY obp DESC`, search)
+        pool.query(`SELECT h.hr,h.player,h.rbi,h.tb,h.slg,h.avg,h.bb,h.hbp,h.g,h.d,h.so,h.tpa,h.h,h.cs,h.obp,h.t,h.season,h.r,h.sb,h.player_id,h.ab,h.ibb,h.team_id,h.woba,h.s,h.ops,t.name,t.name_abbrev,t.league FROM "${season}hitting" AS h INNER JOIN teams AS t ON h.team_id = t.team_id WHERE tpa > $1 AND h.team_id = $2 AND h.primary_position = $3 ORDER BY woba DESC`, search)
             .then(res => {
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
