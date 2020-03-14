@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { map, tap, debounceTime, retry, catchError, distinctUntilChanged } from 'rxjs/operators'
+import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import * as Actions from '../store/actions/'
 import { AppState } from '../store';
@@ -11,7 +10,6 @@ import { SearchTerms } from '../interfaces/search.terms.interface';
   providedIn: 'root'
 })
 export class PitchingService {
-  private seasonpitchingUrl = `https://lookup-service-prod.mlb.com/json/named.cur_pitching.bam?`
   lgFIPconstant: number = 3.10
 
   constructor(private http: HttpClient, private store: Store<AppState>) { }

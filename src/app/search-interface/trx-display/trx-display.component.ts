@@ -18,7 +18,7 @@ import { StaticqueryService } from 'src/app/services/static-query.service';
 export class TrxDisplayComponent implements OnInit {
   trx$: Observable<Transaction[]>;
   trx: Transaction[]
-  displayedColumns: string[] = ['date','note'];
+  displayedColumns: string[] = ['date', 'note'];
   teamlist$: Observable<Team[]>
   teamlist: Team[]
   teamview: string = "allteams"
@@ -31,12 +31,12 @@ export class TrxDisplayComponent implements OnInit {
 
   constructor(private store: Store<AppState>, private staticquery: StaticqueryService) {
     this.trx$ = this.store.select(Selectors.viewTrx)
-    this.trx$.subscribe(res => this.trx = res)
     this.teamlist$ = this.store.select(Selectors.viewTeams)
-    this.teamlist$.subscribe(res => this.teamlist = res) }
-
+  }
 
   ngOnInit(): void {
+    this.trx$.subscribe(res => this.trx = res)
+    this.teamlist$.subscribe(res => this.teamlist = res)
   }
 
   getTrx() {

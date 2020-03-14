@@ -46,14 +46,17 @@ export class UserheaderComponent implements OnInit {
   }
 
   viewteam(teamid: string) {
+    this.staticquery.fetchTeamDetails(teamid)
     this.showRoster(teamid)
     this.hitting.fetchSeasonHitting({searchyear: "2019", teamfilter: teamid, posfilter: "all", pafilter: "300"})
-    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid, posfilter: "all", ipfilter: "50"})
+    this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: teamid, ipfilter: "50"})
     this.store.dispatch(Actions.setViewTeam({ displayteam: teamid }))
     this.router.navigate(['/landing'])
   }
 
   viewstats(category: string) {
+    if (category === "hitting") {this.hitting.fetchSeasonHitting({searchyear: "2019", teamfilter: "allteams", posfilter: "all", pafilter: "500"})}
+    if (category === "pitching") {this.pitching.fetchSeasonPitching({searchyear: "2019", teamfilter: "allteams", ipfilter: "150"})}
     this.router.navigate([`/${category}`])
   }
 

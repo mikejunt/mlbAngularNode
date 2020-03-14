@@ -40,13 +40,11 @@ function allHitting(request, response) {
     }
 }
 function teamHitting(request, response) {
-    console.log(request.body)
     if (request.body.posfilter === "all") {
         const season = request.body.season
         const search = [request.body.minpa, request.params.id]
         pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND team_id = $2 ORDER BY obp DESC`, search)
             .then(res => {
-                console.log(res)
                 if (res.rows.length === 0 || res.rows.length === undefined) {
                     return response.send({ success: false, msg: "Database error: Connection interrupted or data missing." })
                 }

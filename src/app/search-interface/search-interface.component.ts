@@ -5,7 +5,6 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from '../store';
 import { Observable } from 'rxjs';
 import * as Actions from '../store/actions'
-import { HttpParams } from '@angular/common/http';
 import * as Selectors from '../store/selectors';
 import { Team } from '../interfaces/team.interface';
 import { HittingService } from '../services/hitting-query.service';
@@ -32,11 +31,11 @@ export class SearchInterfaceComponent implements OnInit {
   constructor(private staticquery: StaticqueryService, private router: Router, private actr: ActivatedRoute,
     private store: Store<AppState>, private hitting: HittingService, private pitching: PitchingService) {
     this.teamlist$ = store.pipe(select(Selectors.viewTeams));
-    this.teamlist$.subscribe(res => this.teamlist = res);
   }
 
   ngOnInit(): void {
     this.mode = this.actr.snapshot.routeConfig.path
+    this.teamlist$.subscribe(res => this.teamlist = res)
   }
 
   searchInit() {
