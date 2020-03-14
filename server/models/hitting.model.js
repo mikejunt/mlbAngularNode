@@ -13,7 +13,7 @@ function allHitting(request, response) {
             })
             .catch(err => { return response.send({ success: false, msg: `Database Error: Code ${err.code}` }) })
     }
-    else if (request.body.posfilter === "OF") {
+    else if (request.body.posfilter === "ALLOF") {
         const season = request.body.season
         const search = [request.body.minpa]
         pool.query(`SELECT * FROM "${season}hitting" WHERE tpa >= $1 AND primary_position LIKE '_F' ORDER BY obp DESC`, search)
