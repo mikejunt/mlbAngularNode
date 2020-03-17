@@ -143,154 +143,154 @@ body.mat-app-background {
   margin: 0;
 }
 
-.bg119 {
+.bg119, #landing.bg119 {
   @include angular-material-theme($team119theme);
   @include custom-component-themes($team119theme);
   // import of WIP theme
   // @include landing-panels-theme($team119theme);
 }
 
-.bg109 {
+.bg109, #landing.bg109 {
   @include angular-material-theme($team109theme);
   @include custom-component-themes($team109theme);
 }
 
-.bg145 {
+.bg145, #landing.bg145 {
   @include angular-material-theme($team145theme);
   @include custom-component-themes($team145theme);
 }
   
-.bg111 {
+.bg111, #landing.bg111 {
   @include angular-material-theme($team111theme);
   @include custom-component-themes($team111theme);
 }
 
-.bg110 {
+.bg110, #landing.bg110 {
   @include angular-material-theme($team110theme);
   @include custom-component-themes($team110theme);
 }
 
-.bg112 {
+.bg112, #landing.bg112 {
   @include angular-material-theme($team112theme);
   @include custom-component-themes($team112theme);
 }
 
-.bg113 {
+.bg113, #landing.bg113 {
   @include angular-material-theme($team113theme);
   @include custom-component-themes($team113theme);
 }
 
-.bg114 {
+.bg114, #landing.bg114 {
   @include angular-material-theme($team114theme);
   @include custom-component-themes($team114theme);
 }
 
-.bg116 {
+.bg116, #landing.bg116 {
   @include angular-material-theme($team116theme);
   @include custom-component-themes($team116theme);
 }
 
-.bg117 {
+.bg117, #landing.bg117 {
   @include angular-material-theme($team117theme);
   @include custom-component-themes($team117theme);
 }
 
-.bg118 {
+.bg118, #landing.bg118 {
   @include angular-material-theme($team118theme);
   @include custom-component-themes($team118theme);
 }
 
-.bg108 {
+.bg108, #landing.bg108 {
   @include angular-material-theme($team108theme);
   @include custom-component-themes($team108theme);
 }
 
-.bg142 {
+.bg142, #landing.bg142 {
   @include angular-material-theme($team142theme);
   @include custom-component-themes($team142theme);
 }
 
-.bg147 {
+.bg147, #landing.bg147 {
   @include angular-material-theme($team147theme);
   @include custom-component-themes($team147theme);
 }
 
-.bg133 {
+.bg133, #landing.bg133 {
   @include angular-material-theme($team133theme);
   @include custom-component-themes($team133theme);
 }
 
-.bg136 {
+.bg136, #landing.bg136 {
   @include angular-material-theme($team136theme);
   @include custom-component-themes($team136theme);
 }
 
-.bg139 {
+.bg139, #landing.bg139 {
   @include angular-material-theme($team139theme);
   @include custom-component-themes($team139theme);
 }
 
-.bg140 {
+.bg140, #landing.bg140 {
   @include angular-material-theme($team140theme);
   @include custom-component-themes($team140theme);
 }
 
-.bg141 {
+.bg141, #landing.bg141 {
   @include angular-material-theme($team141theme);
   @include custom-component-themes($team141theme);
 }
 
-.bg144 {
+.bg144, #landing.bg144 {
   @include angular-material-theme($team144theme);
   @include custom-component-themes($team144theme);
 }
 
-.bg115 {
+.bg115, #landing.bg115 {
   @include angular-material-theme($team115theme);
   @include custom-component-themes($team115theme);
 }
 
-.bg146 {
+.bg146, #landing.bg146 {
   @include angular-material-theme($team146theme);
   @include custom-component-themes($team146theme);
 }
 
-.bg158 {
+.bg158, #landing.bg158 {
   @include angular-material-theme($team158theme);
   @include custom-component-themes($team158theme);
 }
 
-.bg121 {
+.bg121, #landing.bg121 {
   @include angular-material-theme($team121theme);
   @include custom-component-themes($team121theme);
 }
 
-.bg143 {
+.bg143, #landing.bg143 {
   @include angular-material-theme($team143theme);
   @include custom-component-themes($team143theme);
 }
 
-.bg134 {
+.bg134, #landing.bg134 {
   @include angular-material-theme($team134theme);
   @include custom-component-themes($team134theme);
 }
 
-.bg135 {
+.bg135, #landing.bg135 {
   @include angular-material-theme($team135theme);
   @include custom-component-themes($team135theme);
 }
 
-.bg137 {
+.bg137, #landing.bg137 {
   @include angular-material-theme($team137theme);
   @include custom-component-themes($team137theme);
 }
 
-.bg138 {
+.bg138, #landing.bg138 {
   @include angular-material-theme($team138theme);
   @include custom-component-themes($team138theme);
 }
 
-.bg120 {
+.bg120, #landing.bg120 {
   @include angular-material-theme($team120theme);
   @include custom-component-themes($team120theme);
 }
@@ -303,6 +303,10 @@ body.mat-app-background {
   margin: 0 .65em;
   min-width: 3em;
   line-height: 36.4px
+}
+
+.mat-button-toggle-label-content {
+  min-width: 24px;
 }
 
 .mat-standard-chip {
