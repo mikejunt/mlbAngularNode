@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server",
-    "build": "ng build",
+    "build": "ng build --prod",
     "front": "ng build --watch",
     "back": "nodemon server",
     "test": "ng test",
