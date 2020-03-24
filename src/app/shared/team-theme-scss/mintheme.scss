@@ -1,14 +1,5 @@
 @import '~@angular/material/theming';
 
-body {
-  --primary-color: #002b5c;
-  --primary-lighter-color: #b3bfce;
-  --primary-darker-color: #001a41;
-  --text-primary-color: #{$light-primary-text};
-  --text-primary-lighter-color: #{$dark-primary-text};
-  --text-primary-darker-color: #{$light-primary-text};
-}
-
 $mat-primary: (
   main: #002b5c,
   lighter: #b3bfce,
@@ -22,15 +13,6 @@ $mat-primary: (
 );
 $team142theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
-body {
-  --accent-color: #d31145;
-  --accent-lighter-color: #f2b8c7;
-  --accent-darker-color: #c20a2e;
-  --text-accent-color: #{$light-primary-text};
-  --text-accent-lighter-color: #{$dark-primary-text};
-  --text-accent-darker-color: #{$light-primary-text};
-}
-
 $mat-accent: (
   main: #d31145,
   lighter: #f2b8c7,
@@ -43,15 +25,6 @@ $mat-accent: (
   )
 );
 $team142theme-accent: mat-palette($mat-accent, main, lighter, darker);
-
-body {
-  --warn-color: #b9975b;
-  --warn-lighter-color: #eae0ce;
-  --warn-darker-color: #a27a40;
-  --text-warn-color: #{$dark-primary-text};
-  --text-warn-lighter-color: #{$dark-primary-text};
-  --text-warn-darker-color: #{$light-primary-text};
-}
 
 $mat-warn: (
   main: #b9975b,
