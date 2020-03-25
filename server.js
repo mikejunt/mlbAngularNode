@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express');
+const compression = require('compression');
 const app = express();
 const port = process.env.PORT;
 const user = require ('./server/routes/user.routes')
@@ -9,6 +10,7 @@ const hitting = require ('./server/routes/hitting.routes')
 const logger = require ('./server/middleware/logger')
 const bodyParser = require('body-parser')
 
+app.use(compression())
 app.use(logger)
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/dist/mlbAngular/'));
